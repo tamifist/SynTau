@@ -1,0 +1,53 @@
+﻿@model Business.Contracts.ViewModels.OligoSynthesizer.SynthesisProcessViewModel
+
+@{
+    ViewBag.Title = "Oligo Synthesizer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">Oligonucleotide Synthesizer</h3>
+    </div>
+</div>
+<div class="row" data-bind="visible: IsSynthesisInProgress">
+    <div class="col-lg-4">
+        <h3>Synthesis in progress...</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div id="synthesis-activities-grid"></div>
+    </div>
+</div>
+<br />
+<div class="row" >
+    <div class="col-lg-2" data-bind="visible: IsSynthesisNotStarted">
+        <button data-bind="click: startSynthesis" class="btn btn-primary btn-lg btn-block">Start synthesis</button>
+    </div>
+    <div class="col-lg-2" data-bind="visible: IsSynthesisInProgress">
+        <button data-bind="click: stopSynthesis" class="btn btn-primary btn-lg btn-block">Stop synthesis</button>
+    </div>
+    <div class="col-lg-2" data-bind="visible: IsSynthesisSuspended">
+        <button data-bind="click: startSynthesis" class="btn btn-primary btn-lg btn-block">Continue synthesis</button>
+    </div>
+    <div class="col-lg-3" data-bind="visible: IsSynthesisSuspended">
+        <button data-bind="click: deleteCurrentSynthesisProcess" class="btn btn-danger btn-lg btn-block">Delete synthesis process</button>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            var currentSynthesisProcessJsonModel = @J(Model);
+
+            var oligoSynthesizerViewModel = new OligoSynthesizerViewModel('#page-wrapper', currentSynthesisProcessJsonModel, '#synthesis-activities-grid');
+
+            oligoSynthesizerViewModel.bindModel();
+
+            oligoSynthesizerViewModel.createSynthesisActivitiesGrid();
+
+            window.oligoSynthesizerViewModel = oligoSynthesizerViewModel;
+        });
+    </script>
+}

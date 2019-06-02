@@ -1,0 +1,157 @@
+﻿@model Business.Contracts.ViewModels.ManualControl.ManualControlViewModel
+
+@{
+    ViewBag.Title = "Manual Control";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header">Manual Control</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 style="border-bottom: 1px solid #eee; padding-bottom: 4px">Valves</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                @(Html.Kendo().MultiSelect()
+                      .Name("valvesMultiSelect")
+                      .DataTextField("Name")
+                      .DataValueField("Number")
+                      .Placeholder("Select valves...")
+                      .ItemTemplate("<span>#= Name #</span>")
+                      .Height(520)
+                      .DataSource(source =>
+                      {
+                          source.Custom()
+                              .ServerFiltering(true)
+                              .ServerPaging(true)
+                              .PageSize(50)
+                              .Type("aspnetmvc-ajax") //Set this type if you want to use DataSourceRequest and ToDataSourceResult instances
+                              .Transport(transport =>
+                              {
+                                  transport.Read("GetValves", "ValveMultiSelect");
+                              })
+                              .Schema(schema =>
+                              {
+                                  schema.Data("Data") //define the [data](http://docs.telerik.com/kendo-ui/api/javascript/data/datasource#configuration-schema.data) option
+                                      .Total("Total"); //define the [total](http://docs.telerik.com/kendo-ui/api/javascript/data/datasource#configuration-schema.total) option
+                              });
+                      })
+                      )
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-lg-2">
+                <button data-bind="invisible: IsValvesActivated, click: activateValves" class="btn btn-primary btn-lg btn-block">Activate</button>
+                <button data-bind="visible: IsValvesActivated, click: deactivateAllValves" class="btn btn-primary btn-lg btn-block">Deactivate All</button>
+            </div>
+        </div>
+        <div class="row" data-bind="visible: IsValvesActivated">
+            <div class="col-lg-12">
+                <h4 style="border-bottom: 1px solid #eee; padding-bottom: 4px">Activated valves</h4>
+            </div>
+        </div>
+        <div class="row" data-bind="visible: IsValvesActivated">
+            <div class="col-lg-12">
+                <div id="activated-valves-grid"></div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 style="border-bottom: 1px solid #eee; padding-bottom: 4px">Syringe Pump</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                @(Html.Kendo().DropDownList()
+                      .Name("syringePumpDropDownList")
+                      .DataTextField("Text")
+                      .DataValueField("Value")
+                      .HtmlAttributes(new { data_bind = "source: AllSyringePumpHardwareFunctions, value: SelectedSyringePumpFunction, events: {change: syringePumpFunctionChanged}", style = "width: 100%" })
+                      )
+            </div>
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.SyringePumpStepMode, "Half Step Mode")
+                @Html.CheckBoxFor(model => model.SyringePumpStepMode, new { data_bind = "checked: SyringePumpStepMode" })
+            </div>
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.SyringePumpFlow, "Flow")
+                @Html.TextBoxFor(model => model.SyringePumpFlow, new { data_bind = "value: SyringePumpFlow", @class = "k-textbox" })
+            </div>
+            <div class="col-lg-3" data-bind="visible: IsSyringePumpVolumeVisible">
+                @Html.LabelFor(model => model.SyringePumpVolume, "Volume")
+                @Html.TextBoxFor(model => model.SyringePumpVolume, new { data_bind = "value: SyringePumpVolume", @class = "k-textbox" })
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-lg-2">
+                <button data-bind="click: setSyringePump" class="btn btn-primary btn-lg btn-block">Start</button>
+            </div>
+        </div>
+        
+        <br />
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 style="border-bottom: 1px solid #eee; padding-bottom: 4px">Tray</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                <button data-bind="click: trayOut" class="btn btn-lg btn-block">Tray Out</button>
+            </div>
+            <div class="col-lg-2">
+                <button data-bind="click: trayIn" class="btn btn-lg btn-block">Tray In</button>
+            </div>
+            <div class="col-lg-2">
+                <button data-bind="click: trayLightOn" class="btn btn-lg btn-block">Tray Light On</button>
+            </div>
+            <div class="col-lg-2">
+                <button data-bind="click: trayLightOff" class="btn btn-lg btn-block">Tray Light Off</button>
+            </div>
+        </div>
+        
+        <br />
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 style="border-bottom: 1px solid #eee; padding-bottom: 4px">Gene Synthesizer</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                @(Html.Kendo().DropDownList()
+                      .Name("gsValvesDropDownList")
+                      .DataTextField("Text")
+                      .DataValueField("Id")
+                      .HtmlAttributes(new { data_bind = "source: AllGSValvesHardwareFunctions, value: SelectedGSValveFunction", style = "width: 100%" })
+                )
+            </div>
+            <div class="col-lg-2">
+                <button data-bind="click: execGSValveFunction" class="btn btn-primary btn-lg btn-block">Execute</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+
+            var manualControlJsonModel = @J(Model);
+
+            var manualControlViewModel = new ManualControlViewModel('#page-wrapper', manualControlJsonModel, '#valvesMultiSelect', '#activated-valves-grid');
+
+            manualControlViewModel.bindModel();
+
+            window.manualControlViewModel = manualControlViewModel;
+        });
+    </script>
+}

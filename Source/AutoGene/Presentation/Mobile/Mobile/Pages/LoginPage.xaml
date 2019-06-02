@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AutoGene.Mobile.Pages.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    xmlns:res="clr-namespace:Shared.Resources;assembly=Shared.Resources"
+    Title="{Binding Title}"
+    BackgroundImage="{StaticResource LoginBackgroundImage}">
+    <ScrollView>
+        <!--  MAIN CONTAINER  -->
+        <Grid
+            ColumnSpacing="0"
+            HorizontalOptions="CenterAndExpand"
+            RowSpacing="0"
+            VerticalOptions="FillAndExpand"
+            WidthRequest="500">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="100" />
+            </Grid.RowDefinitions>
+
+
+            <!--  -FIELDS CONTAINER  -->
+            <Grid
+                Grid.Row="0"
+                Padding="40,0"
+                ColumnSpacing="0"
+                HeightRequest="160"
+                RowSpacing="0"
+                VerticalOptions="CenterAndExpand">
+
+                <RelativeLayout Grid.Row="0" VerticalOptions="StartAndExpand">
+                    <!--  -EMAIL FIELD  -->
+                    <Entry
+                        x:Name="emailEntry"
+                        Placeholder="{x:Static res:AppResources.Login_EmailEntryPlaceholder}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                              Property=Width,
+                                                                              Factor=1}"
+                        Style="{DynamicResource DefaultEntryStyle}"
+                        Text="{Binding Email}">
+
+                        <Entry.Behaviors>
+                            <artina:EmailValidatorBehavior x:Name="emailValidator" />
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Label
+                        IsVisible="false"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
+                                                                          ElementName=emailEntry,
+                                                                          Property=Height,
+                                                                          Factor=1,
+                                                                          Constant=6}"
+                        Style="{DynamicResource ValidationEntryErrorStyle}"
+                        Text="{x:Static res:AppResources.Login_EmailEntryValidationMsg}">
+
+                        <Label.Triggers>
+                            <DataTrigger
+                                Binding="{Binding Source={x:Reference emailValidator}, Path=IsValid}"
+                                TargetType="Label"
+                                Value="false">
+                                <Setter Property="IsVisible" Value="true" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                </RelativeLayout>
+
+                <!--  -PASSWORD FIELD  -->
+                <Entry
+                    x:Name="passwordEntry"
+                    Grid.Row="2"
+                    IsPassword="true"
+                    Placeholder="{x:Static res:AppResources.Login_PasswordEntryPlaceholder}"
+                    Style="{DynamicResource DefaultEntryStyle}"
+                    Text="{Binding Password}"
+                    VerticalOptions="StartAndExpand" />
+
+            </Grid>
+
+
+            <!--  FOOTER  -->
+            <StackLayout
+                x:Name="loginStack"
+                Grid.Row="1"
+                Padding="20"
+                HorizontalOptions="Fill"
+                VerticalOptions="EndAndExpand">
+
+                <Button
+                    Command="{Binding LogInCommand}"
+                    Style="{DynamicResource PrimaryActionButtonStyle}"
+                    Text="{x:Static res:AppResources.Login_LogInButton}"
+                    VerticalOptions="End" />
+
+            </StackLayout>
+
+        </Grid>
+    </ScrollView>
+</ContentPage>

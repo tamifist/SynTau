@@ -1,0 +1,59 @@
+﻿<script type="text/javascript">
+    (function() {
+        //All urls in one place
+        var actions = {};
+
+        window.actions = actions;
+
+        actions.common = {
+                rootUrl: '@Url.Content("~")',
+            },
+            actions.systemMonitor = {
+                getSystemMonitorViewModel: '@Url.Action("GetSystemMonitorViewModel", "SystemMonitor")',
+            },
+            actions.geneEditor = {
+                geneList: actions.common.rootUrl + "odata/Gene",
+                optimizeGene: '@Url.Action("OptimizeGene", "GeneEditor")',
+                updateGeneFragments: '@Url.Action("UpdateGeneFragments", "GeneEditor")',
+                getGeneEditorViewModel: '@Url.Action("GetGeneEditorViewModel", "GeneEditor")',
+                deleteGene: '@Url.Action("DeleteGene", "GeneEditor")',
+            },
+            actions.cycleEditor = {
+                synthesisCycleList: actions.common.rootUrl + "api/SynthesisCycle",
+                cycleStepList: actions.common.rootUrl + "api/CycleStep",
+                cycleStepFunctionList: actions.common.rootUrl + "odata/CycleStepFunction",
+            },
+            actions.manualControl = {
+                activateValves: '@Url.Action("ActivateValves", "ManualControl")',
+                deactivateAllValves: '@Url.Action("DeactivateAllValves", "ManualControl")',
+                activatedValvesList: actions.common.rootUrl + "odata/ValveFunction",
+
+                setSyringePump: '@Url.Action("SetSyringePump", "ManualControl")',
+
+                trayOut: '@Url.Action("TrayOut", "ManualControl")',
+                trayIn: '@Url.Action("TrayIn", "ManualControl")',
+                trayLightOn: '@Url.Action("TrayLightOn", "ManualControl")',
+                trayLightOff: '@Url.Action("TrayLightOff", "ManualControl")',
+                execGSValveFunction: '@Url.Action("ExecGSValveFunction", "ManualControl")',
+            },
+            actions.systemConfiguration = {
+                channelConfigurationList: actions.common.rootUrl + "api/ChannelConfiguration",
+                activateChannelFunctionList: actions.common.rootUrl + "odata/ActivateChannelFunction",
+            },
+            actions.oligoSynthesizer = {
+                synthesisActivityList: actions.common.rootUrl + "api/OligoSynthesisActivity",
+                synthesisCycleList: actions.common.rootUrl + "odata/OligoSynthesisCycle",
+                startSynthesis: '@Url.Action("StartSynthesis", "OligoSynthesizer")',
+                stopSynthesis: '@Url.Action("StopSynthesis", "OligoSynthesizer")',
+                deleteSynthesisProcess: '@Url.Action("DeleteSynthesisProcess", "OligoSynthesizer")',
+            },
+            actions.geneSynthesizer = {
+                createGeneSynthesisProcess: '@Url.Action("CreateGeneSynthesisProcess", "GeneSynthesizer")',
+                updateGeneSynthesisProcess: '@Url.Action("UpdateGeneSynthesisProcess", "GeneSynthesizer")',
+                synthesisActivityList: actions.common.rootUrl + "api/GeneSynthesisActivity",
+                startSynthesis: '@Url.Action("StartSynthesis", "GeneSynthesizer")',
+                stopSynthesis: '@Url.Action("StopSynthesis", "GeneSynthesizer")',
+                deleteSynthesisProcess: '@Url.Action("DeleteSynthesisProcess", "GeneSynthesizer")',
+            };
+    })();
+</script>

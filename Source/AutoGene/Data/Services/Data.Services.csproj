@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{99EC1CFC-276B-4CD4-B144-F8F464D97CAC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Data.Services</RootNamespace>
+    <AssemblyName>Data.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.BulkInsert, Version=6.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.BulkInsert-ef6-ext.6.0.3.1\lib\net45\EntityFramework.BulkInsert.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.MappingAPI, Version=6.1.0.9, Culture=neutral, PublicKeyToken=7ee2e825d201459e, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.MappingAPI.6.1.0.9\lib\net45\EntityFramework.MappingAPI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Mobile.Server, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Azure.Mobile.Server.2.0.0\lib\net46\Microsoft.Azure.Mobile.Server.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Mobile.Server.Entity, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Azure.Mobile.Server.Entity.2.0.0\lib\net46\Microsoft.Azure.Mobile.Server.Entity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Mobile.Server.Tables, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Azure.Mobile.Server.Tables.2.0.0\lib\net46\Microsoft.Azure.Mobile.Server.Tables.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Data.Edm.5.8.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Data.OData.5.8.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Spatial, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Spatial.5.8.2\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.OData, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.OData.5.7.0\lib\net45\System.Web.Http.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Z.EntityFramework.Plus.EF6, Version=1.4.48.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Z.EntityFramework.Plus.EF6.1.4.48\lib\net45\Z.EntityFramework.Plus.EF6.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommonDbContext.cs" />
+    <Compile Include="CommonDbInitializer.cs" />
+    <Compile Include="Extensions\DbSetExtensions.cs" />
+    <Compile Include="Helpers\IRepositoryFactory.cs" />
+    <Compile Include="Helpers\RepositoryFactoriesBuilder.cs" />
+    <Compile Include="Helpers\RepositoryFactory.cs" />
+    <Compile Include="Migrations\201702210931018_Initial.cs" />
+    <Compile Include="Migrations\201702210931018_Initial.Designer.cs">
+      <DependentUpon>201702210931018_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702221427345_AddAminoAcidAndCodonTables.cs" />
+    <Compile Include="Migrations\201702221427345_AddAminoAcidAndCodonTables.Designer.cs">
+      <DependentUpon>201702221427345_AddAminoAcidAndCodonTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702221608473_AddOrganismAndCodonUsageTables.cs" />
+    <Compile Include="Migrations\201702221608473_AddOrganismAndCodonUsageTables.Designer.cs">
+      <DependentUpon>201702221608473_AddOrganismAndCodonUsageTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702221654568_AddUniqueIndexOnOrganism.cs" />
+    <Compile Include="Migrations\201702221654568_AddUniqueIndexOnOrganism.Designer.cs">
+      <DependentUpon>201702221654568_AddUniqueIndexOnOrganism.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703101450303_AddSensorListingAndSensorTables.cs" />
+    <Compile Include="Migrations\201703101450303_AddSensorListingAndSensorTables.Designer.cs">
+      <DependentUpon>201703101450303_AddSensorListingAndSensorTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703121409460_UpdateSensorListingAddTimeTicks.cs" />
+    <Compile Include="Migrations\201703121409460_UpdateSensorListingAddTimeTicks.Designer.cs">
+      <DependentUpon>201703121409460_UpdateSensorListingAddTimeTicks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703121946581_AddGeneAndGeneFragmentTables.cs" />
+    <Compile Include="Migrations\201703121946581_AddGeneAndGeneFragmentTables.Designer.cs">
+      <DependentUpon>201703121946581_AddGeneAndGeneFragmentTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703131648259_AddKPlusAndDMSOToGeneTable.cs" />
+    <Compile Include="Migrations\201703131648259_AddKPlusAndDMSOToGeneTable.Designer.cs">
+      <DependentUpon>201703131648259_AddKPlusAndDMSOToGeneTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703141831203_AddFragmentNumberColumn.cs" />
+    <Compile Include="Migrations\201703141831203_AddFragmentNumberColumn.Designer.cs">
+      <DependentUpon>201703141831203_AddFragmentNumberColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703172254492_AddNameColumnToGeneTable.cs" />
+    <Compile Include="Migrations\201703172254492_AddNameColumnToGeneTable.Designer.cs">
+      <DependentUpon>201703172254492_AddNameColumnToGeneTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703181901592_AddOrganismIdToGeneTable.cs" />
+    <Compile Include="Migrations\201703181901592_AddOrganismIdToGeneTable.Designer.cs">
+      <DependentUpon>201703181901592_AddOrganismIdToGeneTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703291908176_AddReferenceBetweenCodonAndCodonUsage.cs" />
+    <Compile Include="Migrations\201703291908176_AddReferenceBetweenCodonAndCodonUsage.Designer.cs">
+      <DependentUpon>201703291908176_AddReferenceBetweenCodonAndCodonUsage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703302143029_AddCycleEditorTables.cs" />
+    <Compile Include="Migrations\201703302143029_AddCycleEditorTables.Designer.cs">
+      <DependentUpon>201703302143029_AddCycleEditorTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704052038123_UpdateHardwareFunctions.cs" />
+    <Compile Include="Migrations\201704052038123_UpdateHardwareFunctions.Designer.cs">
+      <DependentUpon>201704052038123_UpdateHardwareFunctions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704112102235_AddIsActivated.cs" />
+    <Compile Include="Migrations\201704112102235_AddIsActivated.Designer.cs">
+      <DependentUpon>201704112102235_AddIsActivated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704232041046_AddSynthesizerSettingTable.cs" />
+    <Compile Include="Migrations\201704232041046_AddSynthesizerSettingTable.Designer.cs">
+      <DependentUpon>201704232041046_AddSynthesizerSettingTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705052243197_AddChannelConfigurationTable.cs" />
+    <Compile Include="Migrations\201705052243197_AddChannelConfigurationTable.Designer.cs">
+      <DependentUpon>201705052243197_AddChannelConfigurationTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705052256299_AddRequiredToChannelConfigurationTable.cs" />
+    <Compile Include="Migrations\201705052256299_AddRequiredToChannelConfigurationTable.Designer.cs">
+      <DependentUpon>201705052256299_AddRequiredToChannelConfigurationTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705062101537_RenameNucleotideToStartNucleotide.cs" />
+    <Compile Include="Migrations\201705062101537_RenameNucleotideToStartNucleotide.Designer.cs">
+      <DependentUpon>201705062101537_RenameNucleotideToStartNucleotide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705111218386_AddOligoSynthesizerTables.cs" />
+    <Compile Include="Migrations\201705111218386_AddOligoSynthesizerTables.Designer.cs">
+      <DependentUpon>201705111218386_AddOligoSynthesizerTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705111643003_AddIXChannelNumberAndUserId.cs" />
+    <Compile Include="Migrations\201705111643003_AddIXChannelNumberAndUserId.Designer.cs">
+      <DependentUpon>201705111643003_AddIXChannelNumberAndUserId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705121453194_AddChannelApiFunction.cs" />
+    <Compile Include="Migrations\201705121453194_AddChannelApiFunction.Designer.cs">
+      <DependentUpon>201705121453194_AddChannelApiFunction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705171147223_AddGeneSynthesisTables.cs" />
+    <Compile Include="Migrations\201705171147223_AddGeneSynthesisTables.Designer.cs">
+      <DependentUpon>201705171147223_AddGeneSynthesisTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705182340311_AddLogTable.cs" />
+    <Compile Include="Migrations\201705182340311_AddLogTable.Designer.cs">
+      <DependentUpon>201705182340311_AddLogTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705221254004_AddTotalTimeToOligoSynthesisProcess.cs" />
+    <Compile Include="Migrations\201705221254004_AddTotalTimeToOligoSynthesisProcess.Designer.cs">
+      <DependentUpon>201705221254004_AddTotalTimeToOligoSynthesisProcess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705221448084_AddTotalTimeToGeneSynthesisProcess.cs" />
+    <Compile Include="Migrations\201705221448084_AddTotalTimeToGeneSynthesisProcess.Designer.cs">
+      <DependentUpon>201705221448084_AddTotalTimeToGeneSynthesisProcess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705222142152_AddUniqueIndexOnCycleStep.cs" />
+    <Compile Include="Migrations\201705222142152_AddUniqueIndexOnCycleStep.Designer.cs">
+      <DependentUpon>201705222142152_AddUniqueIndexOnCycleStep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705222157426_AddRequiredToCycleStep.cs" />
+    <Compile Include="Migrations\201705222157426_AddRequiredToCycleStep.Designer.cs">
+      <DependentUpon>201705222157426_AddRequiredToCycleStep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705222210538_IXNumberAndSynthesisCycleId.cs" />
+    <Compile Include="Migrations\201705222210538_IXNumberAndSynthesisCycleId.Designer.cs">
+      <DependentUpon>201705222210538_IXNumberAndSynthesisCycleId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705222241010_RemoveIXNumberAndSynthesisCycleId.cs" />
+    <Compile Include="Migrations\201705222241010_RemoveIXNumberAndSynthesisCycleId.Designer.cs">
+      <DependentUpon>201705222241010_RemoveIXNumberAndSynthesisCycleId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705231915493_AddTimeToGeneSynthesisProcess.cs" />
+    <Compile Include="Migrations\201705231915493_AddTimeToGeneSynthesisProcess.Designer.cs">
+      <DependentUpon>201705231915493_AddTimeToGeneSynthesisProcess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository.cs" />
+    <Compile Include="UnitOfWork.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Business\Contracts\Business.Contracts.csproj">
+      <Project>{19c7f70a-9daa-48b6-a2a8-5e148cd1d3ef}</Project>
+      <Name>Business.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\Enum\Shared.Enum.csproj">
+      <Project>{7019053e-f940-47c1-bf25-7e7e78b340e0}</Project>
+      <Name>Shared.Enum</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\Framework\Shared.Framework.csproj">
+      <Project>{b7a55646-bee7-43b5-8690-4e7f5ccb4205}</Project>
+      <Name>Shared.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Contracts\Data.Contracts.csproj">
+      <Project>{5335fe49-6c25-4fe4-8099-46165f35effe}</Project>
+      <Name>Data.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201702210931018_Initial.resx">
+      <DependentUpon>201702210931018_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702221427345_AddAminoAcidAndCodonTables.resx">
+      <DependentUpon>201702221427345_AddAminoAcidAndCodonTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702221608473_AddOrganismAndCodonUsageTables.resx">
+      <DependentUpon>201702221608473_AddOrganismAndCodonUsageTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702221654568_AddUniqueIndexOnOrganism.resx">
+      <DependentUpon>201702221654568_AddUniqueIndexOnOrganism.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703101450303_AddSensorListingAndSensorTables.resx">
+      <DependentUpon>201703101450303_AddSensorListingAndSensorTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703121409460_UpdateSensorListingAddTimeTicks.resx">
+      <DependentUpon>201703121409460_UpdateSensorListingAddTimeTicks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703121946581_AddGeneAndGeneFragmentTables.resx">
+      <DependentUpon>201703121946581_AddGeneAndGeneFragmentTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703131648259_AddKPlusAndDMSOToGeneTable.resx">
+      <DependentUpon>201703131648259_AddKPlusAndDMSOToGeneTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703141831203_AddFragmentNumberColumn.resx">
+      <DependentUpon>201703141831203_AddFragmentNumberColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703172254492_AddNameColumnToGeneTable.resx">
+      <DependentUpon>201703172254492_AddNameColumnToGeneTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703181901592_AddOrganismIdToGeneTable.resx">
+      <DependentUpon>201703181901592_AddOrganismIdToGeneTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703291908176_AddReferenceBetweenCodonAndCodonUsage.resx">
+      <DependentUpon>201703291908176_AddReferenceBetweenCodonAndCodonUsage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703302143029_AddCycleEditorTables.resx">
+      <DependentUpon>201703302143029_AddCycleEditorTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704052038123_UpdateHardwareFunctions.resx">
+      <DependentUpon>201704052038123_UpdateHardwareFunctions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704112102235_AddIsActivated.resx">
+      <DependentUpon>201704112102235_AddIsActivated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704232041046_AddSynthesizerSettingTable.resx">
+      <DependentUpon>201704232041046_AddSynthesizerSettingTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705052243197_AddChannelConfigurationTable.resx">
+      <DependentUpon>201705052243197_AddChannelConfigurationTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705052256299_AddRequiredToChannelConfigurationTable.resx">
+      <DependentUpon>201705052256299_AddRequiredToChannelConfigurationTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705062101537_RenameNucleotideToStartNucleotide.resx">
+      <DependentUpon>201705062101537_RenameNucleotideToStartNucleotide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705111218386_AddOligoSynthesizerTables.resx">
+      <DependentUpon>201705111218386_AddOligoSynthesizerTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705111643003_AddIXChannelNumberAndUserId.resx">
+      <DependentUpon>201705111643003_AddIXChannelNumberAndUserId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705121453194_AddChannelApiFunction.resx">
+      <DependentUpon>201705121453194_AddChannelApiFunction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705171147223_AddGeneSynthesisTables.resx">
+      <DependentUpon>201705171147223_AddGeneSynthesisTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705182340311_AddLogTable.resx">
+      <DependentUpon>201705182340311_AddLogTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705221254004_AddTotalTimeToOligoSynthesisProcess.resx">
+      <DependentUpon>201705221254004_AddTotalTimeToOligoSynthesisProcess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705221448084_AddTotalTimeToGeneSynthesisProcess.resx">
+      <DependentUpon>201705221448084_AddTotalTimeToGeneSynthesisProcess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705222142152_AddUniqueIndexOnCycleStep.resx">
+      <DependentUpon>201705222142152_AddUniqueIndexOnCycleStep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705222157426_AddRequiredToCycleStep.resx">
+      <DependentUpon>201705222157426_AddRequiredToCycleStep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705222210538_IXNumberAndSynthesisCycleId.resx">
+      <DependentUpon>201705222210538_IXNumberAndSynthesisCycleId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705222241010_RemoveIXNumberAndSynthesisCycleId.resx">
+      <DependentUpon>201705222241010_RemoveIXNumberAndSynthesisCycleId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705231915493_AddTimeToGeneSynthesisProcess.resx">
+      <DependentUpon>201705231915493_AddTimeToGeneSynthesisProcess.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

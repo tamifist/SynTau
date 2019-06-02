@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="AutoGene.Mobile.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared">
+    <Application.Resources>
+
+        <ResourceDictionary x:Name="ThemeDictionary">
+
+            <!--
+                EXPORTED COLORS
+                
+                Everytime you change any of the exported colors
+                you MUST compile (Right click on "Colors.tt" > Tools > Process T4 Templates)
+                to see your changes on your App
+            -->
+            <!--  Export AccentColor  -->
+            <Color x:Key="AccentColor">#FF337AB7</Color>
+            <!--  Export InverseTextColor  -->
+            <Color x:Key="InverseTextColor">White</Color>
+
+            <!--  COLORS  -->
+
+            <Color x:Key="BrandColor">#ad1457</Color>
+            <Color x:Key="ListViewSeparatorColor">#77CCCCCC</Color>
+
+            <!--  COMPLEMENT COLORS  -->
+            <Color x:Key="TranslucidWhite">#22ffffff</Color>
+
+
+            <!--  INDICATOR COLORS  -->
+            <Color x:Key="PlaceholderColorEntry">#77FFFFFF</Color>
+            <Color x:Key="ErrorColor">Red</Color>
+            <Color x:Key="LabelButtonColor">#ffffff</Color>
+
+            <!--  BASE COLORS AND UNITS VALUES  -->
+            <Color x:Key="BaseTextColor">White</Color>
+            <x:Double x:Key="BaseFontSize">16</x:Double>
+            <x:Double x:Key="BaseButtonHeight">60</x:Double>
+            <x:Double x:Key="BaseButtonBorderRadius">22</x:Double>
+
+            <!--  STATIC IMAGES  -->
+
+            <FileImageSource x:Key="LoginBackgroundImage">login_bg.jpg</FileImageSource>
+
+            <!--  IMPLICIT STYLES  -->
+
+            <Style TargetType="Frame">
+                <Setter Property="OutlineColor" Value="{StaticResource BrandColor}" />
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="{StaticResource BaseTextColor}" />
+                <Setter Property="PlaceholderColor" Value="{StaticResource PlaceholderColorEntry}" />
+            </Style>
+
+            <Style TargetType="ActivityIndicator">
+                <Setter Property="Color" Value="{StaticResource AccentColor}" />
+            </Style>
+
+            <Style TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="Black" />
+            </Style>
+
+            <Style TargetType="ContentView">
+                <Setter Property="BackgroundColor" Value="Black" />
+            </Style>
+
+            <Style TargetType="ScrollView">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="{StaticResource BaseFontSize}" />
+                <Setter Property="TextColor" Value="{StaticResource BaseTextColor}" />
+            </Style>
+
+            <Style TargetType="ListView">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="SeparatorColor" Value="{StaticResource ListViewSeparatorColor}" />
+                <Setter Property="SeparatorVisibility" Value="Default" />
+            </Style>
+
+            <Style TargetType="TableView">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="artina:TableViewProperties.HeaderFooterTextColor" Value="{StaticResource AccentColor}" />
+            </Style>
+
+
+
+            <Style TargetType="ProgressBar">
+                <Setter Property="artina:ProgressBarProperties.TintColor" Value="{StaticResource AccentColor}" />
+            </Style>
+
+            <Style TargetType="Slider">
+                <Setter Property="artina:SliderProperties.TintColor" Value="{StaticResource AccentColor}" />
+            </Style>
+
+
+            <Style TargetType="TextCell">
+                <Setter Property="TextColor" Value="{StaticResource AccentColor}" />
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="FontSize" Value="{StaticResource BaseFontSize}" />
+                <Setter Property="BorderRadius" Value="22" />
+                <Setter Property="HeightRequest" Value="{StaticResource BaseButtonHeight}" />
+
+                <!--
+                    Mimic Android Buttons background color
+                    If no background color is set,
+                    the button won't render with height as specified here
+                -->
+                <Setter Property="BackgroundColor">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="Color" Android="#d6d6d6" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!--  LOGIN STYLES  -->
+
+            <Style x:Key="BaseEntryStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+            </Style>
+
+            <Style
+                x:Key="DefaultEntryStyle"
+                BasedOn="{StaticResource BaseEntryStyle}"
+                TargetType="Entry">
+                <Setter Property="artina:EntryProperties.BorderStyle" Value="BottomLine" />
+                <Setter Property="artina:EntryProperties.BorderColor" Value="{StaticResource TranslucidWhite}" />
+                <Setter Property="artina:EntryProperties.PlaceholderColor" Value="{StaticResource PlaceholderColorEntry}" />
+                <Style.Triggers>
+                    <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                        <Setter Property="artina:EntryProperties.BorderColor" Value="{StaticResource AccentColor}" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <!--  VALIDATIONS  -->
+            <Style x:Key="ValidationEntryErrorStyle" TargetType="Label">
+                <Setter Property="BackgroundColor" Value="{StaticResource ErrorColor}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+
+            <!--  COMMON  -->
+
+            <Style x:Key="RoundedButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="{StaticResource BaseFontSize}" />
+                <Setter Property="BorderRadius" Value="{StaticResource BaseButtonBorderRadius}" />
+                <Setter Property="HeightRequest" Value="{StaticResource BaseButtonHeight}" />
+            </Style>
+
+            <Style
+                x:Key="PrimaryActionButtonStyle"
+                BasedOn="{StaticResource RoundedButtonStyle}"
+                TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}" />
+                <Setter Property="TextColor" Value="{StaticResource LabelButtonColor}" />
+            </Style>
+
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

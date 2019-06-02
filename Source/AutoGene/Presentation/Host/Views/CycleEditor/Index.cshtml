@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Cycle Editor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header"><button data-bind="visible: IsCreateOrUpdateCycleVisible, click: backToCycles" class="btn btn-link" style="font-size:30px;padding:0"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></button> Cycle Editor</h3>
+    </div>
+</div>
+<div class="row" data-bind="visible: IsCycleListVisible">
+    <div class="col-lg-12">
+        <div class="col-lg-12">
+            <div id="synthesis-cycles-grid"></div>
+        </div>
+    </div>
+</div>
+
+<div class="row" data-bind="visible: IsCreateOrUpdateCycleVisible">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-5">
+                <h4>Cycle Name: <label data-bind="text: SynthesisCycleName"></label></h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <div id="cycle-steps-grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            var cycleEditorViewModel = new CycleEditorViewModel('#page-wrapper', {}, '#cycle-steps-grid', '#synthesis-cycles-grid');
+            cycleEditorViewModel.setMode(true, false);
+
+            cycleEditorViewModel.bindModel();
+
+            cycleEditorViewModel.createSynthesisCyclesGrid();
+
+            cycleEditorViewModel.setIsDirty(false);
+
+            window.cycleEditorViewModel = cycleEditorViewModel;
+        });
+    </script>
+}

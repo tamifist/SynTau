@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AutoGene.Mobile.Pages.SynthesizerSettingsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:res="clr-namespace:Shared.Resources;assembly=Shared.Resources"
+    Title="{Binding Title}"
+    BackgroundColor="Black">
+    <StackLayout
+        Padding="10"
+        HorizontalOptions="CenterAndExpand"
+        Spacing="10"
+        WidthRequest="800">
+        <Label Text="{x:Static res:AppResources.SynthesizerSettings_BackendApiUrl}" />
+        <Entry Style="{DynamicResource DefaultEntryStyle}" Text="{Binding Model.AppServiceUrl}" />
+        <Label Text="{x:Static res:AppResources.SynthesizerSettings_SynthesizerApiUrl}" />
+        <Entry Style="{DynamicResource DefaultEntryStyle}" Text="{Binding Model.SynthesizerApiUrl}" />
+        <Label Text="{x:Static res:AppResources.SynthesizerSettings_DelayAfterStrikeOn}" />
+        <Entry Style="{DynamicResource DefaultEntryStyle}" Text="{Binding Model.DelayAfterStrikeOn}" />
+        <StackLayout VerticalOptions="CenterAndExpand" />
+        <Button
+            Command="{Binding SaveCommand}"
+            Style="{DynamicResource PrimaryActionButtonStyle}"
+            Text="{x:Static res:AppResources.SynthesizerSettings_Save}" />
+        <!--<Button Command="{Binding DeleteCommand}" Text="Delete" />-->
+    </StackLayout>
+</ContentPage>

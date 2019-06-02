@@ -1,0 +1,153 @@
+﻿@model Business.Contracts.ViewModels.GeneEditor.GeneEditorViewModel
+
+@{
+    ViewBag.Title = "Gene Editor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header"><button data-bind="visible: IsCreateOrUpdateGeneVisible, click: backToGenes" class="btn btn-link" style="font-size:30px;padding:0"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></button> Gene Editor</h3>
+    </div>
+</div>
+<div class="row" data-bind="visible: IsGeneListVisible">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-2">
+                <button data-bind="click: createNewGene" class="btn btn-lg btn-success btn-block">Create New Gene</button>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="gene-list-grid"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" data-bind="visible: IsCreateOrUpdateGeneVisible">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group" data-bind="invisible: IsGeneOptimized">
+                            <label>Name</label>
+                            @Html.TextBoxFor(model => model.Name, new {data_bind = "value: Name", @class = "k-textbox", style = "width:100%"})
+                        </div>
+                        <span data-bind="visible: IsGeneOptimized">Name: <label data-bind="text: Name"></label></span>
+                    </div>
+                </div>
+                <div class="row" data-bind="invisible: IsGeneOptimized">
+                    <div class="col-lg-4">
+                        @(Html.Kendo().DropDownList()
+                              .Name("sequenceTypeDropDownList")
+                              .DataTextField("Text")
+                              .DataValueField("Value")
+                              .HtmlAttributes(new { data_bind = "source: AllInitialSequenceTypes, value: SelectedInitialSequenceType, events: {change: initialSequenceTypeChanged}", style = "width: 100%" })
+                        )
+                    </div>
+                </div>
+                <div class="row" data-bind="invisible: IsGeneOptimized">
+                    <br />
+                    <div class="col-lg-11">
+                        @Html.TextAreaFor(model => model.InitialSequence, new {data_bind = "value: InitialSequence, events: {change: initialSequenceChanged}", @class = "k-textbox", rows = "7", style = "width: 100%"})
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4">
+                        @(Html.Kendo().DropDownList()
+                              .Name("organismTypeDropDownList")
+                              .DataTextField("Text")
+                              .DataValueField("Id")
+                              .HtmlAttributes(new { data_bind = "invisible: IsGeneOptimized, source: AllOrganisms, value: SelectedOrganismId", style = "width: 100%" })
+                              )
+                        <span data-bind="visible: IsGeneOptimized">Organism: <label data-bind="text: SelectedOrganismName"></label></span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-11">
+                        <div class="form-group">
+                            <label>Optimized DNA Sequence</label>
+                            @Html.TextAreaFor(model => model.OptimizedDNASequence, new { data_bind = "value: OptimizedDNASequence", @class = "k-textbox", rows = "7", style = "width:100%" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row" data-bind="visible: IsGeneOptimized">
+            <div class="col-lg-12">
+                <h4 style="border-bottom: 1px solid #eee; padding-bottom: 4px">Fragmentation Settings</h4>
+            </div>
+        </div>
+        <div class="row" data-bind="visible: IsGeneOptimized">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-2">
+                        @Html.LabelFor(model => model.KPlusConcentration, "Na+")
+                        @Html.TextBoxFor(model => model.KPlusConcentration, new { data_bind = "value: KPlusConcentration", @class = "k-textbox" })
+                    </div>
+                    <div class="col-lg-2">
+                        @Html.LabelFor(model => model.DMSO, "%DMSO")
+                        @Html.TextBoxFor(model => model.DMSO, new { data_bind = "value: DMSO", @class = "k-textbox" })
+                    </div>
+                    <div class="col-lg-3">
+                        @Html.LabelFor(model => model.GeneFragmentLength, "Oligo length")
+                        @Html.TextBoxFor(model => model.GeneFragmentLength, new { data_bind = "value: GeneFragmentLength", @class = "k-textbox" })
+                    </div>
+                    <div class="col-lg-3">
+                        @Html.LabelFor(model => model.GeneFragmentOverlappingLength, "Overlapping length")
+                        @Html.TextBoxFor(model => model.GeneFragmentOverlappingLength, new { data_bind = "value: GeneFragmentOverlappingLength", @class = "k-textbox" })
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-3">
+                        <button data-bind="click: updateGeneFragments" class="btn btn-primary btn-lg btn-block">Regenerate Oligonucleotides</button>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label>Oligonucleotides List</label>
+                            <div id="gene-fragments-grid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" data-bind="invisible: IsGeneOptimized">
+            <div class="col-lg-2">
+                <button data-bind="click: optimizeGene" class="btn btn-primary btn-lg btn-block">Optimize</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script type="text/javascript">
+        $(function() {
+            $($("#page-wrapper")).kendoValidator();
+
+            var geneEditorValidator = new Validator($("#page-wrapper"));
+
+            var geneEditorJsonModel = @J(Model);
+            var geneEditorViewModel = new GeneEditorViewModel('#page-wrapper', geneEditorJsonModel, geneEditorValidator, '#gene-fragments-grid', '#gene-list-grid');
+            geneEditorViewModel.setMode(true, false);
+
+            geneEditorViewModel.bindModel();
+
+            geneEditorViewModel.createGeneListGrid();
+
+            geneEditorViewModel.setIsDirty(false);
+
+            window.geneEditorViewModel = geneEditorViewModel;
+        });
+    </script>
+}

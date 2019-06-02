@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Telerik.XamarinForms.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Telerik.XamarinForms.Common.NativeResourceProvider">
+            <summary>
+            An empty class that serves only as a contract. The actual logic is implemented in the platform specific projects.
+            </summary>
+        </member>
+        <member name="P:Telerik.XamarinForms.Common.AnimationSettings.Duration">
+            <summary>
+            Gets ot sets the duration of the animation in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Telerik.XamarinForms.Common.RadAnimation.StartDelay">
+            <summary>
+            Gets ot sets the duration of the animation in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Telerik.XamarinForms.Common.RadAnimation.Duration">
+            <summary>
+            Gets ot sets the duration of the animation in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Telerik.XamarinForms.Common.RadDoubleAnimation.Step">
+            <summary>
+            Gets or sets the total amount by which the animation changes its From value. The default value is null.
+            </summary>
+        </member>
+        <member name="M:Telerik.XamarinForms.Common.EasingTypeConverter.CanConvertFrom(System.Type)">
+            <summary>
+            Returns a Boolean value that indicates whether an object of sourceType
+            can be converted to an Easing instance.
+            </summary>
+        </member>
+        <member name="M:Telerik.XamarinForms.Common.EasingTypeConverter.ConvertFrom(System.Object)">
+            <summary>
+            Converts an object of type string to an Easing instance.
+            </summary>
+        </member>
+        <member name="M:Telerik.XamarinForms.Common.EasingTypeConverter.ConvertFrom(System.Globalization.CultureInfo,System.Object)">
+            <summary>
+            Converts an object of type string to an Easing instance.
+            </summary>
+        </member>
+        <member name="M:Telerik.XamarinForms.Common.EasingTypeConverter.ConvertFromInvariantString(System.String)">
+            <summary>
+            Converts a string object to an Easing instance.
+            </summary>
+        </member>
+        <member name="M:Telerik.XamarinForms.Common.RadBrushTypeConverter.CanConvertFrom(System.Type)">
+            <summary>
+            Returns a Boolean value that indicates whether an object of sourceType
+            can be converted to an Easing instance.
+            </summary>
+        </member>
+        <member name="M:Telerik.XamarinForms.Common.RadBrushTypeConverter.ConvertFrom(System.Object)">
+            <summary>
+            Converts an object of type string to an Easing instance.
+            </summary>
+        </member>
+        <member name="M:Telerik.XamarinForms.Common.RadBrushTypeConverter.ConvertFrom(System.Globalization.CultureInfo,System.Object)">
+            <summary>
+            Converts an object of type string to an Easing instance.
+            </summary>
+        </member>
+        <member name="M:Telerik.XamarinForms.Common.RadBrushTypeConverter.ConvertFromInvariantString(System.String)">
+            <summary>
+            Converts a string object to an Easing instance.
+            </summary>
+        </member>
+        <member name="M:Telerik.XamarinForms.Common.SizeTypeConverter.CanConvertFrom(System.Type)">
+            <summary>
+            Returns a Boolean value that indicates whether an object of sourceType
+            can be converted to a Size instance.
+            </summary>
+        </member>
+        <member name="M:Telerik.XamarinForms.Common.SizeTypeConverter.ConvertFrom(System.Object)">
+            <summary>
+            Converts an object of type string to a Size instance.
+            </summary>
+        </member>
+        <member name="M:Telerik.XamarinForms.Common.SizeTypeConverter.ConvertFrom(System.Globalization.CultureInfo,System.Object)">
+            <summary>
+            Converts an object of type string to a Size instance.
+            </summary>
+        </member>
+        <member name="M:Telerik.XamarinForms.Common.SizeTypeConverter.ConvertFromInvariantString(System.String)">
+            <summary>
+            Converts a string object to a Size instance.
+            </summary>
+        </member>
+        <member name="T:Telerik.XamarinForms.Common.DisplayMode">
+            <summary>
+            Display mode.
+            </summary>
+        </member>
+        <member name="P:Telerik.XamarinForms.Common.RadScaleTransform.CenterX">
+            <summary>
+            The center X-coordinate of this transformation measured in pixels.
+            </summary>
+        </member>
+        <member name="P:Telerik.XamarinForms.Common.RadScaleTransform.CenterY">
+            <summary>
+            The center Y-coordinate of this transformation measured in pixels.
+            </summary>
+        </member>
+        <member name="T:Telerik.XamarinForms.Common.Primitives.RadLineFunction">
+            <summary>
+            Contains information about a line with equation y = m * x + b;
+            </summary>
+        </member>
+        <member name="T:Telerik.XamarinForms.Common.Primitives.RadSpiralFunction">
+            <summary>
+            Contains information about a spiral with equation r = a + b * angle.
+            </summary>
+        </member>
+        <member name="M:Telerik.XamarinForms.Common.RadView.IsDefaultValue(System.String)">
+            <summary>
+            Tells whether the property with the specified name has a default (invalid) value that should be
+            disregarded while updating the native components.
+            </summary>
+        </member>
+        <member name="P:Telerik.XamarinForms.Common.TypeMappings.Adapters">
+            <summary>
+            Gets the adapters used to sync native with XF types.
+            </summary>
+        </member>
+    </members>
+</doc>

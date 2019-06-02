@@ -1,0 +1,734 @@
+﻿@using Business.Contracts.ViewModels.SystemMonitor
+@using Kendo.Mvc.UI
+
+@model SystemMonitorViewModel
+
+@{
+    ViewBag.Title = "System Monitor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">System Monitor</h3>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-bar-chart-o fa-fw"></i> UV-absorbance, waste channel
+                @*            <div class="pull-right">*@
+                @*                <div class="btn-group">*@
+                @*                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">*@
+                @*                        Actions*@
+                @*                        <span class="caret"></span>*@
+                @*                    </button>*@
+                @*                    <ul class="dropdown-menu pull-right" role="menu">*@
+                @*                        <li>*@
+                @*                            <a href="#">Action</a>*@
+                @*                        </li>*@
+                @*                        <li>*@
+                @*                            <a href="#">Another action</a>*@
+                @*                        </li>*@
+                @*                        <li>*@
+                @*                            <a href="#">Something else here</a>*@
+                @*                        </li>*@
+                @*                        <li class="divider"></li>*@
+                @*                        <li>*@
+                @*                            <a href="#">Separated link</a>*@
+                @*                        </li>*@
+                @*                    </ul>*@
+                @*                </div>*@
+                @*            </div>*@
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div id="wasteChannelAbsorbanceChartContainer"></div>
+
+                @*            @(Html.Kendo().Chart<WasteChannelAbsorbanceItemViewModel>()*@
+                @*                  .Name("wasteChannelAbsorbanceChart")*@
+                @*                  .Legend(false)*@
+                @*                  .DataSource(dataSource => dataSource*@
+                @*                      .SignalR()*@
+                @*                      .AutoSync(true)*@
+                @*            $1$            .Events(events => events.Push(@<text>#1#*@
+                @*            $1$                    function(e) {#1#*@
+                @*            $1$                        var chart = $("#chart").data("kendoChart");#1#*@
+                @*            $1$                        var ds = chart.options.series;#1#*@
+                @*            $1$                        var index = ds[0].data.indexOf(ds[0].data[0]);#1#*@
+                @*            $1$                        ds[0].data.splice(index, 1);#1#*@
+                @*            $1$                                              chart.refresh();#1#*@
+                @*            $1$alert("refreshed");#1#*@
+                @*            $1$                    }#1#*@
+                @*            $1$            </text>))#1#*@
+                @*//            .Sort(s => s.Add("CreatedAt").Descending())*@
+                @*                      .Transport(tr => tr*@
+                @*                          .Promise("hubStart")*@
+                @*                          .Hub("hub")*@
+                @*                          .Client(c => c*@
+                @*                              .Read("read")*@
+                @*                              .Create("create"))*@
+                @*                          .Server(s => s*@
+                @*                              .Read("read")*@
+                @*                              .Create("create"))*@
+                @*                      )*@
+                @*                  //            .Schema(schema => schema*@
+                @*                  //                .Model(model =>*@
+                @*                  //                {*@
+                @*                  //                    model.Id("ID");*@
+                @*                  //                    model.Field("ID", typeof(string)).Editable(false);*@
+                @*                  //                    model.Field("CreatedAt", typeof(DateTime));*@
+                @*                  //                    model.Field("UnitPrice", typeof(int));*@
+                @*                  //                }*@
+                @*                  //            ))*@
+                @*                  )*@
+                @*                  .Series(series =>*@
+                @*                  {*@
+                @*                      series.Line(*@
+                @*                          model => model.Value,*@
+                @*                          categoryExpression: model => model.Time*@
+                @*                          );*@
+                @*                  })*@
+                @*                  .Transitions(false)*@
+                @*                  .CategoryAxis(axis =>*@
+                @*                      axis.Labels(labels => labels.Rotation(-90))*@
+                @*                  )*@
+                @*                  )*@
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-bar-chart-o fa-fw"></i> UV-absorbance, target channel
+                @*            <div class="pull-right">*@
+                @*                <div class="btn-group">*@
+                @*                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">*@
+                @*                        Actions*@
+                @*                        <span class="caret"></span>*@
+                @*                    </button>*@
+                @*                    <ul class="dropdown-menu pull-right" role="menu">*@
+                @*                        <li>*@
+                @*                            <a href="#">Action</a>*@
+                @*                        </li>*@
+                @*                        <li>*@
+                @*                            <a href="#">Another action</a>*@
+                @*                        </li>*@
+                @*                        <li>*@
+                @*                            <a href="#">Something else here</a>*@
+                @*                        </li>*@
+                @*                        <li class="divider"></li>*@
+                @*                        <li>*@
+                @*                            <a href="#">Separated link</a>*@
+                @*                        </li>*@
+                @*                    </ul>*@
+                @*                </div>*@
+                @*            </div>*@
+            </div>
+
+            <div class="panel-body">
+                <div id="targetChannelAbsorbanceChartContainer"></div>
+            </div>
+
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-bar-chart-o fa-fw"></i> Room temperature
+            </div>
+
+            <div class="panel-body">
+                <div id="environmentTemperatureChartContainer"></div>
+            </div>
+
+        </div>
+    </div>
+    <!-- /.col-lg-8 -->
+    <div class="col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-bell fa-fw"></i> Notifications Panel
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="list-group">
+                    <a href="#" class="list-group-item">
+                        <i class="fa fa-tasks fa-fw"></i> DNA integrated into the recipient genome
+                        <span class="pull-right text-muted small">
+                            <em>43 minutes ago</em>
+                        </span>
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <i class="fa fa-upload fa-fw"></i> Synthesis completed
+                        <span class="pull-right text-muted small">
+                            <em>11:32 AM</em>
+                        </span>
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <i class="fa fa-bolt fa-fw"></i> Synthesis started
+                        <span class="pull-right text-muted small">
+                            <em>11:13 AM</em>
+                        </span>
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <i class="fa fa-warning fa-fw"></i> Synchronization finished
+                        <span class="pull-right text-muted small">
+                            <em>10:57 AM</em>
+                        </span>
+                    </a>
+                </div>
+                <a href="#" class="btn btn-default btn-block">View All Alerts</a>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script type="text/javascript">
+        var hub = $.connection.sensorHub;
+        var hubStart = $.connection.hub.start();
+
+        var value1="valueNo1";
+        var value2="valueNo2";
+
+
+        var color1="green";
+        var color2="red";
+
+        $(function() {
+
+            var systemMonitorJsonModel = @J(Model);
+            var wasteChannelAbsorbanceUpdatedAt = systemMonitorJsonModel.LastCreatedAt;
+            var targetChannelAbsorbanceUpdatedAt = systemMonitorJsonModel.LastCreatedAt;
+            var environmentTemperatureUpdatedAt = systemMonitorJsonModel.LastCreatedAt;
+
+            Highcharts.setOptions({
+                global: {
+                    useUTC: true
+                }
+            });
+
+            //            $('#wasteChannelAbsorbanceChartContainer').highcharts('StockChart',{
+            //                chart: {
+            //                    type: 'spline',
+            //                    zoomtype: 'z'
+            //                },
+            //                rangeSelector: {
+            //                    buttons: [{
+            //                        count: 30,
+            //                        type: 'second',
+            //                        text: '30s'
+            //                    }, {
+            //                        count: 1,
+            //                        type: 'minute',
+            //                        text: '1M'
+            //                    }, {
+            //                        count: 2,
+            //                        type: 'minute',
+            //                        text: '2M'
+            //                    }, {
+            //                        count: 5,
+            //                        type: 'minute',
+            //                        text: '5M'
+            //                    }, {
+            //                        type: 'all',
+            //                        text: 'All'
+            //                    }],
+            //                    inputEnabled: false,
+            //                    selected: 1
+            //                },
+            //                xAxis: {
+            //                    type: 'datetime'
+            //
+            //                }
+            //            });
+            //
+            //            var chart = $('#wasteChannelAbsorbanceChartContainer').highcharts();
+            //
+            //
+            //            var ct = (new Date()).getTime();
+            //
+            //            // addAxis
+            //
+            //            chart.addAxis({ labels: { format: '{value}' , style: {color: color1 } }, title: { text: value1 , style: {color: color1} } ,   lineColor: color1, lineWidth: 0, opposite:true } );
+            //
+            //            chart.addAxis({ labels: {  format: '{value}', style: {color: color2 } }, title: { text: value2 , style: {color: color2} } ,   lineColor: color2, lineWidth: 0 } );
+            //
+            //            // addSeries
+            //
+            //            chart.addSeries({ "name": "value1","data": [], yAxis: 2, marker: {enabled:true, radius: 5 }});
+            //
+            //
+            //
+            //            // addPoint
+            //            //            var current_time = (new Date()).getTime();
+            //            //            chart.series[0].addPoint([current_time+64000, null], false);
+            //
+            //            var series = chart.series[0];
+            //
+            //            var initialX = new Date(systemMonitorJsonModel.WasteChannelAbsorbancePoints[0].Time).getTime();
+            //            var initialY = systemMonitorJsonModel.WasteChannelAbsorbancePoints[0].Value;
+            //            series.addPoint([initialX, initialY], false);
+            //
+            //            addPoints = function(){
+            //                //                var current_time = (new Date()).getTime();
+            //                //                chart.series[0].addPoint([current_time, Math.random()*10], false);
+            //                //                chart.redraw();
+            //                $.ajax({
+            //                    type: "GET",
+            //                    url: actions.systemMonitor.getWasteChannelAbsorbancePoints,
+            //                    contentType: "application/json;charset=utf-8",
+            //                    dataType: "json",
+            //                    success: function(data) {
+            //
+            //                        //debugger;
+            //                        //alert(data);
+            //                        if (data && data.Points) {
+            //                            for (var i = 0; i < data.Points.length; i++) {
+            //                                var x = new Date(data.Points[i].Time.replace("/Date(", "").replace(")/","") * 1).getTime(), // + 10800000
+            //                                    y = data.Points[i].Value;
+            //                                debugger;
+            //                                series.addPoint([x, y], false);
+            //                            }
+            //                            chart.redraw();
+            //                        }
+            //
+            //                    },
+            //                    error: function(response) {
+            //                        debugger;
+            //                        alert('error:' + response);
+            //                    }
+            //                });
+            //            }
+            //
+            //            setInterval(addPoints,3000);
+
+            //Create wasteChannelAbsorbanceChartContainer chart
+            Highcharts.stockChart('wasteChannelAbsorbanceChartContainer',
+                                    {
+                                        chart: {
+                                            type: 'spline',
+                                            //zoomtype: 'z',
+                                            events: {
+                                                load: function() {
+
+                                                    // set up the updating of the chart each second
+                                                    var chart = this;
+                                                    setInterval(function() {
+                                                        var url = actions.systemMonitor.getSystemMonitorViewModel + "?lastCreatedAt=" + new Date(wasteChannelAbsorbanceUpdatedAt).toISOString();
+                                                        //debugger;
+                                                        $.ajax({
+                                                            type: "GET",
+                                                            url: url,
+                                                            contentType: "application/json;charset=utf-8",
+                                                            dataType: "json",
+                                                            success: function(response) {
+
+                                                                //alert(data);
+                                                                var systemMonitorViewModel = response.Data;
+                                                                wasteChannelAbsorbanceUpdatedAt = systemMonitorViewModel.LastCreatedAt;
+                                                                //debugger;
+                                                                if (systemMonitorViewModel && systemMonitorViewModel.WasteChannelAbsorbancePoints) {
+                                                                    for (var i = 0; i < systemMonitorViewModel.WasteChannelAbsorbancePoints.length; i++) {
+                                                                        var x = new Date(systemMonitorViewModel.WasteChannelAbsorbancePoints[i].Time).getTime(),
+                                                                            y = systemMonitorViewModel.WasteChannelAbsorbancePoints[i].Value;
+                                                                        chart.series[0].addPoint([x, y], false);
+                                                                    }
+                                                                    chart.redraw();
+                                                                }
+
+                                                            },
+                                                            error: function(response) {
+//                                                                debugger;
+//                                                                alert('error:' + response);
+                                                            }
+                                                        });
+                                                        //                                    var x = (new Date()).getTime(), // current time
+                                                        //                                        y = Math.round(Math.random() * 100);
+                                                        //                                    series.addPoint([x, y], true, true);
+                                                    },
+                                                        1000);
+                                                }
+                                            }
+                                        },
+
+                                        series: [
+                                            {
+                                                name: 'Waste channel absorbance',
+                                                data: (function() {
+                                                    var data = [];
+                                                    for (var i = 0; i < systemMonitorJsonModel.WasteChannelAbsorbancePoints.length; i++) {
+                                                        var initialX = new Date(systemMonitorJsonModel.WasteChannelAbsorbancePoints[i].Time).getTime();
+                                                        var initialY = systemMonitorJsonModel.WasteChannelAbsorbancePoints[i].Value;
+                                                        data.push([initialX, initialY]);
+                                                    }
+
+                                                    return data;
+                                                }()),
+                                                tooltip: {
+                                                    valueDecimals: 3
+                                                }
+                                            }
+                                        ],
+
+                                        xAxis: {
+                                            type: 'datetime',
+                                        },
+
+                                        yAxis: [
+                                            {
+                                                lineWidth: 1,
+                                                opposite: true,
+                                                labels: {
+                                                    align: 'left',
+                                                    x: 5
+                                                }
+                                            }
+                                        ],
+
+                                        rangeSelector: {
+                                            buttons: [{
+                                                count: 30,
+                                                type: 'second',
+                                                text: '30s'
+                                            }, {
+                                                count: 1,
+                                                type: 'minute',
+                                                text: '1M'
+                                            }, {
+                                                count: 2,
+                                                type: 'minute',
+                                                text: '2M'
+                                            }, {
+                                                count: 5,
+                                                type: 'minute',
+                                                text: '5M'
+                                            }, {
+                                                count: 10,
+                                                type: 'minute',
+                                                text: '10M'
+                                            }, {
+                                                count: 15,
+                                                type: 'minute',
+                                                text: '15M'
+                                            }, {
+                                                count: 20,
+                                                type: 'minute',
+                                                text: '20M'
+                                            }, {
+                                                count: 25,
+                                                type: 'minute',
+                                                text: '25M'
+                                            }, {
+                                                count: 30,
+                                                type: 'minute',
+                                                text: '30M'
+                                            }, {
+                                                type: 'all',
+                                                text: 'All'
+                                            }],
+                                            inputEnabled: false,
+                                            selected: 1
+                                        },
+
+                                        exporting: {
+                                            chartOptions: {
+                                                plotOptions: {
+                                                    series: {
+                                                        dataLabels: {
+                                                            enabled: true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            fallbackToExportServer: false
+                                        }
+                                    });
+
+
+            // Create targetChannelAbsorbanceChartContainer chart
+            Highcharts.stockChart('targetChannelAbsorbanceChartContainer',
+                   {
+                       chart: {
+                           type: 'spline',
+                           //zoomtype: 'z',
+                           events: {
+                               load: function() {
+
+                                   // set up the updating of the chart each second
+                                   var chart = this;
+                                   setInterval(function() {
+                                       var url = actions.systemMonitor.getSystemMonitorViewModel + "?lastCreatedAt=" + new Date(targetChannelAbsorbanceUpdatedAt).toISOString();
+                                       //debugger;
+                                       $.ajax({
+                                           type: "GET",
+                                           url: url,
+                                           contentType: "application/json;charset=utf-8",
+                                           dataType: "json",
+                                           success: function(response) {
+
+                                               //debugger;
+                                               //alert(data);
+                                               var systemMonitorViewModel = response.Data;
+                                               targetChannelAbsorbanceUpdatedAt = systemMonitorViewModel.LastCreatedAt;
+                                               if (systemMonitorViewModel && systemMonitorViewModel.TargetChannelAbsorbancePoints) {
+                                                   for (var i = 0; i < systemMonitorViewModel.TargetChannelAbsorbancePoints.length; i++) {
+                                                       var x = new Date(systemMonitorViewModel.TargetChannelAbsorbancePoints[i].Time).getTime(),
+                                                           y = systemMonitorViewModel.TargetChannelAbsorbancePoints[i].Value;
+                                                       chart.series[0].addPoint([x, y], false);
+                                                   }
+                                                   chart.redraw();
+                                               }
+
+                                           },
+                                           error: function(response) {
+                                           }
+                                       });
+                                   },
+                                       1000);
+                               }
+                           }
+                       },
+
+                       series: [
+                           {
+                               name: 'Target channel absorbance',
+                               data: (function() {
+                                   var data = [];
+                                   for (var i = 0; i < systemMonitorJsonModel.TargetChannelAbsorbancePoints.length; i++) {
+                                       var initialX = new Date(systemMonitorJsonModel.TargetChannelAbsorbancePoints[i].Time).getTime();
+                                       var initialY = systemMonitorJsonModel.TargetChannelAbsorbancePoints[i].Value;
+                                       data.push([initialX, initialY]);
+                                   }
+
+                                   return data;
+                               }()),
+                               tooltip: {
+                                   valueDecimals: 3
+                               }
+                           }
+                       ],
+
+                       xAxis: {
+                           type: 'datetime',
+                       },
+
+                       yAxis: [
+                           {
+                               lineWidth: 1,
+                               opposite: true,
+                               labels: {
+                                   align: 'left',
+                                   x: 5
+                               }
+                           }
+                       ],
+
+                       rangeSelector: {
+                           buttons: [{
+                               count: 30,
+                               type: 'second',
+                               text: '30s'
+                           }, {
+                               count: 1,
+                               type: 'minute',
+                               text: '1M'
+                           }, {
+                               count: 2,
+                               type: 'minute',
+                               text: '2M'
+                           }, {
+                               count: 5,
+                               type: 'minute',
+                               text: '5M'
+                           }, {
+                               count: 10,
+                               type: 'minute',
+                               text: '10M'
+                           }, {
+                               count: 15,
+                               type: 'minute',
+                               text: '15M'
+                           }, {
+                               count: 20,
+                               type: 'minute',
+                               text: '20M'
+                           }, {
+                               count: 25,
+                               type: 'minute',
+                               text: '25M'
+                           }, {
+                               count: 30,
+                               type: 'minute',
+                               text: '30M'
+                           }, {
+                               type: 'all',
+                               text: 'All'
+                           }],
+                           inputEnabled: false,
+                           selected: 1
+                       },
+
+                       exporting: {
+                           chartOptions: {
+                               plotOptions: {
+                                   series: {
+                                       dataLabels: {
+                                           enabled: true
+                                       }
+                                   }
+                               }
+                           },
+                           fallbackToExportServer: false
+                       }
+                   });
+
+            // Create environmentTemperatureChartContainer chart
+            Highcharts.stockChart('environmentTemperatureChartContainer',
+                   {
+                       chart: {
+                           type: 'spline',
+                           //zoomtype: 'z',
+                           events: {
+                               load: function() {
+
+                                   // set up the updating of the chart each second
+                                   var chart = this;
+                                   setInterval(function() {
+                                       var url = actions.systemMonitor.getSystemMonitorViewModel + "?lastCreatedAt=" + new Date(environmentTemperatureUpdatedAt).toISOString();
+                                       //debugger;
+                                       $.ajax({
+                                           type: "GET",
+                                           url: url,
+                                           contentType: "application/json;charset=utf-8",
+                                           dataType: "json",
+                                           success: function(response) {
+
+                                               //debugger;
+                                               //alert(data);
+                                               var systemMonitorViewModel = response.Data;
+                                               environmentTemperatureUpdatedAt = systemMonitorViewModel.LastCreatedAt;
+                                               if (systemMonitorViewModel && systemMonitorViewModel.EnvironmentTemperaturePoints) {
+                                                   for (var i = 0; i < systemMonitorViewModel.EnvironmentTemperaturePoints.length; i++) {
+                                                       var x = new Date(systemMonitorViewModel.EnvironmentTemperaturePoints[i].Time).getTime(),
+                                                           y = systemMonitorViewModel.EnvironmentTemperaturePoints[i].Value;
+                                                       chart.series[0].addPoint([x, y], false);
+                                                   }
+                                                   chart.redraw();
+                                               }
+
+                                           },
+                                           error: function(response) {
+                                           }
+                                       });
+                                   },
+                                       1000);
+                               }
+                           }
+                       },
+
+                       series: [
+                           {
+                               name: 'Environment temperature',
+                               data: (function() {
+                                   var data = [];
+                                   for (var i = 0; i < systemMonitorJsonModel.EnvironmentTemperaturePoints.length; i++) {
+                                       var initialX = new Date(systemMonitorJsonModel.EnvironmentTemperaturePoints[i].Time).getTime();
+                                       var initialY = systemMonitorJsonModel.EnvironmentTemperaturePoints[i].Value;
+                                       data.push([initialX, initialY]);
+                                   }
+
+                                   return data;
+                               }()),
+                               tooltip: {
+                                   valueDecimals: 3
+                               }
+                           }
+                       ],
+
+                       xAxis: {
+                           type: 'datetime',
+                       },
+
+                       yAxis: [
+                           {
+                               lineWidth: 1,
+                               opposite: true,
+                               labels: {
+                                   align: 'left',
+                                   x: 5
+                               }
+                           }
+                       ],
+
+                       rangeSelector: {
+                           buttons: [{
+                               count: 30,
+                               type: 'second',
+                               text: '30s'
+                           }, {
+                               count: 1,
+                               type: 'minute',
+                               text: '1M'
+                           }, {
+                               count: 2,
+                               type: 'minute',
+                               text: '2M'
+                           }, {
+                               count: 5,
+                               type: 'minute',
+                               text: '5M'
+                           }, {
+                               count: 10,
+                               type: 'minute',
+                               text: '10M'
+                           }, {
+                               count: 15,
+                               type: 'minute',
+                               text: '15M'
+                           }, {
+                               count: 20,
+                               type: 'minute',
+                               text: '20M'
+                           }, {
+                               count: 25,
+                               type: 'minute',
+                               text: '25M'
+                           }, {
+                               count: 30,
+                               type: 'minute',
+                               text: '30M'
+                           }, {
+                               type: 'all',
+                               text: 'All'
+                           }],
+                           inputEnabled: false,
+                           selected: 1
+                       },
+
+                       exporting: {
+                           chartOptions: {
+                               plotOptions: {
+                                   series: {
+                                       dataLabels: {
+                                           enabled: true
+                                       }
+                                   }
+                               }
+                           },
+                           fallbackToExportServer: false
+                       }
+                   });
+
+            //            $.ajax({
+            //
+            //                url: '/Home/UpdateWasteChannelAbsorbanceChart',
+            //                success: function () {
+            //                }
+            //
+            //            });
+        });
+    </script>
+}

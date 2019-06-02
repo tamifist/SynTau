@@ -1,0 +1,163 @@
+﻿@model Business.Contracts.ViewModels.GeneSynthesizer.GeneSynthesisProcessViewModel
+
+@{
+    ViewBag.Title = "Gene Synthesizer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">Gene Synthesizer</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        @(Html.Kendo().DropDownList()
+              .Name("genesDropDownList")
+              .OptionLabel("Select Gene")
+              .DataTextField("Text")
+              .DataValueField("Id")
+              .HtmlAttributes(new { data_bind = "source: AllGenes, value: SelectedGeneId, events: {change: selectedGeneChanged}", style = "width: 100%" })
+        )
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-lg-12" data-bind="visible: IsGeneSelected">
+        <div class="row" data-bind="visible: IsSynthesisInProgress">
+            <div class="col-lg-4">
+                <h3>Synthesis in progress...</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 style="border-bottom: 1px solid #eee; padding-bottom: 4px">Gene assembly settings</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.DenaturationTempGeneAssembly, "Denaturation temp")
+                @Html.TextBoxFor(model => model.DenaturationTempGeneAssembly, new { data_bind = "value: DenaturationTempGeneAssembly", @class = "k-textbox" })
+            </div>
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.AnnealingTempGeneAssembly, "Annealing temp")
+                @Html.TextBoxFor(model => model.AnnealingTempGeneAssembly, new { data_bind = "value: AnnealingTempGeneAssembly", @class = "k-textbox" })
+            </div>
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.ElongationTempGeneAssembly, "Elongation temp")
+                @Html.TextBoxFor(model => model.ElongationTempGeneAssembly, new { data_bind = "value: ElongationTempGeneAssembly", @class = "k-textbox" })
+            </div>
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.NumberOfGeneAssemblyCycles, "Number of cycles")
+                @Html.TextBoxFor(model => model.NumberOfGeneAssemblyCycles, new { data_bind = "value: NumberOfGeneAssemblyCycles", @class = "k-textbox" })
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.DenaturationTimeGeneAssembly, "Denaturation time")
+                @Html.TextBoxFor(model => model.DenaturationTimeGeneAssembly, new { data_bind = "value: DenaturationTimeGeneAssembly", @class = "k-textbox" })
+            </div>
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.AnnealingTimeGeneAssembly, "Annealing time")
+                @Html.TextBoxFor(model => model.AnnealingTimeGeneAssembly, new { data_bind = "value: AnnealingTimeGeneAssembly", @class = "k-textbox" })
+            </div>
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.ElongationTimeGeneAssembly, "Elongation time")
+                @Html.TextBoxFor(model => model.ElongationTimeGeneAssembly, new { data_bind = "value: ElongationTimeGeneAssembly", @class = "k-textbox" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 style="border-bottom: 1px solid #eee; padding-bottom: 4px">Gene amplification settings</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.DenaturationTempGeneAmplification, "Denaturation temp")
+                @Html.TextBoxFor(model => model.DenaturationTempGeneAmplification, new { data_bind = "value: DenaturationTempGeneAmplification", @class = "k-textbox" })
+            </div>
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.AnnealingTempGeneAmplification, "Annealing temp")
+                @Html.TextBoxFor(model => model.AnnealingTempGeneAmplification, new { data_bind = "value: AnnealingTempGeneAmplification", @class = "k-textbox" })
+            </div>
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.ElongationTempGeneAmplification, "Elongation temp")
+                @Html.TextBoxFor(model => model.ElongationTempGeneAmplification, new { data_bind = "value: ElongationTempGeneAmplification", @class = "k-textbox" })
+            </div>
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.NumberOfGeneAmplificationCycles, "Number of cycles")
+                @Html.TextBoxFor(model => model.NumberOfGeneAmplificationCycles, new { data_bind = "value: NumberOfGeneAmplificationCycles", @class = "k-textbox" })
+            </div>
+        </div>        
+        <br/>
+        <div class="row">
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.DenaturationTimeGeneAmplification, "Denaturation time")
+                @Html.TextBoxFor(model => model.DenaturationTimeGeneAmplification, new { data_bind = "value: DenaturationTimeGeneAmplification", @class = "k-textbox" })
+            </div>
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.AnnealingTimeGeneAmplification, "Annealing time")
+                @Html.TextBoxFor(model => model.AnnealingTimeGeneAmplification, new { data_bind = "value: AnnealingTimeGeneAmplification", @class = "k-textbox" })
+            </div>
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.ElongationTimeGeneAmplification, "Elongation time")
+                @Html.TextBoxFor(model => model.ElongationTimeGeneAmplification, new { data_bind = "value: ElongationTimeGeneAmplification", @class = "k-textbox" })
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-lg-2">
+                <button data-bind="click: updateSynthesisProcess" class="btn btn-primary btn-lg btn-block">Save settings</button>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="synthesis-activities-grid"></div>
+            </div>
+        </div>
+        <br />
+        <div class="row" data-bind="visible: IsSynthesisNotStarted">
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.TotalTime, "Total time: ")
+                @Html.LabelFor(model => model.TotalTime, new { data_bind = "text: TotalTime" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2" data-bind="visible: IsSynthesisNotStarted">
+                <button data-bind="click: startSynthesis" class="btn btn-primary btn-lg btn-block">Start synthesis</button>
+            </div>
+            <div class="col-lg-2" data-bind="visible: IsSynthesisInProgress">
+                <button data-bind="click: stopSynthesis" class="btn btn-primary btn-lg btn-block">Stop synthesis</button>
+            </div>
+            <div class="col-lg-2" data-bind="visible: IsSynthesisSuspended">
+                <button data-bind="click: startSynthesis" class="btn btn-primary btn-lg btn-block">Continue synthesis</button>
+            </div>
+            <div class="col-lg-3" data-bind="visible: IsSynthesisSuspended">
+                <button data-bind="click: deleteCurrentSynthesisProcess" class="btn btn-danger btn-lg btn-block">Delete synthesis process</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script type="text/javascript">
+        $(function() {
+            var currentSynthesisProcessJsonModel = @J(Model);
+
+            var geneSynthesizerViewModel = new GeneSynthesizerViewModel('#page-wrapper',
+                currentSynthesisProcessJsonModel,
+                '#synthesis-activities-grid');
+
+            geneSynthesizerViewModel.bindModel();
+
+            if (geneSynthesizerViewModel.IsGeneSelected) {
+                geneSynthesizerViewModel.createSynthesisActivitiesGrid();
+            }
+
+            window.geneSynthesizerViewModel = geneSynthesizerViewModel;
+        });
+    </script>
+}

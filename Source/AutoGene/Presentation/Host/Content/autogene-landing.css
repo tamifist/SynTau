@@ -1,0 +1,146 @@
+﻿body {
+    font-family: FontAwesome;
+    font-size: 22px;
+}
+
+.colored-block {
+    width: 100%;
+    padding: 40px 20px 20px 20px;
+    color: #000;
+}
+
+.logo-block {
+    padding: 20px;
+}
+
+.header-block {
+    width: 100%;
+    height:1000px;
+    padding: 42px 0px 104px 0px;
+    color: #fff;
+    background-image: url("images/SciHackathon.jpg") !important;
+    background-size: cover;
+    box-shadow: inset 0 0 0 10000px rgba(36,51,80, 0.92);
+}
+
+.purple {
+    background: #7050E1;
+}
+.blue {
+    background: #4C89FA;
+}
+.green {
+    background: #04C3E1;
+}
+.black {
+    background: #243350;
+}
+.blue-text {
+    color: #296FD7;
+}
+.gray-text {
+    color: #8C9CAF;
+}
+
+.text-heading {
+    font-size: 56px;
+}
+
+.text-heading2 {
+    font-size: 100px;
+}
+
+.logo-text-heading {
+    font-size: 32px;
+}
+
+.gradient-divider {
+    height: 1px;
+    background-image: linear-gradient(90deg, #f14b95, #1d76fd);
+}
+
+.menu-text {
+    font-size: 30px;
+}
+
+.vertical-center {
+    min-height: 100%; /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one 🙂       */
+    display: flex;
+    align-items: center;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: inherit;
+    transition: all .5s;
+}
+
+.btn-primary.btn-outline {
+    color: #428bca;
+}
+
+.btn-success.btn-outline {
+    color: #5cb85c;
+}
+
+.btn-info.btn-outline {
+    color: #5bc0de;
+}
+
+.btn-warning.btn-outline {
+    color: #f0ad4e;
+}
+
+.btn-danger.btn-outline {
+    color: #d9534f;
+}
+
+    .btn-primary.btn-outline:hover,
+    .btn-success.btn-outline:hover,
+    .btn-info.btn-outline:hover,
+    .btn-warning.btn-outline:hover,
+    .btn-danger.btn-outline:hover {
+        color: #fff;
+    }
+
+.team-member {
+    font-size: 22px;
+    font-weight: 900;
+    font-style: normal;
+    text-transform: uppercase;
+}
+.contact-email {
+    color: white;
+    text-decoration: underline;
+}
+
+.email-icon {
+    font-size:30px;
+}
+
+.navbar-inverse {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+/*.navbar-nav {
+    float: left;
+    font-size:30px;
+    display: flex;
+    justify-content: center;
+}*/
+
+@media (min-width: 768px) {
+    .navbar .navbar-nav {
+        font-size: 30px;
+        display: inline-block;
+        float: none;
+        vertical-align: top;
+
+    }
+
+    .navbar .navbar-collapse {
+        text-align: center;
+    }
+}
