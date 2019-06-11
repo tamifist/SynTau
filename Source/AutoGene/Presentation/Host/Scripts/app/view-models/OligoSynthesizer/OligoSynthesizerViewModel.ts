@@ -202,7 +202,7 @@ class OligoSynthesizerViewModel extends BaseViewModel {
                         title: "Total Time",
                         width: "100px",
                     },
-                    { command: [{ text: "Delete", click: this.deleteSynthesisActivity }], title: " ", width: "110px" },
+                    { command: [{ text: { edit: "Delete" }, click: this.deleteSynthesisActivity }], title: " ", width: "110px" },
                 ]
             }).data().kendoGrid;
         } else {

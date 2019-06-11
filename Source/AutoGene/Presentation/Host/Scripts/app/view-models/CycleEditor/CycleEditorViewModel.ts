@@ -90,7 +90,7 @@ class CycleEditorViewModel extends BaseViewModel {
                     { field: "Name", title: "Name", width: "500px" },
                     { field: "TotalSteps", title: "Total Steps", width: "100px" },
                     { field: "TotalTime", title: "Total Time", width: "100px" },
-                    { command: [{ text: "Edit", click: this.editSynthesisCycle }, { text: "Delete", click: this.deleteSynthesisCycle }], title: " ", width: "110px" },
+                    { command: [{ text: { edit: "Edit" }, click: this.editSynthesisCycle }, { text: { edit: "Delete" }, click: this.deleteSynthesisCycle }], title: " ", width: "110px" },
                 ]
             }).data().kendoGrid;
         } else {
@@ -277,7 +277,7 @@ class CycleEditorViewModel extends BaseViewModel {
                         title: "Safe step",
                         width: "90px",
                     },
-                    { command: [{ text: "Delete", click: this.deleteCycleStep }], title: " ", width: "90px" },
+                    { command: [{ text: { edit: "Delete" }, click: this.deleteCycleStep }], title: " ", width: "90px" },
                 ]
             }).data().kendoGrid;
         } else {

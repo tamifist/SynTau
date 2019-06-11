@@ -1,6 +1,6 @@
 /// <reference path="../typings/jquery/jquery.d.ts" />
 /// <reference path="../typings/kendo/kendo.all.d.ts" />
-var Validator = (function () {
+var Validator = /** @class */ (function () {
     function Validator(element) {
         var self = this;
         var options = {

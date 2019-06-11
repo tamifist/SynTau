@@ -39,3 +39,7 @@
 /Source/AutoGene/Tests/Data.Services.Tests/bin
 /Source/AutoGene/Tests/Data.Services.Tests/obj
 /.vs
+/Source/AutoGene/Business/Contracts/bin/Debug
+/Source/AutoGene/Presentation/Host/obj/Debug
+/Source/AutoGene/UpgradeLog2.htm
+/Source/AutoGene/UpgradeLog3.htm
