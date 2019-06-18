@@ -3,30 +3,6 @@
     Layout = "~/Views/Shared/_LayoutEcommerce.cshtml";
 }
 
-@*<div class="card-deck">
-        <div class="card text-center">
-            <img class="card-img-top" src="~/Content/images/genes_logo.svg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Genes</h5>
-                <a href="#" class="btn btn-primary">Order Now</a>
-            </div>
-        </div>
-        <div class="card text-center">
-            <img class="card-img-top" src="~/Content/images/oligo_pools_logo.svg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Oligo Pools</h5>
-                <a href="#" class="btn btn-primary">Order Now</a>
-            </div>
-        </div>
-        <div class="card text-center">
-            <img class="card-img-top" src="~/Content/images/libraries_logo.svg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Libraries</h5>
-                <a href="#" class="btn btn-primary">Order Now</a>
-            </div>
-        </div>
-    </div>*@
-
 <div class="row justify-content-center">
     <div class="col-xl-3 mb-3 mr-3">
         <!-- Card Flip -->
@@ -48,10 +24,10 @@
                     <div class="card p-3 shadow-lg border-0">
                         <div class="card-header bg-transparent">Genes</div>
                         <div class="card-body">
-                            <form>
+                            <form method="POST" action="@Url.Action("Index", "OrderGenes")">
                                 <div class="form-group">
-                                    <label for="genesProjectNameInput" class="text-uppercase text-muted">Project Name</label>
-                                    <input type="text" class="form-control" id="genesProjectNameInput" aria-describedby="genesProjectNameHelp" placeholder="My Genes project">
+                                    <label for="genesProjectName" class="text-uppercase text-muted">Project Name</label>
+                                    <input type="text" class="form-control" id="genesProjectName" name="genesProjectName" aria-describedby="genesProjectNameHelp" placeholder="My Genes project">
                                     <small id="genesProjectNameHelp" class="form-text text-muted">Optional</small>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Start New Project</button>

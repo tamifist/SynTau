@@ -209,6 +209,7 @@
     <Compile Include="Composition\DataModule.cs" />
     <Compile Include="Composition\InfrastructureModule.cs" />
     <Compile Include="Composition\PresentationCommonModule.cs" />
+    <Compile Include="Controllers\Ecommerce\OrderGenesController.cs" />
     <Compile Include="Controllers\Ecommerce\EcommerceController.cs" />
     <Compile Include="Controllers\GeneSynthesizer\GeneSynthesisActivityController.cs" />
     <Compile Include="Controllers\GeneSynthesizer\GeneSynthesizerController.cs" />
@@ -2997,6 +2998,7 @@
     <Content Include="Views\GeneSynthesizer\Index.cshtml" />
     <Content Include="Views\Ecommerce\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutEcommerce.cshtml" />
+    <Content Include="Views\OrderGenes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
