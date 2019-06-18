@@ -1,6 +1,147 @@
 ﻿@{
-    ViewBag.Title = "SynTauTitle";
+    ViewBag.Title = "SynTau - Home";
     Layout = "~/Views/Shared/_LayoutEcommerce.cshtml";
 }
 
-<h1 class="h3 mb-4 text-gray-800">Blank Page1</h1>
+@*<div class="card-deck">
+        <div class="card text-center">
+            <img class="card-img-top" src="~/Content/images/genes_logo.svg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Genes</h5>
+                <a href="#" class="btn btn-primary">Order Now</a>
+            </div>
+        </div>
+        <div class="card text-center">
+            <img class="card-img-top" src="~/Content/images/oligo_pools_logo.svg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Oligo Pools</h5>
+                <a href="#" class="btn btn-primary">Order Now</a>
+            </div>
+        </div>
+        <div class="card text-center">
+            <img class="card-img-top" src="~/Content/images/libraries_logo.svg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Libraries</h5>
+                <a href="#" class="btn btn-primary">Order Now</a>
+            </div>
+        </div>
+    </div>*@
+
+<div class="row justify-content-center">
+    <div class="col-xl-3 mb-3 mr-3">
+        <!-- Card Flip -->
+        <div class="card-flip">
+            <div class="flip">
+                <div class="front">
+                    <!-- front content -->
+                    <div class="card text-center p-3 shadow-lg border-0">
+                        <img class="card-img-top img-fluid mx-auto" src="~/Content/images/genes_logo.svg" alt="Genes" style="width: 125px;">
+                        <div class="card-body">
+                            <p class="card-title text-card-title">Genes</p>
+                            <p class="card-subtitle text-card-subtitle">Order Now<i class="fas fa-angle-right"></i></p>
+                            <a href="#" class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="back">
+                    <!-- back content -->
+                    <div class="card p-3 shadow-lg border-0">
+                        <div class="card-header bg-transparent">Genes</div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="genesProjectNameInput" class="text-uppercase text-muted">Project Name</label>
+                                    <input type="text" class="form-control" id="genesProjectNameInput" aria-describedby="genesProjectNameHelp" placeholder="My Genes project">
+                                    <small id="genesProjectNameHelp" class="form-text text-muted">Optional</small>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Start New Project</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 mb-3 mr-3">
+        <div class="card-flip">
+            <div class="flip">
+                <div class="front">
+                    <!-- front content -->
+                    <div class="card text-center p-3 shadow-lg border-0">
+                        <img class="card-img-top mx-auto" src="~/Content/images/oligo_pools_logo.svg" alt="Oligo Pools" style="width: 125px;">
+                        <div class="card-body">
+                            <p class="card-title text-card-title">Oligo Pools</p>
+                            <p class="card-subtitle text-card-subtitle">Order Now<i class="fas fa-angle-right"></i></p>
+                            <a href="#" class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="back">
+                    <!-- back content -->
+                    <div class="card p-3 shadow-lg border-0">
+                        <div class="card-header bg-transparent">Oligo Pools</div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="oligoPoolsProjectNameInput" class="text-uppercase text-muted">Project Name</label>
+                                    <input type="text" class="form-control" id="oligoPoolsProjectNameInput" aria-describedby="oligoPoolsProjectNameHelp" placeholder="My Oligo Pools project">
+                                    <small id="oligoPoolsProjectNameHelp" class="form-text text-muted">Optional</small>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Start New Project</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 mb-3 mr-3">
+        <div class="card-flip">
+            <div class="flip">
+                <div class="front">
+                    <!-- front content -->
+                    <div class="card text-center p-3 shadow-lg border-0">
+                        <img class="card-img-top mx-auto" src="~/Content/images/libraries_logo.svg" alt="Libraries" style="width: 125px;">
+                        <div class="card-body">
+                            <p class="card-title text-card-title">Variant Libraries</p>
+                            <p class="card-subtitle text-card-subtitle">Order Now<i class="fas fa-angle-right"></i></p>
+                            <a href="#" class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="back">
+                    <!-- back content -->
+                    <div class="card p-3 shadow-lg border-0">
+                        <div class="card-header bg-transparent">Variant Libraries</div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="variantLibrariesProjectNameInput" class="text-uppercase text-muted">Project Name</label>
+                                    <input type="text" class="form-control" id="variantLibrariesProjectNameInput" aria-describedby="variantLibrariesProjectNameHelp" placeholder="My Variant Libraries project">
+                                    <small id="variantLibrariesProjectNameHelp" class="form-text text-muted">Optional</small>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Start New Project</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //$(".card").hover(
+            //    function() {
+            //        $(this).addClass('shadow-lg').css('cursor', 'pointer'); 
+            //    }, function() {
+            //        $(this).removeClass('shadow-lg');
+            //    }
+            //); 
+
+            //document.querySelector(".card-flip").classList.toggle("flip");
+        });
+    </script>
+}
