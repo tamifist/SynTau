@@ -1,0 +1,19 @@
+﻿<script type="text/javascript">
+    (function() {
+        //All urls in one place
+        var actions = {};
+
+        window.actions = actions;
+
+        actions.common = {
+                rootUrl: '@Url.Content("~")',
+            },
+            actions.geneEditor = {
+                geneList: actions.common.rootUrl + "odata/Gene",
+                optimizeGene: '@Url.Action("OptimizeGene", "OrderGenes")',
+                updateGeneFragments: '@Url.Action("UpdateGeneFragments", "OrderGenes")',
+                getGeneEditorViewModel: '@Url.Action("GetGeneEditorViewModel", "OrderGenes")',
+                deleteGene: '@Url.Action("DeleteGene", "OrderGenes")',
+            }
+    })();
+</script>

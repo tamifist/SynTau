@@ -8,7 +8,7 @@ using Presentation.Common.Security;
 
 namespace AutoGene.Presentation.Host.Controllers.GeneEditor
 {
-    [AuthorizeUser(UserRoles = "Guest,Admin")]
+    //[AuthorizeUser(UserRoles = "Guest,Admin")]
     public class GeneEditorController : BaseController
     {
         private readonly IGeneEditorService geneEditorService;

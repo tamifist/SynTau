@@ -2999,6 +2999,7 @@
     <Content Include="Views\Ecommerce\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutEcommerce.cshtml" />
     <Content Include="Views\OrderGenes\Index.cshtml" />
+    <Content Include="Views\Shared\EcommerceSitemapJS.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3059,6 +3060,7 @@
     <TypeScriptCompile Include="Scripts\app\Validator.ts" />
     <TypeScriptCompile Include="Scripts\app\view-models\BaseViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\view-models\CycleEditor\CycleEditorViewModel.ts" />
+    <TypeScriptCompile Include="Scripts\app\view-models\Ecommerce\OrderGenesViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\view-models\GeneEditor\GeneEditorViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\view-models\GeneEditor\InitialSequenceType.ts" />
     <TypeScriptCompile Include="Scripts\app\view-models\GeneSynthesizer\GeneSynthesizerViewModel.ts" />

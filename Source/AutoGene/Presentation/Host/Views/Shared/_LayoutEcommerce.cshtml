@@ -18,7 +18,42 @@
     <!-- Custom styles for this template-->
     <link href="@Url.Content("~/Content/ecommerce/sb-admin-2.css")" rel="stylesheet">
     <link href="@Url.Content("~/Content/ecommerce/custom.css")" rel="stylesheet">
-    
+
+    @Scripts.Render("~/bundles/jquery")
+    @*<script src="vendor/jquery/jquery.min.js"></script>*@
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="@Url.Content("~/Scripts/ecommerce/bootstrap.bundle.js")"></script>
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+    @*<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>*@
+
+    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.common-material.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.material.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.dataviz.material.min.css")" rel="stylesheet" type="text/css" />
+    @*	<script src="@Url.Content("~/Scripts/kendo/2016.2.504/jquery.min.js")"></script>*@
+
+
+    <script src="@Url.Content("~/Scripts/kendo/2016.2.504/jszip.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2016.2.504/kendo.all.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2016.2.504/kendo.aspnetmvc.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+
+
+
+    <!-- Core plugin JavaScript-->
+    @*<script src="@Url.Content("~/Scripts/jquery.easing.js")"></script>*@
+
+    @Scripts.Render("~/bundles/common")
+    @Scripts.Render("~/bundles/validator")
+    @Scripts.Render("~/bundles/viewmodels")
+
+    <!-- Custom scripts for all pages-->
+    <script src="@Url.Content("~/Scripts/ecommerce/sb-admin-2.js")"></script>
+
+    @Html.Partial("EcommerceSitemapJS")
+
 </head>
 
 <body id="page-top">
@@ -299,7 +334,7 @@
                 </nav>
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" id="page-wrapper">
 
                     <!-- Page Heading -->
                     @*<h1 class="h3 mb-4 text-gray-800">Blank Page</h1>*@
@@ -347,20 +382,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    @Scripts.Render("~/bundles/jquery")
-    @*<script src="vendor/jquery/jquery.min.js"></script>*@
-
-    <script src="@Url.Content("~/Scripts/ecommerce/bootstrap.bundle.js")"></script>
-    @*@Scripts.Render("~/bundles/bootstrap")*@
-    @*<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>*@
-
-    <!-- Core plugin JavaScript-->
-    @*<script src="@Url.Content("~/Scripts/jquery.easing.js")"></script>*@
-
-    <!-- Custom scripts for all pages-->
-    <script src="@Url.Content("~/Scripts/ecommerce/sb-admin-2.js")"></script>
 
     @RenderSection("scripts", required: false)
 </body>

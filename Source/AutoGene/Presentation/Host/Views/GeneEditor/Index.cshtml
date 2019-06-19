@@ -138,7 +138,7 @@
             var geneEditorValidator = new Validator($("#page-wrapper"));
 
             var geneEditorJsonModel = @J(Model);
-            var geneEditorViewModel = new GeneEditorViewModel('#page-wrapper', geneEditorJsonModel, geneEditorValidator, '#gene-fragments-grid', '#gene-list-grid');
+            var geneEditorViewModel = new OrderGenesViewModel('#page-wrapper', geneEditorJsonModel, geneEditorValidator, '#gene-fragments-grid', '#gene-list-grid');
             geneEditorViewModel.setMode(true, false);
 
             geneEditorViewModel.bindModel();
