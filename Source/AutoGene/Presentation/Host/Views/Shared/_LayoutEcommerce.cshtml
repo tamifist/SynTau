@@ -27,17 +27,15 @@
     @*@Scripts.Render("~/bundles/bootstrap")*@
     @*<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>*@
 
-    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.common-material.min.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.material.min.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.dataviz.material.min.css")" rel="stylesheet" type="text/css" />
-    @*	<script src="@Url.Content("~/Scripts/kendo/2016.2.504/jquery.min.js")"></script>*@
-
-
-    <script src="@Url.Content("~/Scripts/kendo/2016.2.504/jszip.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/kendo/2016.2.504/kendo.all.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/kendo/2016.2.504/kendo.aspnetmvc.min.js")"></script>
+    <link href="@Url.Content("~/Content/kendo/2019.R2/kendo.common-material.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2019.R2/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2019.R2/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2019.R2/kendo.material.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2019.R2/kendo.dataviz.material.min.css")" rel="stylesheet" type="text/css" />
+    @*	<script src="@Url.Content("~/Scripts/kendo/2019.R2/jquery.min.js")"></script>*@
+    <script src="@Url.Content("~/Scripts/kendo/2019.R2/jszip.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2019.R2/kendo.all.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2019.R2/kendo.aspnetmvc.min.js")"></script>
     <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
 
 
@@ -348,7 +346,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; SynTau 2019</span>
+                        <span>Copyright &copy; SynTau @DateTime.Now.Year</span>
                     </div>
                 </div>
             </footer>

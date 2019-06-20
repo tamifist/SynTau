@@ -109,7 +109,7 @@ var SystemConfigurationViewModel = /** @class */ (function (_super) {
                         editor: this.activateChannelFunctionDropDownEditor,
                         template: "#=HardwareFunction.Name#",
                     },
-                    { command: [{ text: { edit: "Delete" }, click: this.deleteChannelConfiguration }], title: " ", width: "110px" },
+                    { command: [{ text: "Delete", click: this.deleteChannelConfiguration }], title: " ", width: "110px" },
                 ]
             }).data().kendoGrid;
         }

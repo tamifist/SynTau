@@ -76,7 +76,7 @@ class GeneEditorViewModel extends BaseViewModel {
                 },
                 columns: [
                     { field: "Name", width: "500px" },
-                    { command: [{ text: { edit: "Edit" }, click: this.editGene }, { text: { edit: "Delete" }, click: this.deleteGene }], title: " ", width: "110px" },
+                    { command: [{ text: "Edit", click: this.editGene }, { text: "Delete", click: this.deleteGene }], title: " ", width: "110px" },
                 ],
             }).data().kendoGrid;
         }

@@ -74,6 +74,7 @@ class OrderGenesViewModel extends BaseViewModel {
                     pageSizes: [10, 20, 50],
                     refresh: true,
                 },
+                toolbar: [{ name: "create", text: "Add New Step" }],
                 columns: [
                     { field: "Name", width: "500px" },
                     { command: [{ text: { edit: "Edit" }, click: this.editGene }, { text: { edit: "Delete" }, click: this.deleteGene }], title: " ", width: "110px" },
