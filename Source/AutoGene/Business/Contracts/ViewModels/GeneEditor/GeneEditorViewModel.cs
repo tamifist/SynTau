@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Shared.Enum.Attributes;
 using Shared.Framework.Collections;
 using Shared.Framework.Utilities;
 

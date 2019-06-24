@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Shared.Framework.Utilities
+namespace Shared.Enum.Attributes
 {
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
     public class EnumDescriptionAttribute : Attribute

@@ -28,6 +28,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Attributes\EnumDescriptionAttribute.cs" />
+    <Compile Include="Attributes\EnumExtensions.cs" />
+    <Compile Include="Attributes\EnumUtil.cs" />
+    <Compile Include="CountryEnum.cs" />
     <Compile Include="HardwareFunctionType.cs" />
     <Compile Include="HttpMethodType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

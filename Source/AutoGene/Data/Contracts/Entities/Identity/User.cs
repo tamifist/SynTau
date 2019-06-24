@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using Data.Contracts.Entities.CycleEditor;
 using Data.Contracts.Entities.GeneEditor;
+using Shared.Enum;
 
 namespace Data.Contracts.Entities.Identity
 {
@@ -53,6 +54,29 @@ namespace Data.Contracts.Entities.Identity
         [Required]
         [StringLength(50)]
         public string LastName
+        {
+            get;
+            set;
+        }
+
+        [Required]
+        [StringLength(255)]
+        public string Organization
+        {
+            get;
+            set;
+        }
+
+        [Required]
+        [StringLength(255)]
+        public string LabGroup
+        {
+            get;
+            set;
+        }
+
+        [Required]
+        public CountryEnum Country
         {
             get;
             set;

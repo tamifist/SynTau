@@ -34,7 +34,10 @@
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Identifiers.cs" />
+    <Compile Include="ICultureInfoRetriever.cs" />
+    <Compile Include="IResourceContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceContainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AppResources.resx">

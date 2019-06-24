@@ -8,12 +8,10 @@
         actions.common = {
                 rootUrl: '@Url.Content("~")',
             },
-            actions.geneEditor = {
-                geneList: actions.common.rootUrl + "odata/Gene",
-                optimizeGene: '@Url.Action("OptimizeGene", "OrderGenes")',
-                updateGeneFragments: '@Url.Action("UpdateGeneFragments", "OrderGenes")',
-                getGeneEditorViewModel: '@Url.Action("GetGeneEditorViewModel", "OrderGenes")',
-                deleteGene: '@Url.Action("DeleteGene", "OrderGenes")',
+            actions.cycleEditor = {
+                synthesisCycleList: actions.common.rootUrl + "api/SynthesisCycle",
+                cycleStepList: actions.common.rootUrl + "api/CycleStep",
+                cycleStepFunctionList: actions.common.rootUrl + "odata/CycleStepFunction",
             }
     })();
 </script>

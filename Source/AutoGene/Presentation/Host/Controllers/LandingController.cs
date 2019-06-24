@@ -6,7 +6,6 @@ namespace AutoGene.Presentation.Host.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "SynTau";
             return View("Index");
         }
     }

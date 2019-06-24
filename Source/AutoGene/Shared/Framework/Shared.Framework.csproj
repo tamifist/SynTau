@@ -62,8 +62,6 @@
     <Compile Include="Security\RoleInfo.cs" />
     <Compile Include="Security\UserInfo.cs" />
     <Compile Include="Utilities\DateTimeExtensions.cs" />
-    <Compile Include="Utilities\EnumDescriptionAttribute.cs" />
-    <Compile Include="Utilities\EnumExtensions.cs" />
     <Compile Include="Utilities\IEnumerableExtensions.cs" />
     <Compile Include="Utilities\ObjectExtensions.cs" />
     <Compile Include="Utilities\TimeSpanExtensions.cs" />

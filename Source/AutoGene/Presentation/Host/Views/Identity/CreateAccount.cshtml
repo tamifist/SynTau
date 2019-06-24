@@ -1,4 +1,5 @@
 ﻿@using Business.Contracts.ViewModels.Account;
+@using Shared.Framework.Collections
 
 @model CreateAccountViewModel
 
@@ -7,36 +8,83 @@
     Layout = "~/Views/Shared/_LayoutNonAuth.cshtml";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <div class="login-panel panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Create a New Account</h3>
-                </div>
-                <div class="panel-body">
-                    @using (Html.BeginForm("CreateAccount", "Identity", FormMethod.Post, new { id = "createAccountForm" }))
-                    {
+<div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+            <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+            <div class="col-lg-7">
+                <div class="p-5">
+                    <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                    </div>
+                    <form class="user" method="POST" action="@Url.Action("CreateAccount", "Identity")">
                         @Html.ValidationSummary()
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                @Html.TextBoxFor(model => model.FirstName, new { placeholder = "First Name", @class = "form-control", required = "required" })
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.TextBoxFor(model => model.LastName, new { placeholder = "Last Name", @class = "form-control", required = "required" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.Email, new { placeholder = "Email Address", @class = "form-control", @type = "email", required = "required" })
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                @Html.TextBoxFor(model => model.Password, new { placeholder = "Password", @class = "form-control", @type = "password", required = "required" })
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.TextBoxFor(model => model.RepeatPassword, new { placeholder = "Repeat Password", @class = "form-control", @type = "password", required = "required" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.Organization, new { placeholder = "Company/Institute/Organization", @class = "form-control", required = "required" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.LabGroup, new { placeholder = "Lab/Group", @class = "form-control", required = "required" })
+                        </div>
+                        <div class="form-group">
+                            @(Html.Kendo().ComboBoxFor(model => model.Country)
+                                  .Filter("contains")
+                                  .Placeholder("Country")
+                                  .DataTextField("Text")
+                                  .DataValueField("Value")
+                                  .BindTo(Model.AllCountries)
+                                  .Suggest(true)
+                                  .HtmlAttributes(new { style = "width:100%;" })
 
-                        @Html.AntiForgeryToken()
-
-                        <fieldset>
-                            <div class="form-group">
-                                @Html.TextBoxFor(model => model.FirstName, new {placeholder = "First name", @class = "form-control", required = "required" })
-                            </div>
-                            <div class="form-group">
-                                @Html.TextBoxFor(model => model.LastName, new {placeholder = "Last name", @class = "form-control", required = "required" })
-                            </div>
-                            <div class="form-group">
-                                @Html.TextBoxFor(model => model.Email, new {placeholder = "Email", @class = "form-control", @type = "email", required = "required" })
-                            </div>
-                            <div class="form-group">
-                                @Html.TextBoxFor(model => model.Password, new {placeholder = "Password", @class = "form-control", @type = "password", required = "required" })
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">Create Account</button>
-                        </fieldset>
-                    }
+                            )
+                            @*@(Html.Kendo().DropDownListFor(model => model.Country)
+            .DataTextField("Text")
+            .DataValueField("Value")
+            //.BindTo(new List<ListItem>() {
+            //    new ListItem() {
+            //        Text = "Black",
+            //        Value = 1
+            //    },
+            //    new ListItem() {
+            //        Text = "Orange",
+            //        Value = 2
+            //    },
+            //    new ListItem() {
+            //        Text = "Grey",
+            //        Value = 3
+            //    }
+            //})
+            .BindTo(Model.AllCountries)
+            .OptionLabel("Country")
+            //.Value("1")
+            .HtmlAttributes(new {style = "width: 100%"})
+            )*@
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-user btn-block">Create Account</button>
+                    </form>
+                    <hr>
+                    <div class="text-center">
+                        <a class="small" href="@Url.Action("Login", "Identity")">Already have an account? Login!</a>
+                    </div>
                 </div>
             </div>
         </div>

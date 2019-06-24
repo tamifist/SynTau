@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using Data.Contracts;
 using Data.Contracts.Entities.Identity;
 using Infrastructure.Contracts.Security;
+using Shared.Enum;
 using Shared.Framework.Dependency;
 using Shared.Framework.Exceptions;
 using Shared.Framework.Security;
@@ -22,10 +23,12 @@ namespace Infrastructure.Identity.Security
             this.passwordHashService = passwordHashService;
         }
 
-        public bool CreateAccount(string firstName, string lastName, string email, string password)
+        public bool CreateAccount(string firstName, string lastName, string email, 
+            string password, string organization, string labGroup, CountryEnum country)
         {
             if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) ||
-                string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+                string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password) || 
+                string.IsNullOrWhiteSpace(organization) || string.IsNullOrWhiteSpace(labGroup) || country == 0)
             {
                 throw new ArgumentNullException();
             }
@@ -41,6 +44,9 @@ namespace Infrastructure.Identity.Security
             user.Email = email;
             user.FirstName = firstName;
             user.LastName = lastName;
+            user.Organization = organization;
+            user.LabGroup = labGroup;
+            user.Country = country;
 
             user.Password = password;
             SetPasswordHash(user);

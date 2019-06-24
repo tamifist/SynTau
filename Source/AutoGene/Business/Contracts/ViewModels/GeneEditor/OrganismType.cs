@@ -1,4 +1,5 @@
-﻿using Shared.Framework.Utilities;
+﻿using Shared.Enum.Attributes;
+using Shared.Framework.Utilities;
 
 namespace Business.Contracts.ViewModels.GeneEditor
 {

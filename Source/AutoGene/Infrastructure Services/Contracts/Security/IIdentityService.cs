@@ -1,4 +1,5 @@
-﻿using Shared.Framework.Security;
+﻿using Shared.Enum;
+using Shared.Framework.Security;
 
 namespace Infrastructure.Contracts.Security
 {
@@ -26,6 +27,6 @@ namespace Infrastructure.Contracts.Security
         /// <returns><c>true</c> if the password was changed successfully; <c>false</c> otherwize.</returns>
         bool ChangeUserPassword(string userName, string password, string newPassword);
 
-        bool CreateAccount(string firstName, string lastName, string email, string password);
+        bool CreateAccount(string firstName, string lastName, string email, string password, string organization, string labGroup, CountryEnum country);
     }
 }

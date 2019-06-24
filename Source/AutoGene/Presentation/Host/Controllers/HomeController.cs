@@ -20,7 +20,8 @@ namespace AutoGene.Presentation.Host.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return RedirectToAction("Index", "SystemMonitor");
+            //return RedirectToAction("Index", "SystemMonitor");
+            return RedirectToAction("Index", "Ecommerce");
         }
         
         public ActionResult FlotCharts()

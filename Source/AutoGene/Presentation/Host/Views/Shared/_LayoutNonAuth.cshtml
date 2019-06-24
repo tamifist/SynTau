@@ -7,11 +7,39 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Auto Gene</title>
-    @Styles.Render("~/Content/css")
+    <link href="@Url.Content("~/bower_components/font-awesome/css/ecommerce/all.min.css")" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="@Url.Content("~/Content/ecommerce/sb-admin-2.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/ecommerce/custom.css")" rel="stylesheet">
+
+    @*@Styles.Render("~/Content/css")*@
+
+    @Scripts.Render("~/bundles/jquery")
+    <script src="@Url.Content("~/Scripts/ecommerce/bootstrap.bundle.js")"></script>
+
+    <link href="@Url.Content("~/Content/kendo/2019.R2/kendo.common-material.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2019.R2/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2019.R2/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2019.R2/kendo.material.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2019.R2/kendo.dataviz.material.min.css")" rel="stylesheet" type="text/css" />
+    @*	<script src="@Url.Content("~/Scripts/kendo/2019.R2/jquery.min.js")"></script>*@
+    <script src="@Url.Content("~/Scripts/kendo/2019.R2/jszip.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2019.R2/kendo.all.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2019.R2/kendo.aspnetmvc.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/ecommerce/sb-admin-2.js")"></script>
 </head>
-<body>
-    @RenderBody()
+<body class="bg-gradient-primary">
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
     @RenderSection("scripts", required: false)
+
 </body>
 </html>
 

@@ -1,13 +1,20 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using Business.Contracts.ViewModels.Account;
+using Business.Contracts.ViewModels.Common;
 using Data.Contracts;
 using Data.Contracts.Entities.Identity;
 using Infrastructure.Contracts.Security;
 using Presentation.Common.Controllers;
 using Presentation.Common.Models;
 using Presentation.Common.Security;
+using Shared.Enum;
+using Shared.Enum.Attributes;
 using Shared.Framework.Exceptions;
+using Shared.Framework.Utilities;
+using ListItem = Shared.Framework.Collections.ListItem;
 
 namespace AutoGene.Presentation.Host.Controllers
 {
@@ -30,7 +37,6 @@ namespace AutoGene.Presentation.Host.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel user)
         {
             AuthenticationResult result = LogIn(user.Email, user.Password, user.StayLoggedInToday);
@@ -48,27 +54,52 @@ namespace AutoGene.Presentation.Host.Controllers
         [HttpGet]
         public ActionResult CreateAccount()
         {
-            return View();
+            var createAccountViewModel = new CreateAccountViewModel();
+            SetAllCountries(createAccountViewModel);
+
+            return View(createAccountViewModel);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateAccount(CreateAccountViewModel accountViewModel)
+        public ActionResult CreateAccount(CreateAccountViewModel createAccountViewModel)
         {
-            bool isAccountCreated = identityService.CreateAccount(
-                accountViewModel.FirstName, accountViewModel.LastName, accountViewModel.Email, accountViewModel.Password);
-
-            if (isAccountCreated)
+            if (createAccountViewModel.Password != createAccountViewModel.RepeatPassword)
             {
-                AuthenticationResult result = LogIn(accountViewModel.Email, accountViewModel.Password, false);
-
-                if (result.IsSuccess)
+                ModelState.AddModelError(string.Empty, "Passwords do not match.");
+            }
+            else if (createAccountViewModel.Country == null)
+            {
+                ModelState.AddModelError(string.Empty, "Country is not set.");
+            }
+            else
+            {
+                bool isAccountCreated = false;
+                try
                 {
-                    return authenticationManager.RedirectFromLoginPage(accountViewModel.Email);
+                    isAccountCreated = identityService.CreateAccount(
+                        createAccountViewModel.FirstName, createAccountViewModel.LastName, 
+                        createAccountViewModel.Email, createAccountViewModel.Password, 
+                        createAccountViewModel.Organization, createAccountViewModel.LabGroup, (CountryEnum)createAccountViewModel.Country.Value);
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                }
+
+                if (isAccountCreated)
+                {
+                    AuthenticationResult result = LogIn(createAccountViewModel.Email, createAccountViewModel.Password, false);
+
+                    if (result.IsSuccess)
+                    {
+                        return authenticationManager.RedirectFromLoginPage(createAccountViewModel.Email);
+                    }
                 }
             }
+            
+            SetAllCountries(createAccountViewModel);
 
-            return View();
+            return View(createAccountViewModel);
         }
         
         public ActionResult Logout()
@@ -89,12 +120,18 @@ namespace AutoGene.Presentation.Host.Controllers
             {
                 result = authenticationManager.LogIn(email, password, stayLoggedInToday);
             }
-            catch (UserNotSignedUpException userNotSignedUpException)
+            catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, userNotSignedUpException.Message);
+                ModelState.AddModelError(string.Empty, ex.Message);
             }
 
             return result;
+        }
+
+        private void SetAllCountries(CreateAccountViewModel createAccountViewModel)
+        {
+            createAccountViewModel.AllCountries =
+                EnumUtil.GetValues<CountryEnum>().Select(x => new ListItem { Text = x.GetDescription(), Value = (int)x }).OrderBy(x => x.Text);
         }
     }
 }

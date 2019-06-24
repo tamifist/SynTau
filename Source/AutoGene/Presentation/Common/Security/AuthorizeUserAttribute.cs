@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Script.Serialization;
+using System.Web.Security;
 using Shared.Framework.Security;
 
 namespace Presentation.Common.Security
@@ -84,8 +85,8 @@ namespace Presentation.Common.Security
                 new RouteValueDictionary(
                     new
                     {
-                        controller = "Landing",
-                        action = "Index"
+                        controller = "Identity",
+                        action = "Login"
                     })
                 );
             }

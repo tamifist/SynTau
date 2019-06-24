@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace Shared.Framework.Utilities
+namespace Shared.Enum.Attributes
 {
     public static class EnumExtensions
     {

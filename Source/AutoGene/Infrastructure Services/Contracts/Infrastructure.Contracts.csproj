@@ -46,6 +46,10 @@
     <Compile Include="Security\IPasswordHashService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Enum\Shared.Enum.csproj">
+      <Project>{7019053E-F940-47C1-BF25-7E7E78B340E0}</Project>
+      <Name>Shared.Enum</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Shared\Framework\Shared.Framework.csproj">
       <Project>{b7a55646-bee7-43b5-8690-4e7f5ccb4205}</Project>
       <Name>Shared.Framework</Name>
