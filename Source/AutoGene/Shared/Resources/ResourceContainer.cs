@@ -17,7 +17,8 @@ namespace Shared.Resources
 
         public string GetString(string key)
         {
-            return resourceManager.GetString(key); //, cultureInfo
+            string translatedString = resourceManager.GetString(key); //, cultureInfo
+            return translatedString != null ? translatedString : key;
         }
     }
 }
