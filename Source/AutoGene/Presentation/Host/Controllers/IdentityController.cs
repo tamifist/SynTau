@@ -13,7 +13,9 @@ using Presentation.Common.Security;
 using Shared.Enum;
 using Shared.Enum.Attributes;
 using Shared.Framework.Exceptions;
+using Shared.Framework.Localization;
 using Shared.Framework.Utilities;
+using Shared.Resources;
 using ListItem = Shared.Framework.Collections.ListItem;
 
 namespace AutoGene.Presentation.Host.Controllers
@@ -22,11 +24,13 @@ namespace AutoGene.Presentation.Host.Controllers
     {
         private readonly IAuthenticationManager authenticationManager;
         private readonly IIdentityService identityService;
+        private readonly IResourceContainer resourceContainer;
 
-        public IdentityController(IAuthenticationManager authenticationManager, IIdentityService identityService)
+        public IdentityController(IAuthenticationManager authenticationManager, IIdentityService identityService, IResourceContainer resourceContainer)
         {
             this.authenticationManager = authenticationManager;
             this.identityService = identityService;
+            this.resourceContainer = resourceContainer;
         }
 
         [HttpGet]
@@ -69,7 +73,7 @@ namespace AutoGene.Presentation.Host.Controllers
             }
             else if (createAccountViewModel.Country == null)
             {
-                ModelState.AddModelError(string.Empty, "Country is not set.");
+                ModelState.AddModelError(string.Empty, "Country is not selected.");
             }
             else
             {
@@ -131,7 +135,8 @@ namespace AutoGene.Presentation.Host.Controllers
         private void SetAllCountries(CreateAccountViewModel createAccountViewModel)
         {
             createAccountViewModel.AllCountries =
-                EnumUtil.GetValues<CountryEnum>().Select(x => new ListItem { Text = x.GetDescription(), Value = (int)x }).OrderBy(x => x.Text);
+                EnumUtil.GetValues<CountryEnum>().Select(
+                    x => new ListItem { Text = resourceContainer.GetString(x.GetDescription()), Value = (int)x }).OrderBy(x => x.Text);
         }
     }
 }

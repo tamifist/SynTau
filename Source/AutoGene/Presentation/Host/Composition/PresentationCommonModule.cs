@@ -8,6 +8,7 @@ using Presentation.Common.Security;
 using Shared.Framework.Dependency;
 using Shared.Framework.Modules;
 using Shared.Framework.Security;
+using Shared.Resources;
 
 namespace AutoGene.Presentation.Host.Composition
 {
@@ -20,6 +21,8 @@ namespace AutoGene.Presentation.Host.Composition
                    .As<IIdentityStorage>()
                    .SingleInstance()
                    .WithParameter(TypedParameter.From(TimeSpan.FromMinutes(30)));
+
+            builder.RegisterType<ResourceContainer>().As<IResourceContainer>().SingleInstance();
 
             builder.RegisterDefaultDependencies(Assemblies.All.Presentation());
             
