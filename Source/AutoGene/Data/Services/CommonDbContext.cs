@@ -1,10 +1,8 @@
 ﻿using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Text.RegularExpressions;
 using Data.Contracts.Entities.CycleEditor;
 using Data.Contracts.Entities.Diagnostic;
 using Data.Contracts.Entities.GeneEditor;
+using Data.Contracts.Entities.GeneOrder;
 using Data.Contracts.Entities.GeneSynthesizer;
 using Data.Contracts.Entities.Identity;
 using Data.Contracts.Entities.OligoSynthesizer;
@@ -12,7 +10,6 @@ using Data.Contracts.Entities.Settings;
 using Data.Contracts.Entities.SystemConfiguration;
 using Data.Contracts.Entities.SystemMonitor;
 using Microsoft.Azure.Mobile.Server;
-using Microsoft.Azure.Mobile.Server.Tables;
 
 namespace Data.Services
 {
@@ -55,6 +52,8 @@ namespace Data.Services
         public DbSet<GeneSynthesisProcess> GeneSynthesisProcesses { get; set; }
 
         public DbSet<GeneSynthesisActivity> GeneSynthesisActivities { get; set; }
+
+        public DbSet<GeneOrder> GeneOrders { get; set; }
 
         public DbSet<Log> Logs { get; set; }
 

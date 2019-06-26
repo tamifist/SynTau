@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Data.Contracts.Entities.Identity;
 
-namespace Data.Contracts.Entities.GeneEditor
+namespace Data.Contracts.Entities.GeneOrder
 {
     public class GeneOrder: Entity
     {

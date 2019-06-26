@@ -10,15 +10,11 @@ namespace Data.Services.Tests.RepositoryIntegrationTests
     [TestClass]
     public class UserRepositoryTests : RepositoryIntegrationTests<User>
     {
-        private const string TestUserEmail = "TestUser999@gmail.com";
-        private const string TestUserFirstName = "TestFirstName999";
-        private const string TestUserLastName = "TestLastName999";
-        private const string TestUserPassword = "1q2w3e!@";
         private const string TestRoleName = "TestRole1";
 
         protected override User CreateEntity()
         {
-            return EntityCreator.CreateUser(TestUserEmail, TestUserFirstName, TestUserLastName, TestUserPassword, TestRoleName, null);
+            return EntityCreator.CreateTestUserWithRole(TestRoleName);
         }
 
         [TestMethod]

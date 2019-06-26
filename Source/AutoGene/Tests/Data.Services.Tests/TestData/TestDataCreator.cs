@@ -6,6 +6,7 @@ using System.Reflection;
 using Data.Contracts.Entities;
 using Data.Contracts.Entities.CycleEditor;
 using Data.Contracts.Entities.GeneEditor;
+using Data.Contracts.Entities.GeneOrder;
 using Data.Contracts.Entities.GeneSynthesizer;
 using Data.Contracts.Entities.Identity;
 using Data.Contracts.Entities.OligoSynthesizer;
@@ -118,8 +119,20 @@ namespace Data.Services.Tests.TestData
                 FirstName = "Test",
                 LastName = "User",
                 Password = "12345678",
-                PasswordSalt = "test"
+                PasswordSalt = "test",
+                Organization = "Test Organization",
+                LabGroup = "Test Lab",
+                Country = CountryEnum.Belarus,
             };
+
+            return GetOrCreate(() => user);
+        }
+
+        public User CreateTestUserWithRole(string roleName)
+        {
+            User user = CreateTestUser();
+
+            user.Roles.Add(CreateRole(roleName, null));
 
             return GetOrCreate(() => user);
         }
@@ -228,6 +241,18 @@ namespace Data.Services.Tests.TestData
             gene.GeneFragments.Add(CreateGeneFragment());
 
             return GetOrCreate(() => gene);
+        }
+
+        public GeneOrder CreateGeneOrder()
+        {
+            var geneOrder = new GeneOrder()
+            {
+                Name = "TestGene",
+                Sequence = "TTTTTT",
+                User = CreateTestUser(),
+            };
+
+            return GetOrCreate(() => geneOrder);
         }
 
         public GeneFragment CreateGeneFragment()

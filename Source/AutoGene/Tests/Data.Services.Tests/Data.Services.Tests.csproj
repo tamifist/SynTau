@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryIntegrationTests\GeneOrderRepositoryTests.cs" />
     <Compile Include="RepositoryIntegrationTests\ChannelConfigurationRepositoryTests.cs" />
     <Compile Include="RepositoryIntegrationTests\GeneSynthesisActivityRepositoryTests.cs" />
     <Compile Include="RepositoryIntegrationTests\OligoSynthesisActivityRepositoryTests.cs" />

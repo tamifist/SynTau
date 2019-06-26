@@ -234,6 +234,10 @@
     <Compile Include="Migrations\201906241204489_AddOrganizationToUser.Designer.cs">
       <DependentUpon>201906241204489_AddOrganizationToUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906241949276_AddGeneOrder.cs" />
+    <Compile Include="Migrations\201906241949276_AddGeneOrder.Designer.cs">
+      <DependentUpon>201906241949276_AddGeneOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
@@ -359,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906241204489_AddOrganizationToUser.resx">
       <DependentUpon>201906241204489_AddOrganizationToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906241949276_AddGeneOrder.resx">
+      <DependentUpon>201906241949276_AddGeneOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

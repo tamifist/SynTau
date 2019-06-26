@@ -96,6 +96,7 @@
     <Compile Include="Services\GeneEditor\CodonOptimizationService.cs" />
     <Compile Include="Services\GeneEditor\GeneFragmentationService.cs" />
     <Compile Include="Services\GeneEditor\GeneEditorService.cs" />
+    <Compile Include="Services\GeneOrder\GeneOrderService.cs" />
     <Compile Include="Services\GeneSynthesizer\GeneSynthesizerService.cs" />
     <Compile Include="Services\ManualControl\ManualControlService.cs" />
     <Compile Include="Services\OligoSynthesizer\OligoSynthesizerService.cs" />
