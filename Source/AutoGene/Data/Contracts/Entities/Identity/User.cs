@@ -59,7 +59,7 @@ namespace Data.Contracts.Entities.Identity
             set;
         }
 
-        [Required]
+        //[Required]
         [StringLength(255)]
         public string Organization
         {
@@ -67,7 +67,7 @@ namespace Data.Contracts.Entities.Identity
             set;
         }
 
-        [Required]
+        //[Required]
         [StringLength(255)]
         public string LabGroup
         {
@@ -75,8 +75,8 @@ namespace Data.Contracts.Entities.Identity
             set;
         }
 
-        [Required]
-        public CountryEnum Country
+        //[Required]
+        public CountryEnum? Country
         {
             get;
             set;

@@ -3,7 +3,7 @@ using System.Reflection;
 using Business.Contracts.Services.GeneEditor;
 using Data.Contracts;
 using Data.Services;
-using Infrastructure.Contracts.Security;
+using Infrastructure.Contracts.Services.Security;
 using Infrastructure.Identity.Security;
 using Presentation.Common.Security;
 using Services.Services.GeneEditor;

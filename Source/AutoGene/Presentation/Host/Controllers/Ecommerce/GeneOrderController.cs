@@ -8,11 +8,11 @@ using Presentation.Common.Controllers;
 namespace AutoGene.Presentation.Host.Controllers.Ecommerce
 {
     //[AuthorizeUser(UserRoles = "Guest,Admin")]
-    public class OrderGenesController : BaseController
+    public class GeneOrderController : BaseController
     {
         private readonly IGeneEditorService geneEditorService;
 
-        public OrderGenesController(IGeneEditorService geneEditorService)
+        public GeneOrderController(IGeneEditorService geneEditorService)
         {
             this.geneEditorService = geneEditorService;
         }

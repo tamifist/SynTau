@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using Presentation.Common.Models.Json;
+using Presentation.Common.Models.Localization;
 using Presentation.Common.Security;
-using Shared.Framework.Localization;
 using Shared.Framework.Security;
 
 namespace Presentation.Common.Views
@@ -13,18 +13,11 @@ namespace Presentation.Common.Views
     public abstract class WebViewPage<TModel> : System.Web.Mvc.WebViewPage<TModel>
     {
         private IAutoGenePrincipal userPrincipal;
-        private Localizer localizer = NullLocalizer.Instance;
 
         public Localizer T
         {
-            get
-            {
-                return localizer;
-            }
-            set
-            {
-                localizer = value;
-            }
+            get;
+            set;
         }
 
         public Jsonizer J

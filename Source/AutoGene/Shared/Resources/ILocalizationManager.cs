@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Shared.Resources
 {
-    public interface IResourceContainer
+    public interface ILocalizationManager
     {
-        string GetString(string key);
+        string GetLocalizedString(string key, params object[] args);
     }
 }

@@ -216,7 +216,7 @@
     <Compile Include="Composition\DataModule.cs" />
     <Compile Include="Composition\InfrastructureModule.cs" />
     <Compile Include="Composition\PresentationCommonModule.cs" />
-    <Compile Include="Controllers\Ecommerce\OrderGenesController.cs" />
+    <Compile Include="Controllers\Ecommerce\GeneOrderController.cs" />
     <Compile Include="Controllers\Ecommerce\EcommerceController.cs" />
     <Compile Include="Controllers\GeneSynthesizer\GeneSynthesisActivityController.cs" />
     <Compile Include="Controllers\GeneSynthesizer\GeneSynthesizerController.cs" />
@@ -4254,6 +4254,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\zxcvbn-bootstrap4-strength-meter.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -4498,7 +4499,7 @@
     <Content Include="Views\GeneSynthesizer\Index.cshtml" />
     <Content Include="Views\Ecommerce\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutEcommerce.cshtml" />
-    <Content Include="Views\OrderGenes\Index.cshtml" />
+    <Content Include="Views\GeneOrder\Index.cshtml" />
     <Content Include="Views\Shared\EcommerceSitemapJS.cshtml" />
     <Content Include="Scripts\kendo\2019.R2\cultures\kendo.culture.aa-DJ.min.js.map" />
     <Content Include="Scripts\kendo\2019.R2\cultures\kendo.culture.aa-ER.min.js.map" />
@@ -5544,8 +5545,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Identity\LoginOld.cshtml" />
-    <Content Include="Views\Identity\CreateAccountOld.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

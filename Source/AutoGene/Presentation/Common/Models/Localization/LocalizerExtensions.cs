@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Web;
 
-namespace Shared.Framework.Localization
+namespace Presentation.Common.Models.Localization
 {
     /// <summary>
     /// 
@@ -9,7 +9,7 @@ namespace Shared.Framework.Localization
     /// <param name="key">The key.</param>
     /// <param name="args">The args.</param>
     /// <returns></returns>
-    public delegate IHtmlString Localizer(string key, params object[] args);
+    public delegate string Localizer(string key, params object[] args);
 
     /// <summary>
     /// Provides extension methods for localizer.
@@ -25,13 +25,13 @@ namespace Shared.Framework.Localization
         /// <param name="count">The count.</param>
         /// <param name="args">The args.</param>
         /// <returns></returns>
-        public static IHtmlString Plural(this Localizer T, string textSingular, string textPlural, int count,
-                                         params object[] args)
-        {
-            return T(count == 1 ? textSingular : textPlural, new object[]
-                {
-                    count
-                }.Concat(args).ToArray());
-        }
+        //public static IHtmlString Plural(this Localizer T, string textSingular, string textPlural, int count,
+        //                                 params object[] args)
+        //{
+        //    return T(count == 1 ? textSingular : textPlural, new object[]
+        //        {
+        //            count
+        //        }.Concat(args).ToArray());
+        //}
     }
 }

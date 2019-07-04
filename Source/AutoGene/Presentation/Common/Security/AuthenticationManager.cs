@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
-using Infrastructure.Contracts.Security;
+using Infrastructure.Contracts.Services.Security;
 using Presentation.Common.Models;
 using Shared.Framework.Dependency;
 using Shared.Framework.Security;

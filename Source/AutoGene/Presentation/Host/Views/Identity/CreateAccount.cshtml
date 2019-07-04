@@ -1,10 +1,9 @@
-﻿@using Business.Contracts.ViewModels.Account;
-@using Shared.Framework.Collections
+﻿@using Shared.Framework.Collections
 
-@model CreateAccountViewModel
+@model Infrastructure.Contracts.ViewModels.Security.CreateAccountViewModel
 
 @{
-    ViewBag.Title = "Create a New Account";
+    ViewBag.Title = T("App_Title");
     Layout = "~/Views/Shared/_LayoutNonAuth.cshtml";
 }
 
@@ -16,78 +15,77 @@
             <div class="col-lg-7">
                 <div class="p-5">
                     <div class="text-center">
-                        <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                        <h1 class="h4 text-gray-900 mb-4">@T("CreateAccount_FormTitle")</h1>
                     </div>
                     <form class="user" method="POST" action="@Url.Action("CreateAccount", "Identity")">
                         @Html.ValidationSummary()
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                @Html.TextBoxFor(model => model.FirstName, new { placeholder = "First Name", @class = "form-control", required = "required" })
+                                @Html.TextBoxFor(model => model.FirstName, new { placeholder = T("CreateAccount_FirstNamePlaceholder"), @class = "form-control", required = "required" })
                             </div>
                             <div class="col-sm-6">
-                                @Html.TextBoxFor(model => model.LastName, new { placeholder = "Last Name", @class = "form-control", required = "required" })
+                                @Html.TextBoxFor(model => model.LastName, new { placeholder = T("CreateAccount_LastNamePlaceholder"), @class = "form-control", required = "required" })
                             </div>
                         </div>
-                        <div class="form-group">
-                            @Html.TextBoxFor(model => model.Email, new { placeholder = "Email Address", @class = "form-control", @type = "email", required = "required" })
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                @Html.TextBoxFor(model => model.Email, new {placeholder = T("CreateAccount_EmailPlaceholder"), @class = "form-control", @type = "email", required = "required"})
+                            </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                @Html.TextBoxFor(model => model.Password, new { placeholder = "Password", @class = "form-control", @type = "password", required = "required" })
+                                @Html.TextBoxFor(model => model.Password, new { id="Password", placeholder = T("CreateAccount_PasswordPlaceholder"), @class = "form-control", @type = "password", required = "required" })
                             </div>
                             <div class="col-sm-6">
-                                @Html.TextBoxFor(model => model.RepeatPassword, new { placeholder = "Repeat Password", @class = "form-control", @type = "password", required = "required" })
+                                @Html.TextBoxFor(model => model.ConfirmPassword, new { placeholder = T("CreateAccount_ConfirmPasswordPlaceholder"), @class = "form-control", @type = "password", required = "required" })
                             </div>
                         </div>
-                        <div class="form-group">
-                            @Html.TextBoxFor(model => model.Organization, new { placeholder = "Company/Institute/Organization", @class = "form-control", required = "required" })
+                        <div class="form-group progress">
+                            <div id="StrengthProgressBar" class="progress-bar"></div>
                         </div>
-                        <div class="form-group">
-                            @Html.TextBoxFor(model => model.LabGroup, new { placeholder = "Lab/Group", @class = "form-control", required = "required" })
+                        @*<div class="form-group row">
+                            <div class="col-sm-12">
+                                @Html.TextBoxFor(model => model.Organization, new { placeholder = "Company/Institute/Organization", @class = "form-control", required = "required" })
+                            </div>
                         </div>
-                        <div class="form-group">
-                            @(Html.Kendo().ComboBoxFor(model => model.Country)
-                                  .Filter("contains")
-                                  .Placeholder("Country")
-                                  .DataTextField("Text")
-                                  .DataValueField("Value")
-                                  .BindTo(Model.AllCountries)
-                                  .Suggest(true)
-                                  .HtmlAttributes(new { style = "width:100%;" })
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                @Html.TextBoxFor(model => model.LabGroup, new { placeholder = "Lab/Group", @class = "form-control", required = "required" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                @(Html.Kendo().ComboBoxFor(model => model.Country)
+                                      .Filter("contains")
+                                      .Placeholder("Country")
+                                      .DataTextField("Text")
+                                      .DataValueField("Value")
+                                      .BindTo(Model.AllCountries)
+                                      .Suggest(true)
+                                      .HtmlAttributes(new { style = "width:100%;" })
 
-                            )
-                            @*@(Html.Kendo().DropDownListFor(model => model.Country)
-            .DataTextField("Text")
-            .DataValueField("Value")
-            //.BindTo(new List<ListItem>() {
-            //    new ListItem() {
-            //        Text = "Black",
-            //        Value = 1
-            //    },
-            //    new ListItem() {
-            //        Text = "Orange",
-            //        Value = 2
-            //    },
-            //    new ListItem() {
-            //        Text = "Grey",
-            //        Value = 3
-            //    }
-            //})
-            .BindTo(Model.AllCountries)
-            .OptionLabel("Country")
-            //.Value("1")
-            .HtmlAttributes(new {style = "width: 100%"})
-            )*@
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-user btn-block">Create Account</button>
+                                      )
+                            </div>
+                        </div>*@
+                        <button type="submit" class="btn btn-primary btn-user btn-block">@T("CreateAccount_CreateAccountButton")</button>
                     </form>
                     <hr>
                     <div class="text-center">
-                        <a class="small" href="@Url.Action("Login", "Identity")">Already have an account? Login!</a>
+                        <a class="small" href="@Url.Action("Login", "Identity")">@T("CreateAccount_LoginButton")</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            $("#StrengthProgressBar").zxcvbnProgressBar({
+                passwordInput: "#Password"
+            });
+        });
+    </script>
+}
 

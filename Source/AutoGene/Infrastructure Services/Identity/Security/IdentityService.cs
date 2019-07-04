@@ -4,11 +4,14 @@ using System.Linq;
 using System.Security.Cryptography;
 using Data.Contracts;
 using Data.Contracts.Entities.Identity;
-using Infrastructure.Contracts.Security;
+using Infrastructure.Contracts.Exceptions;
+using Infrastructure.Contracts.Exceptions.Security;
+using Infrastructure.Contracts.Services.Security;
+using Infrastructure.Contracts.ViewModels.Security;
 using Shared.Enum;
 using Shared.Framework.Dependency;
-using Shared.Framework.Exceptions;
 using Shared.Framework.Security;
+using Shared.Framework.Utilities;
 
 namespace Infrastructure.Identity.Security
 {
@@ -23,17 +26,26 @@ namespace Infrastructure.Identity.Security
             this.passwordHashService = passwordHashService;
         }
 
-        public bool CreateAccount(string firstName, string lastName, string email, 
-            string password, string organization, string labGroup, CountryEnum country)
+        public bool CreateAccount(CreateAccountViewModel createAccountViewModel)
         {
-            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) ||
-                string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password) || 
-                string.IsNullOrWhiteSpace(organization) || string.IsNullOrWhiteSpace(labGroup) || country == 0)
+            if (string.IsNullOrWhiteSpace(createAccountViewModel.FirstName) || string.IsNullOrWhiteSpace(createAccountViewModel.LastName) ||
+                string.IsNullOrWhiteSpace(createAccountViewModel.Email) || string.IsNullOrWhiteSpace(createAccountViewModel.Password) || 
+                string.IsNullOrWhiteSpace(createAccountViewModel.ConfirmPassword))
             {
                 throw new ArgumentNullException();
             }
 
-            User existingUser = unitOfWork.GetAll<User>().SingleOrDefault(u => u.Email.Equals(email));
+            if (createAccountViewModel.Password != createAccountViewModel.ConfirmPassword)
+            {
+                throw new ConfirmPasswordException();
+            }
+
+            if (PasswordStrengthUtility.CheckStrength(createAccountViewModel.Password) != PasswordScore.Strong)
+            {
+                throw new PasswordStrengthException();
+            }
+
+            User existingUser = unitOfWork.GetAll<User>().SingleOrDefault(u => u.Email.Equals(createAccountViewModel.Email));
 
             if (existingUser != null)
             {
@@ -41,14 +53,14 @@ namespace Infrastructure.Identity.Security
             }
 
             User user = new User();
-            user.Email = email;
-            user.FirstName = firstName;
-            user.LastName = lastName;
-            user.Organization = organization;
-            user.LabGroup = labGroup;
-            user.Country = country;
+            user.Email = createAccountViewModel.Email;
+            user.FirstName = createAccountViewModel.FirstName;
+            user.LastName = createAccountViewModel.LastName;
+            user.Organization = createAccountViewModel.Organization;
+            user.LabGroup = createAccountViewModel.LabGroup;
+            user.Country = (CountryEnum)createAccountViewModel.Country.Value;
 
-            user.Password = password;
+            user.Password = createAccountViewModel.Password;
             SetPasswordHash(user);
 
             Role guestRole = unitOfWork.GetAll<Role>().SingleOrDefault(x => x.Name.Equals("Guest"));
@@ -71,41 +83,26 @@ namespace Infrastructure.Identity.Security
         /// </returns>
         public UserInfo ValidateUserCredentials(string email, string password)
         {
-            bool userCredentialsIsValid;
+            User user = unitOfWork.GetAll<User>().SingleOrDefault(u => u.Email.Equals(email));
 
-            IList<User> users = unitOfWork.GetAll<User>().Where(u => u.Email.Equals(email)).ToList();
+            if (user == null)
+            {
+                throw new UserNotFoundException();
+            }
 
-            if (!users.Any())
+            bool isUserPasswordValid = ValidateUserPassword(password, user) && user.Roles != null && user.Roles.Any();
+
+            if (!isUserPasswordValid)
             {
-                userCredentialsIsValid = false;
-            }
-            else if (users.Count > 1)
-            {
-                throw new UserDuplicateException();
-            }
-            else
-            {
-                User user = users.Single();
-                userCredentialsIsValid = ValidateUserCredentials(password, user) && user.Roles != null && user.Roles.Any();
+                throw new IncorrectPasswordException();
             }
 
             var userInfo = new UserInfo();
-            if (userCredentialsIsValid)
-            {
-                userInfo.Email = email;
-                User userEntity = users.Single();
-                if (userEntity != null)
-                {
-                    userInfo.UserId = userEntity.Id;
-                    userInfo.FirstName = userEntity.FirstName;
-                    userInfo.LastName = userEntity.LastName;
-                    LoadRoles(userInfo, userEntity.Roles);
-                }
-            }
-            else
-            {
-                throw new UserNotSignedUpException();
-            }
+            userInfo.Email = email;
+            userInfo.UserId = user.Id;
+            userInfo.FirstName = user.FirstName;
+            userInfo.LastName = user.LastName;
+            LoadRoles(userInfo, user.Roles);
 
             return userInfo;
         }
@@ -128,7 +125,7 @@ namespace Infrastructure.Identity.Security
                 return false;
             }
 
-            if (!ValidateUserCredentials(password, user))
+            if (!ValidateUserPassword(password, user))
             {
                 return false;
             }
@@ -142,7 +139,7 @@ namespace Infrastructure.Identity.Security
             return true;
         }
 
-        private bool ValidateUserCredentials(string password, User user)
+        private bool ValidateUserPassword(string password, User user)
         {
             if (string.IsNullOrWhiteSpace(password))
             {

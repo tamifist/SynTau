@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
 using Shared.Framework.Collections;
 
-namespace Business.Contracts.ViewModels.Account
+namespace Infrastructure.Contracts.ViewModels.Security
 {
     public class CreateAccountViewModel
     {
@@ -31,7 +29,7 @@ namespace Business.Contracts.ViewModels.Account
             set;
         }
 
-        public string RepeatPassword
+        public string ConfirmPassword
         {
             get;
             set;

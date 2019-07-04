@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
-using Infrastructure.Contracts.Security;
+using Infrastructure.Contracts.Services.Security;
 using Shared.Framework.Dependency;
 
 namespace Infrastructure.Identity.Security

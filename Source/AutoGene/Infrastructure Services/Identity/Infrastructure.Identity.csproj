@@ -99,7 +99,7 @@
       <Name>Data.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Shared\Enum\Shared.Enum.csproj">
-      <Project>{7019053E-F940-47C1-BF25-7E7E78B340E0}</Project>
+      <Project>{7019053e-f940-47c1-bf25-7e7e78b340e0}</Project>
       <Name>Shared.Enum</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Shared\Framework\Shared.Framework.csproj">

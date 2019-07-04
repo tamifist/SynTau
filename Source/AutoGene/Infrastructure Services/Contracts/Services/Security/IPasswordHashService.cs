@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.Contracts.Security
+﻿namespace Infrastructure.Contracts.Services.Security
 {
     /// <summary>
     /// Interface for User Authentication Service.

@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Resources;
+using System.Web.Mvc;
 using Autofac;
 using Autofac.Core;
 using Newtonsoft.Json;
 using Presentation.Common.Controllers;
 using Presentation.Common.Models.Json;
+using Presentation.Common.Models.Localization;
 using Presentation.Common.Security;
 using Shared.Framework.Dependency;
 using Shared.Framework.Modules;
@@ -22,22 +25,29 @@ namespace AutoGene.Presentation.Host.Composition
                    .SingleInstance()
                    .WithParameter(TypedParameter.From(TimeSpan.FromMinutes(30)));
 
-            builder.RegisterType<ResourceContainer>().As<IResourceContainer>().SingleInstance();
-
             builder.RegisterDefaultDependencies(Assemblies.All.Presentation());
-            
-            RegisterJsonConverters(builder);
+
+            RegisterLocalizer(builder);
+            RegisterJsonizer(builder);
 
             base.Load(builder);
         }
         
-        private static void RegisterJsonConverters(ContainerBuilder builder)
+        private static void RegisterJsonizer(ContainerBuilder builder)
         {
             //builder.RegisterType<JsonDateTimeConrverter>().As<JsonConverter>().SingleInstance();
             //builder.RegisterType<JsonFloatConverter>().As<JsonConverter>().SingleInstance();
 
             builder.RegisterType<JsonText>().As<IJsonText>();
             builder.Register<Jsonizer>(container => container.Resolve<IJsonText>().Encode);
+        }
+
+        private static void RegisterLocalizer(ContainerBuilder builder)
+        {
+            builder.RegisterType<LocalizationManager>().As<ILocalizationManager>().SingleInstance();
+            builder.RegisterType<ViewText>().As<IViewText>().SingleInstance();
+
+            builder.Register<Localizer>(container => container.Resolve<IViewText>().Get);
         }
     }
 }

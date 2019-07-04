@@ -238,6 +238,14 @@
     <Compile Include="Migrations\201906241949276_AddGeneOrder.Designer.cs">
       <DependentUpon>201906241949276_AddGeneOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907021617550_MakeUserDetailOptional.cs" />
+    <Compile Include="Migrations\201907021617550_MakeUserDetailOptional.Designer.cs">
+      <DependentUpon>201907021617550_MakeUserDetailOptional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907021623309_MakeUserCountryOptional.cs" />
+    <Compile Include="Migrations\201907021623309_MakeUserCountryOptional.Designer.cs">
+      <DependentUpon>201907021623309_MakeUserCountryOptional.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
@@ -366,6 +374,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906241949276_AddGeneOrder.resx">
       <DependentUpon>201906241949276_AddGeneOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907021617550_MakeUserDetailOptional.resx">
+      <DependentUpon>201907021617550_MakeUserDetailOptional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907021623309_MakeUserCountryOptional.resx">
+      <DependentUpon>201907021623309_MakeUserCountryOptional.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

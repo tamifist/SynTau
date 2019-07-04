@@ -2,18 +2,16 @@
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
-using Business.Contracts.ViewModels.Account;
 using Business.Contracts.ViewModels.Common;
 using Data.Contracts;
 using Data.Contracts.Entities.Identity;
-using Infrastructure.Contracts.Security;
+using Infrastructure.Contracts.Services.Security;
+using Infrastructure.Contracts.ViewModels.Security;
 using Presentation.Common.Controllers;
 using Presentation.Common.Models;
 using Presentation.Common.Security;
 using Shared.Enum;
 using Shared.Enum.Attributes;
-using Shared.Framework.Exceptions;
-using Shared.Framework.Localization;
 using Shared.Framework.Utilities;
 using Shared.Resources;
 using ListItem = Shared.Framework.Collections.ListItem;
@@ -24,13 +22,13 @@ namespace AutoGene.Presentation.Host.Controllers
     {
         private readonly IAuthenticationManager authenticationManager;
         private readonly IIdentityService identityService;
-        private readonly IResourceContainer resourceContainer;
+        private readonly ILocalizationManager localizationManager;
 
-        public IdentityController(IAuthenticationManager authenticationManager, IIdentityService identityService, IResourceContainer resourceContainer)
+        public IdentityController(IAuthenticationManager authenticationManager, IIdentityService identityService, ILocalizationManager localizationManager)
         {
             this.authenticationManager = authenticationManager;
             this.identityService = identityService;
-            this.resourceContainer = resourceContainer;
+            this.localizationManager = localizationManager;
         }
 
         [HttpGet]
@@ -59,7 +57,7 @@ namespace AutoGene.Presentation.Host.Controllers
         public ActionResult CreateAccount()
         {
             var createAccountViewModel = new CreateAccountViewModel();
-            SetAllCountries(createAccountViewModel);
+            //SetAllCountries(createAccountViewModel);
 
             return View(createAccountViewModel);
         }
@@ -67,41 +65,27 @@ namespace AutoGene.Presentation.Host.Controllers
         [HttpPost]
         public ActionResult CreateAccount(CreateAccountViewModel createAccountViewModel)
         {
-            if (createAccountViewModel.Password != createAccountViewModel.RepeatPassword)
+            bool isAccountCreated = false;
+            try
             {
-                ModelState.AddModelError(string.Empty, "Passwords do not match.");
+                isAccountCreated = identityService.CreateAccount(createAccountViewModel);
             }
-            else if (createAccountViewModel.Country == null)
+            catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, "Country is not selected.");
+                ModelState.AddModelError(string.Empty, ex.Message);
             }
-            else
-            {
-                bool isAccountCreated = false;
-                try
-                {
-                    isAccountCreated = identityService.CreateAccount(
-                        createAccountViewModel.FirstName, createAccountViewModel.LastName, 
-                        createAccountViewModel.Email, createAccountViewModel.Password, 
-                        createAccountViewModel.Organization, createAccountViewModel.LabGroup, (CountryEnum)createAccountViewModel.Country.Value);
-                }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError(string.Empty, ex.Message);
-                }
 
-                if (isAccountCreated)
-                {
-                    AuthenticationResult result = LogIn(createAccountViewModel.Email, createAccountViewModel.Password, false);
+            if (isAccountCreated)
+            {
+                AuthenticationResult result = LogIn(createAccountViewModel.Email, createAccountViewModel.Password, false);
 
-                    if (result.IsSuccess)
-                    {
-                        return authenticationManager.RedirectFromLoginPage(createAccountViewModel.Email);
-                    }
+                if (result.IsSuccess)
+                {
+                    return authenticationManager.RedirectFromLoginPage(createAccountViewModel.Email);
                 }
             }
-            
-            SetAllCountries(createAccountViewModel);
+
+            //SetAllCountries(createAccountViewModel);
 
             return View(createAccountViewModel);
         }
@@ -132,11 +116,11 @@ namespace AutoGene.Presentation.Host.Controllers
             return result;
         }
 
-        private void SetAllCountries(CreateAccountViewModel createAccountViewModel)
-        {
-            createAccountViewModel.AllCountries =
-                EnumUtil.GetValues<CountryEnum>().Select(
-                    x => new ListItem { Text = resourceContainer.GetString(x.GetDescription()), Value = (int)x }).OrderBy(x => x.Text);
-        }
+//        private void SetAllCountries(CreateAccountViewModel createAccountViewModel)
+//        {
+//            createAccountViewModel.AllCountries =
+//                EnumUtil.GetValues<CountryEnum>().Select(
+//                    x => new ListItem { Text = localizationManager.GetLocalizedString(x.GetDescription()), Value = (int)x }).OrderBy(x => x.Text);
+//        }
     }
 }

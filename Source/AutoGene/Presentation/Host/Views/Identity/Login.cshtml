@@ -1,9 +1,7 @@
-﻿@using Business.Contracts.ViewModels.Account;
-
-@model LoginViewModel
+﻿@model Infrastructure.Contracts.ViewModels.Security.LoginViewModel
 
 @{
-    ViewBag.Title = "Log In";
+    ViewBag.Title = T("App_Title");
     Layout = "~/Views/Shared/_LayoutNonAuth.cshtml";
 }
 
@@ -19,24 +17,24 @@
                     <div class="col-lg-6">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">@T("Login_FormTitle")</h1>
                             </div>
                             <form class="user" method="POST" action="@Url.Action("Login", "Identity")">
                                 @Html.ValidationSummary()
                                 <div class="form-group">
-                                    @Html.TextBoxFor(model => model.Email, new { placeholder = "Email", @class = "form-control", @type = "email", required = "required" })
+                                    @Html.TextBoxFor(model => model.Email, new { placeholder = T("Login_EmailPlaceholder"), @class = "form-control", @type = "email", required = "required" })
                                     @*<input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">*@
                                 </div>
                                 <div class="form-group">
-                                    @Html.TextBoxFor(model => model.Password, new { placeholder = "Password", @class = "form-control", @type = "password", required = "required" })
+                                    @Html.TextBoxFor(model => model.Password, new { placeholder = T("Login_PasswordPlaceholder"), @class = "form-control", @type = "password", required = "required" })
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox small">
                                         @Html.CheckBoxFor(model => model.StayLoggedInToday, new { id = "customCheck", @class = "custom-control-input" })
-                                        <label class="custom-control-label" for="customCheck">Remember Me</label>
+                                        <label class="custom-control-label" for="customCheck">@T("Login_RememberMeLabel")</label>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-user btn-block">Log In</button>
+                                <button type="submit" class="btn btn-primary btn-user btn-block">@T("Login_LoginButton")</button>
                                 @*<hr>
                                     <a href="index.html" class="btn btn-google btn-user btn-block">
                                         <i class="fab fa-google fa-fw"></i> Login with Google
@@ -47,10 +45,10 @@
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="#">Forgot Password?</a>
+                                <a class="small" href="#">@T("Login_ForgotPasswordButton")</a>
                             </div>
                             <div class="text-center">
-                                <a href="@Url.Action("CreateAccount", "Identity")" class="small">Create Account</a>
+                                <a href="@Url.Action("CreateAccount", "Identity")" class="small">@T("Login_CreateAccountButton")</a>
                             </div>
                         </div>
                     </div>

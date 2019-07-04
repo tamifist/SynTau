@@ -117,73 +117,82 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ChannelNotConfigured" xml:space="preserve">
-    <value>There is no available channel configured for nucleotide: {0}</value>
+  <data name="App_Title" xml:space="preserve">
+    <value>SynTau</value>
   </data>
-  <data name="GeneSynthesizer_ChannelsConfigurationError" xml:space="preserve">
-    <value>Gene fragments should correspond to configured channels.</value>
+  <data name="CreateAccount_ConfirmPasswordErrorMessage" xml:space="preserve">
+    <value>Passwords must match</value>
   </data>
-  <data name="Infrastructure_AllValvesDeactivatedMsg" xml:space="preserve">
-    <value>All valves deactivated</value>
+  <data name="CreateAccount_ConfirmPasswordPlaceholder" xml:space="preserve">
+    <value>Confirm</value>
   </data>
-  <data name="Login_ConnectivityError" xml:space="preserve">
-    <value>Cannot login to Auto Gene. Please check your connectivity and try again.</value>
+  <data name="CreateAccount_ConfirmPasswordRequiredValidationMessage" xml:space="preserve">
+    <value>Confirm your password</value>
   </data>
-  <data name="Login_EmailEntryPlaceholder" xml:space="preserve">
+  <data name="CreateAccount_CreateAccountButton" xml:space="preserve">
+    <value>Create Account</value>
+  </data>
+  <data name="CreateAccount_EmailPlaceholder" xml:space="preserve">
     <value>Email</value>
   </data>
-  <data name="Login_EmailEntryValidationMsg" xml:space="preserve">
-    <value>  Please enter a valid e-mail  </value>
+  <data name="CreateAccount_EmailRequiredValidationMessage" xml:space="preserve">
+    <value>Enter your email</value>
   </data>
-  <data name="Login_LogInButton" xml:space="preserve">
-    <value>Log In</value>
+  <data name="CreateAccount_FirstNamePlaceholder" xml:space="preserve">
+    <value>First Name</value>
   </data>
-  <data name="Login_PasswordEntryPlaceholder" xml:space="preserve">
+  <data name="CreateAccount_FirstNameRequiredValidationMessage" xml:space="preserve">
+    <value>Enter first name</value>
+  </data>
+  <data name="CreateAccount_FormTitle" xml:space="preserve">
+    <value>Create an Account!</value>
+  </data>
+  <data name="CreateAccount_LastNamePlaceholder" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="CreateAccount_LastNameRequiredValidationMessage" xml:space="preserve">
+    <value>Enter last name</value>
+  </data>
+  <data name="CreateAccount_LoginButton" xml:space="preserve">
+    <value>Already have an account? Login!</value>
+  </data>
+  <data name="CreateAccount_PasswordPlaceholder" xml:space="preserve">
     <value>Password</value>
   </data>
-  <data name="Login_Title" xml:space="preserve">
+  <data name="CreateAccount_PasswordRequiredValidationMessage" xml:space="preserve">
+    <value>Enter a password</value>
+  </data>
+  <data name="CreateAccount_PasswordStrengthErrorMessage" xml:space="preserve">
+    <value>Use 8 characters or more for your password</value>
+  </data>
+  <data name="CreateAccount_UserDuplicateErrorMessage" xml:space="preserve">
+    <value>Email address already in use</value>
+  </data>
+  <data name="Login_CreateAccountButton" xml:space="preserve">
+    <value>Create Account</value>
+  </data>
+  <data name="Login_EmailPlaceholder" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Login_ForgotPasswordButton" xml:space="preserve">
+    <value>Forgot Password?</value>
+  </data>
+  <data name="Login_FormTitle" xml:space="preserve">
+    <value>Welcome Back!</value>
+  </data>
+  <data name="Login_IncorrectPasswordErrorMessage" xml:space="preserve">
+    <value>Your password is incorrect</value>
+  </data>
+  <data name="Login_LoginButton" xml:space="preserve">
     <value>Log In</value>
   </data>
-  <data name="Login_UserNotFound" xml:space="preserve">
-    <value>The email you've entered doesn't match any account.</value>
+  <data name="Login_PasswordPlaceholder" xml:space="preserve">
+    <value>Password</value>
   </data>
-  <data name="Logs_NoInternetConnection" xml:space="preserve">
-    <value>There is no good internet connection</value>
+  <data name="Login_RememberMeLabel" xml:space="preserve">
+    <value>Remember Me</value>
   </data>
-  <data name="Logs_NoSynthesizerConnection" xml:space="preserve">
-    <value>There is no good connection to synthesizer</value>
-  </data>
-  <data name="Logs_Settings" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="Logs_Title" xml:space="preserve">
-    <value>Application Logs</value>
-  </data>
-  <data name="OK" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="SynthesizerSettings_BackendApiUrl" xml:space="preserve">
-    <value>Backend Api Url</value>
-  </data>
-  <data name="SynthesizerSettings_DelayAfterStrikeOn" xml:space="preserve">
-    <value>Delay after Strike On</value>
-  </data>
-  <data name="SynthesizerSettings_Save" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="SynthesizerSettings_SaveSettingsFailedMsg" xml:space="preserve">
-    <value>Save Settings Failed</value>
-  </data>
-  <data name="SynthesizerSettings_SynthesizerApiUrl" xml:space="preserve">
-    <value>Synthesizer Api Url</value>
-  </data>
-  <data name="SynthesizerSettings_Title" xml:space="preserve">
-    <value>Synthesizer Settings</value>
-  </data>
-  <data name="SystemMonitor_Title" xml:space="preserve">
-    <value>System Monitor</value>
-  </data>
-  <data name="String1" xml:space="preserve">
-    <value />
+  <data name="Login_UserNotFoundErrorMessage" xml:space="preserve">
+    <value>We cannot find an account with that email address</value>
   </data>
 </root>
