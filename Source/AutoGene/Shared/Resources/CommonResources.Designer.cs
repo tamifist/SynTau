@@ -135,6 +135,15 @@ namespace Shared.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Enter first name.
         /// </summary>
+        internal static string CreateAccount_FirstNameRequiredMessage {
+            get {
+                return ResourceManager.GetString("CreateAccount_FirstNameRequiredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter first name.
+        /// </summary>
         internal static string CreateAccount_FirstNameRequiredValidationMessage {
             get {
                 return ResourceManager.GetString("CreateAccount_FirstNameRequiredValidationMessage", resourceCulture);
@@ -156,6 +165,15 @@ namespace Shared.Resources {
         internal static string CreateAccount_LastNamePlaceholder {
             get {
                 return ResourceManager.GetString("CreateAccount_LastNamePlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter last name.
+        /// </summary>
+        internal static string CreateAccount_LastNameRequiredMessage {
+            get {
+                return ResourceManager.GetString("CreateAccount_LastNameRequiredMessage", resourceCulture);
             }
         }
         
@@ -210,6 +228,33 @@ namespace Shared.Resources {
         internal static string CreateAccount_UserDuplicateErrorMessage {
             get {
                 return ResourceManager.GetString("CreateAccount_UserDuplicateErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid email address.
+        /// </summary>
+        internal static string Login_CreateAccount_EmailIsNotValidMessage {
+            get {
+                return ResourceManager.GetString("Login_CreateAccount_EmailIsNotValidMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your email.
+        /// </summary>
+        internal static string Login_CreateAccount_EmailRequiredMessage {
+            get {
+                return ResourceManager.GetString("Login_CreateAccount_EmailRequiredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your password.
+        /// </summary>
+        internal static string Login_CreateAccount_PasswordRequiredMessage {
+            get {
+                return ResourceManager.GetString("Login_CreateAccount_PasswordRequiredMessage", resourceCulture);
             }
         }
         
@@ -291,6 +336,15 @@ namespace Shared.Resources {
         internal static string Login_UserNotFoundErrorMessage {
             get {
                 return ResourceManager.GetString("Login_UserNotFoundErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        internal static string UserProfile_Logout {
+            get {
+                return ResourceManager.GetString("UserProfile_Logout", resourceCulture);
             }
         }
     }

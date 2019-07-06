@@ -56,9 +56,9 @@ namespace Infrastructure.Identity.Security
             user.Email = createAccountViewModel.Email;
             user.FirstName = createAccountViewModel.FirstName;
             user.LastName = createAccountViewModel.LastName;
-            user.Organization = createAccountViewModel.Organization;
-            user.LabGroup = createAccountViewModel.LabGroup;
-            user.Country = (CountryEnum)createAccountViewModel.Country.Value;
+            //user.Organization = createAccountViewModel.Organization;
+            //user.LabGroup = createAccountViewModel.LabGroup;
+            //user.Country = (CountryEnum)createAccountViewModel.Country.Value;
 
             user.Password = createAccountViewModel.Password;
             SetPasswordHash(user);

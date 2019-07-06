@@ -19,14 +19,30 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">@T("Login_FormTitle")</h1>
                             </div>
-                            <form class="user" method="POST" action="@Url.Action("Login", "Identity")">
+                            <form class="user" id="loginForm" method="POST" action="@Url.Action("Login", "Identity")">
                                 @Html.ValidationSummary()
                                 <div class="form-group">
-                                    @Html.TextBoxFor(model => model.Email, new { placeholder = T("Login_EmailPlaceholder"), @class = "form-control", @type = "email", required = "required" })
-                                    @*<input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">*@
+                                    @Html.TextBoxFor(model => model.Email,
+                                        new
+                                        {
+                                            placeholder = T("Login_EmailPlaceholder"),
+                                            @class = "form-control",
+                                            @type = "email",
+                                            required = "required",
+                                            data_required_msg=T("Login_CreateAccount_EmailRequiredMessage"),
+                                            data_email_msg=T("Login_CreateAccount_EmailIsNotValidMessage"),
+                                        })
                                 </div>
                                 <div class="form-group">
-                                    @Html.TextBoxFor(model => model.Password, new { placeholder = T("Login_PasswordPlaceholder"), @class = "form-control", @type = "password", required = "required" })
+                                    @Html.TextBoxFor(model => model.Password,
+                                        new
+                                        {
+                                            placeholder = T("Login_PasswordPlaceholder"),
+                                            @class = "form-control",
+                                            @type = "password",
+                                            required = "required",
+                                            data_required_msg=T("Login_CreateAccount_PasswordRequiredMessage")
+                                        })
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox small">
@@ -59,4 +75,12 @@
     </div>
 
 </div>
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            var loginFormValidator = new Validator($("#loginForm"));
+        });
+    </script>
+}
 

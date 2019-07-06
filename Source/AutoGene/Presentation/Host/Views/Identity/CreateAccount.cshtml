@@ -17,27 +17,69 @@
                     <div class="text-center">
                         <h1 class="h4 text-gray-900 mb-4">@T("CreateAccount_FormTitle")</h1>
                     </div>
-                    <form class="user" method="POST" action="@Url.Action("CreateAccount", "Identity")">
+                    <form id="createAccountForm" class="user" method="POST" action="@Url.Action("CreateAccount", "Identity")">
                         @Html.ValidationSummary()
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                @Html.TextBoxFor(model => model.FirstName, new { placeholder = T("CreateAccount_FirstNamePlaceholder"), @class = "form-control", required = "required" })
+                                @Html.TextBoxFor(model => model.FirstName,
+                                    new
+                                    {
+                                        placeholder = T("CreateAccount_FirstNamePlaceholder"),
+                                        @class = "form-control",
+                                        required = "required",
+                                        data_required_msg=T("CreateAccount_FirstNameRequiredMessage")
+                                    })
                             </div>
                             <div class="col-sm-6">
-                                @Html.TextBoxFor(model => model.LastName, new { placeholder = T("CreateAccount_LastNamePlaceholder"), @class = "form-control", required = "required" })
+                                @Html.TextBoxFor(model => model.LastName,
+                                    new
+                                    {
+                                        placeholder = T("CreateAccount_LastNamePlaceholder"),
+                                        @class = "form-control",
+                                        required = "required",
+                                        data_required_msg=T("CreateAccount_LastNameRequiredMessage")
+                                    })
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-12">
-                                @Html.TextBoxFor(model => model.Email, new {placeholder = T("CreateAccount_EmailPlaceholder"), @class = "form-control", @type = "email", required = "required"})
+                                @Html.TextBoxFor(model => model.Email,
+                                    new
+                                    {
+                                        placeholder = T("CreateAccount_EmailPlaceholder"),
+                                        @class = "form-control",
+                                        @type = "email",
+                                        required = "required",
+                                        data_required_msg=T("Login_CreateAccount_EmailRequiredMessage"),
+                                        data_email_msg=T("Login_CreateAccount_EmailIsNotValidMessage"),
+                                    })
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                @Html.TextBoxFor(model => model.Password, new { id="Password", placeholder = T("CreateAccount_PasswordPlaceholder"), @class = "form-control", @type = "password", required = "required" })
+                                @Html.TextBoxFor(model => model.Password,
+                                    new
+                                    {
+                                        id="Password",
+                                        placeholder = T("CreateAccount_PasswordPlaceholder"),
+                                        @class = "form-control",
+                                        @type = "password",
+                                        required = "required",
+                                        data_required_msg=T("Login_CreateAccount_PasswordRequiredMessage"),
+                                        data_minlength=8,
+                                        data_minlength_msg=T("CreateAccount_PasswordStrengthErrorMessage")
+                                    })
                             </div>
                             <div class="col-sm-6">
-                                @Html.TextBoxFor(model => model.ConfirmPassword, new { placeholder = T("CreateAccount_ConfirmPasswordPlaceholder"), @class = "form-control", @type = "password", required = "required" })
+                                @Html.TextBoxFor(model => model.ConfirmPassword,
+                                    new
+                                    {
+                                        placeholder = T("CreateAccount_ConfirmPasswordPlaceholder"),
+                                        @class = "form-control",
+                                        @type = "password",
+                                        data_equalto="Password",
+                                        data_equalto_msg=T("CreateAccount_ConfirmPasswordErrorMessage"),
+                                    })
                             </div>
                         </div>
                         <div class="form-group progress">
@@ -82,6 +124,8 @@
 @section scripts {
     <script type="text/javascript">
         $(function () {
+            var loginFormValidator = new Validator($("#createAccountForm"));
+
             $("#StrengthProgressBar").zxcvbnProgressBar({
                 passwordInput: "#Password"
             });

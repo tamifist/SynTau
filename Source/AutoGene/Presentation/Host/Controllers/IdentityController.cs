@@ -34,7 +34,6 @@ namespace AutoGene.Presentation.Host.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-
             return View();
         }
 
@@ -72,7 +71,7 @@ namespace AutoGene.Presentation.Host.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, ex.Message);
+                ModelState.AddModelError(string.Empty, localizationManager.GetLocalizedString(ex.Message));
             }
 
             if (isAccountCreated)
@@ -93,7 +92,7 @@ namespace AutoGene.Presentation.Host.Controllers
         public ActionResult Logout()
         {
             authenticationManager.LogOut();
-            return RedirectToAction("Index", "Landing");
+            return RedirectToAction("Login");
         }
 
         public ActionResult ChangePassword()
@@ -110,7 +109,7 @@ namespace AutoGene.Presentation.Host.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, ex.Message);
+                ModelState.AddModelError(string.Empty, localizationManager.GetLocalizedString(ex.Message));
             }
 
             return result;

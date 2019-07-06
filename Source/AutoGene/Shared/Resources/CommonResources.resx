@@ -141,6 +141,9 @@
   <data name="CreateAccount_FirstNamePlaceholder" xml:space="preserve">
     <value>First Name</value>
   </data>
+  <data name="CreateAccount_FirstNameRequiredMessage" xml:space="preserve">
+    <value>Enter first name</value>
+  </data>
   <data name="CreateAccount_FirstNameRequiredValidationMessage" xml:space="preserve">
     <value>Enter first name</value>
   </data>
@@ -149,6 +152,9 @@
   </data>
   <data name="CreateAccount_LastNamePlaceholder" xml:space="preserve">
     <value>Last Name</value>
+  </data>
+  <data name="CreateAccount_LastNameRequiredMessage" xml:space="preserve">
+    <value>Enter last name</value>
   </data>
   <data name="CreateAccount_LastNameRequiredValidationMessage" xml:space="preserve">
     <value>Enter last name</value>
@@ -170,6 +176,15 @@
   </data>
   <data name="Login_CreateAccountButton" xml:space="preserve">
     <value>Create Account</value>
+  </data>
+  <data name="Login_CreateAccount_EmailIsNotValidMessage" xml:space="preserve">
+    <value>Please enter a valid email address</value>
+  </data>
+  <data name="Login_CreateAccount_EmailRequiredMessage" xml:space="preserve">
+    <value>Enter your email</value>
+  </data>
+  <data name="Login_CreateAccount_PasswordRequiredMessage" xml:space="preserve">
+    <value>Enter your password</value>
   </data>
   <data name="Login_EmailPlaceholder" xml:space="preserve">
     <value>Email</value>
@@ -194,5 +209,8 @@
   </data>
   <data name="Login_UserNotFoundErrorMessage" xml:space="preserve">
     <value>We cannot find an account with that email address</value>
+  </data>
+  <data name="UserProfile_Logout" xml:space="preserve">
+    <value>Logout</value>
   </data>
 </root>
