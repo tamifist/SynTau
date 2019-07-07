@@ -16,7 +16,8 @@
                     <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
                     <div class="col-lg-6">
                         <div class="p-5">
-                            <div class="text-center">
+                            <div class="text-left">
+                                <h1 class="h4 text-gray-900 mb-4">@T("App_Title")</h1>
                                 <h1 class="h4 text-gray-900 mb-4">@T("Login_FormTitle")</h1>
                             </div>
                             <form class="user" id="loginForm" method="POST" action="@Url.Action("Login", "Identity")">
@@ -25,23 +26,26 @@
                                     @Html.TextBoxFor(model => model.Email,
                                         new
                                         {
-                                            placeholder = T("Login_EmailPlaceholder"),
+                                            placeholder = T("Login_CreateAccount_EmailPlaceholder"),
                                             @class = "form-control",
                                             @type = "email",
                                             required = "required",
-                                            data_required_msg=T("Login_CreateAccount_EmailRequiredMessage"),
-                                            data_email_msg=T("Login_CreateAccount_EmailIsNotValidMessage"),
+                                            data_required_msg = T("Login_CreateAccount_EmailRequiredMessage"),
+                                            data_email_msg = T("Login_CreateAccount_EmailIsNotValidMessage"),
                                         })
                                 </div>
                                 <div class="form-group">
+                                    <div class="text-right">
+                                        <a class="small" href="#">@T("Login_ForgotPasswordButton")</a>
+                                    </div>
                                     @Html.TextBoxFor(model => model.Password,
                                         new
                                         {
-                                            placeholder = T("Login_PasswordPlaceholder"),
+                                            placeholder = T("Login_CreateAccount_PasswordPlaceholder"),
                                             @class = "form-control",
                                             @type = "password",
                                             required = "required",
-                                            data_required_msg=T("Login_CreateAccount_PasswordRequiredMessage")
+                                            data_required_msg = T("Login_CreateAccount_PasswordRequiredMessage")
                                         })
                                 </div>
                                 <div class="form-group">
@@ -59,12 +63,10 @@
                                         <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                                     </a>*@
                             </form>
-                            <hr>
+                            <div class="hr-sect">@T("Login_OrDivider")</div>
+                            
                             <div class="text-center">
-                                <a class="small" href="#">@T("Login_ForgotPasswordButton")</a>
-                            </div>
-                            <div class="text-center">
-                                <a href="@Url.Action("CreateAccount", "Identity")" class="small">@T("Login_CreateAccountButton")</a>
+                                <a class="btn btn-secondary btn-block btn-rounded" href="@Url.Action("CreateAccount", "Identity")" role="button">@T("Login_CreateAccount_CreateAccountButton")</a>
                             </div>
                         </div>
                     </div>

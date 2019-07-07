@@ -97,33 +97,6 @@ namespace Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create Account.
-        /// </summary>
-        internal static string CreateAccount_CreateAccountButton {
-            get {
-                return ResourceManager.GetString("CreateAccount_CreateAccountButton", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Email.
-        /// </summary>
-        internal static string CreateAccount_EmailPlaceholder {
-            get {
-                return ResourceManager.GetString("CreateAccount_EmailPlaceholder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter your email.
-        /// </summary>
-        internal static string CreateAccount_EmailRequiredValidationMessage {
-            get {
-                return ResourceManager.GetString("CreateAccount_EmailRequiredValidationMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to First Name.
         /// </summary>
         internal static string CreateAccount_FirstNamePlaceholder {
@@ -133,7 +106,7 @@ namespace Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter first name.
+        ///   Looks up a localized string similar to Enter your first name.
         /// </summary>
         internal static string CreateAccount_FirstNameRequiredMessage {
             get {
@@ -151,7 +124,7 @@ namespace Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create an Account!.
+        ///   Looks up a localized string similar to Create account.
         /// </summary>
         internal static string CreateAccount_FormTitle {
             get {
@@ -169,7 +142,7 @@ namespace Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter last name.
+        ///   Looks up a localized string similar to Enter your last name.
         /// </summary>
         internal static string CreateAccount_LastNameRequiredMessage {
             get {
@@ -187,29 +160,11 @@ namespace Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Already have an account? Login!.
+        ///   Looks up a localized string similar to Already have an account? Sign-In &gt;.
         /// </summary>
         internal static string CreateAccount_LoginButton {
             get {
                 return ResourceManager.GetString("CreateAccount_LoginButton", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Password.
-        /// </summary>
-        internal static string CreateAccount_PasswordPlaceholder {
-            get {
-                return ResourceManager.GetString("CreateAccount_PasswordPlaceholder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter a password.
-        /// </summary>
-        internal static string CreateAccount_PasswordRequiredValidationMessage {
-            get {
-                return ResourceManager.GetString("CreateAccount_PasswordRequiredValidationMessage", resourceCulture);
             }
         }
         
@@ -223,6 +178,15 @@ namespace Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter a combination of at least six numbers, letters and punctuation marks (like ! and &amp;)..
+        /// </summary>
+        internal static string CreateAccount_PasswordStrengthErrorMessage2 {
+            get {
+                return ResourceManager.GetString("CreateAccount_PasswordStrengthErrorMessage2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email address already in use.
         /// </summary>
         internal static string CreateAccount_UserDuplicateErrorMessage {
@@ -232,11 +196,29 @@ namespace Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter a valid email address.
+        ///   Looks up a localized string similar to Create Account.
+        /// </summary>
+        internal static string Login_CreateAccount_CreateAccountButton {
+            get {
+                return ResourceManager.GetString("Login_CreateAccount_CreateAccountButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a valid email address.
         /// </summary>
         internal static string Login_CreateAccount_EmailIsNotValidMessage {
             get {
                 return ResourceManager.GetString("Login_CreateAccount_EmailIsNotValidMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        internal static string Login_CreateAccount_EmailPlaceholder {
+            get {
+                return ResourceManager.GetString("Login_CreateAccount_EmailPlaceholder", resourceCulture);
             }
         }
         
@@ -250,6 +232,15 @@ namespace Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        internal static string Login_CreateAccount_PasswordPlaceholder {
+            get {
+                return ResourceManager.GetString("Login_CreateAccount_PasswordPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter your password.
         /// </summary>
         internal static string Login_CreateAccount_PasswordRequiredMessage {
@@ -259,25 +250,7 @@ namespace Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create Account.
-        /// </summary>
-        internal static string Login_CreateAccountButton {
-            get {
-                return ResourceManager.GetString("Login_CreateAccountButton", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Email.
-        /// </summary>
-        internal static string Login_EmailPlaceholder {
-            get {
-                return ResourceManager.GetString("Login_EmailPlaceholder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Forgot Password?.
+        ///   Looks up a localized string similar to Forgot your password?.
         /// </summary>
         internal static string Login_ForgotPasswordButton {
             get {
@@ -286,7 +259,7 @@ namespace Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome Back!.
+        ///   Looks up a localized string similar to Sign-In.
         /// </summary>
         internal static string Login_FormTitle {
             get {
@@ -304,7 +277,7 @@ namespace Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Log In.
+        ///   Looks up a localized string similar to Sign-In.
         /// </summary>
         internal static string Login_LoginButton {
             get {
@@ -313,16 +286,16 @@ namespace Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password.
+        ///   Looks up a localized string similar to or.
         /// </summary>
-        internal static string Login_PasswordPlaceholder {
+        internal static string Login_OrDivider {
             get {
-                return ResourceManager.GetString("Login_PasswordPlaceholder", resourceCulture);
+                return ResourceManager.GetString("Login_OrDivider", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remember Me.
+        ///   Looks up a localized string similar to Keep me signed in.
         /// </summary>
         internal static string Login_RememberMeLabel {
             get {

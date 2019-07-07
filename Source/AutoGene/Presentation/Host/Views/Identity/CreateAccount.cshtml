@@ -14,7 +14,8 @@
             <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
             <div class="col-lg-7">
                 <div class="p-5">
-                    <div class="text-center">
+                    <div class="text-left">
+                        <h1 class="h4 text-gray-900 mb-4">@T("App_Title")</h1>
                         <h1 class="h4 text-gray-900 mb-4">@T("CreateAccount_FormTitle")</h1>
                     </div>
                     <form id="createAccountForm" class="user" method="POST" action="@Url.Action("CreateAccount", "Identity")">
@@ -46,7 +47,7 @@
                                 @Html.TextBoxFor(model => model.Email,
                                     new
                                     {
-                                        placeholder = T("CreateAccount_EmailPlaceholder"),
+                                        placeholder = T("Login_CreateAccount_EmailPlaceholder"),
                                         @class = "form-control",
                                         @type = "email",
                                         required = "required",
@@ -61,7 +62,7 @@
                                     new
                                     {
                                         id="Password",
-                                        placeholder = T("CreateAccount_PasswordPlaceholder"),
+                                        placeholder = T("Login_CreateAccount_PasswordPlaceholder"),
                                         @class = "form-control",
                                         @type = "password",
                                         required = "required",
@@ -109,7 +110,7 @@
                                       )
                             </div>
                         </div>*@
-                        <button type="submit" class="btn btn-primary btn-user btn-block">@T("CreateAccount_CreateAccountButton")</button>
+                        <button type="submit" class="btn btn-primary btn-user btn-block">@T("Login_CreateAccount_CreateAccountButton")</button>
                     </form>
                     <hr>
                     <div class="text-center">

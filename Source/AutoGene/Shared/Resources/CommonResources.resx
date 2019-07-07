@@ -129,83 +129,74 @@
   <data name="CreateAccount_ConfirmPasswordRequiredValidationMessage" xml:space="preserve">
     <value>Confirm your password</value>
   </data>
-  <data name="CreateAccount_CreateAccountButton" xml:space="preserve">
-    <value>Create Account</value>
-  </data>
-  <data name="CreateAccount_EmailPlaceholder" xml:space="preserve">
-    <value>Email</value>
-  </data>
-  <data name="CreateAccount_EmailRequiredValidationMessage" xml:space="preserve">
-    <value>Enter your email</value>
-  </data>
   <data name="CreateAccount_FirstNamePlaceholder" xml:space="preserve">
     <value>First Name</value>
   </data>
   <data name="CreateAccount_FirstNameRequiredMessage" xml:space="preserve">
-    <value>Enter first name</value>
+    <value>Enter your first name</value>
   </data>
   <data name="CreateAccount_FirstNameRequiredValidationMessage" xml:space="preserve">
     <value>Enter first name</value>
   </data>
   <data name="CreateAccount_FormTitle" xml:space="preserve">
-    <value>Create an Account!</value>
+    <value>Create account</value>
   </data>
   <data name="CreateAccount_LastNamePlaceholder" xml:space="preserve">
     <value>Last Name</value>
   </data>
   <data name="CreateAccount_LastNameRequiredMessage" xml:space="preserve">
-    <value>Enter last name</value>
+    <value>Enter your last name</value>
   </data>
   <data name="CreateAccount_LastNameRequiredValidationMessage" xml:space="preserve">
     <value>Enter last name</value>
   </data>
   <data name="CreateAccount_LoginButton" xml:space="preserve">
-    <value>Already have an account? Login!</value>
-  </data>
-  <data name="CreateAccount_PasswordPlaceholder" xml:space="preserve">
-    <value>Password</value>
-  </data>
-  <data name="CreateAccount_PasswordRequiredValidationMessage" xml:space="preserve">
-    <value>Enter a password</value>
+    <value>Already have an account? Sign-In &gt;</value>
   </data>
   <data name="CreateAccount_PasswordStrengthErrorMessage" xml:space="preserve">
     <value>Use 8 characters or more for your password</value>
   </data>
+  <data name="CreateAccount_PasswordStrengthErrorMessage2" xml:space="preserve">
+    <value>Enter a combination of at least six numbers, letters and punctuation marks (like ! and &amp;).</value>
+  </data>
   <data name="CreateAccount_UserDuplicateErrorMessage" xml:space="preserve">
     <value>Email address already in use</value>
   </data>
-  <data name="Login_CreateAccountButton" xml:space="preserve">
+  <data name="Login_CreateAccount_CreateAccountButton" xml:space="preserve">
     <value>Create Account</value>
   </data>
   <data name="Login_CreateAccount_EmailIsNotValidMessage" xml:space="preserve">
-    <value>Please enter a valid email address</value>
+    <value>Enter a valid email address</value>
+  </data>
+  <data name="Login_CreateAccount_EmailPlaceholder" xml:space="preserve">
+    <value>Email</value>
   </data>
   <data name="Login_CreateAccount_EmailRequiredMessage" xml:space="preserve">
     <value>Enter your email</value>
   </data>
+  <data name="Login_CreateAccount_PasswordPlaceholder" xml:space="preserve">
+    <value>Password</value>
+  </data>
   <data name="Login_CreateAccount_PasswordRequiredMessage" xml:space="preserve">
     <value>Enter your password</value>
   </data>
-  <data name="Login_EmailPlaceholder" xml:space="preserve">
-    <value>Email</value>
-  </data>
   <data name="Login_ForgotPasswordButton" xml:space="preserve">
-    <value>Forgot Password?</value>
+    <value>Forgot your password?</value>
   </data>
   <data name="Login_FormTitle" xml:space="preserve">
-    <value>Welcome Back!</value>
+    <value>Sign-In</value>
   </data>
   <data name="Login_IncorrectPasswordErrorMessage" xml:space="preserve">
     <value>Your password is incorrect</value>
   </data>
   <data name="Login_LoginButton" xml:space="preserve">
-    <value>Log In</value>
+    <value>Sign-In</value>
   </data>
-  <data name="Login_PasswordPlaceholder" xml:space="preserve">
-    <value>Password</value>
+  <data name="Login_OrDivider" xml:space="preserve">
+    <value>or</value>
   </data>
   <data name="Login_RememberMeLabel" xml:space="preserve">
-    <value>Remember Me</value>
+    <value>Keep me signed in</value>
   </data>
   <data name="Login_UserNotFoundErrorMessage" xml:space="preserve">
     <value>We cannot find an account with that email address</value>
