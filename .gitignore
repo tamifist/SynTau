@@ -43,3 +43,10 @@
 /Source/AutoGene/Presentation/Host/obj/Debug
 /Source/AutoGene/UpgradeLog2.htm
 /Source/AutoGene/UpgradeLog3.htm
+/Source/AutoGene/Presentation/Web/Presentation.Common/bin/Debug/netcoreapp2.2
+/Source/AutoGene/Presentation/Host/Presentation.Host.Old.csproj.user
+/Source/AutoGene/Presentation/Web/Presentation.Common/obj
+/Source/AutoGene/Presentation/Web/Presentation.Host/bin/Debug/netcoreapp2.2
+/Source/AutoGene/Presentation/Web/Presentation.Host/obj
+/Source/AutoGene/Presentation/Web/Presentation.Host/Presentation.Host.csproj.user
+/Source/AutoGene/Presentation/Web/WebApplication1/bin/Debug/netcoreapp2.2

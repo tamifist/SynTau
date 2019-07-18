@@ -21,7 +21,7 @@ namespace Data.Services.Tests.RepositoryIntegrationTests.Base
         private IUnitOfWork unitOfWork;
         private TDataCreator creator;
 
-        protected EntityContext DbContext
+        protected DbContext DbContext
         {
             get;
             private set;
@@ -147,7 +147,7 @@ namespace Data.Services.Tests.RepositoryIntegrationTests.Base
             }
         }
 
-        protected abstract TDataCreator CreateEntityCreator(EntityContext context);
+        protected abstract TDataCreator CreateEntityCreator(DbContext context);
 
         protected abstract T CreateEntity();
     }

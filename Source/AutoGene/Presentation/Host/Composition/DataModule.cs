@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿using System.Data.Entity;
+using Autofac;
 using Autofac.Integration.Mvc;
 using Data.Services;
 using Data.Services.Helpers;
@@ -16,7 +17,7 @@ namespace AutoGene.Presentation.Host.Composition
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<RepositoryFactoriesBuilder>().SingleInstance();
-            builder.RegisterType<CommonDbContext>().As<EntityContext>().InstancePerRequest();
+            builder.RegisterType<CommonDbContext>().As<DbContext>().InstancePerRequest();
             builder.RegisterDefaultDependencies(Assemblies.All.Data());
 
             base.Load(builder);

@@ -11,7 +11,7 @@ namespace Data.Services.Tests.RepositoryIntegrationTests.Base
         RepositoryIntegrationTestsBase<T, TestDataCreator>
            where T : Entity, new()
     {
-        protected override TestDataCreator CreateEntityCreator(EntityContext context)
+        protected override TestDataCreator CreateEntityCreator(DbContext context)
         {
             return new TestDataCreator(context);
         }

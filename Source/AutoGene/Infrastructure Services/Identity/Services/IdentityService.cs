@@ -6,14 +6,14 @@ using Data.Contracts;
 using Data.Contracts.Entities.Identity;
 using Infrastructure.Contracts.Exceptions;
 using Infrastructure.Contracts.Exceptions.Security;
-using Infrastructure.Contracts.Services.Security;
-using Infrastructure.Contracts.ViewModels.Security;
+using Infrastructure.Identity.Contracts.Services;
+using Infrastructure.Identity.Contracts.ViewModels;
 using Shared.Enum;
 using Shared.Framework.Dependency;
 using Shared.Framework.Security;
 using Shared.Framework.Utilities;
 
-namespace Infrastructure.Identity.Security
+namespace Infrastructure.Identity.Services
 {
     public class IdentityService : IIdentityService, IScopedDependency
     {
@@ -102,7 +102,7 @@ namespace Infrastructure.Identity.Security
             userInfo.UserId = user.Id;
             userInfo.FirstName = user.FirstName;
             userInfo.LastName = user.LastName;
-            LoadRoles(userInfo, user.Roles);
+            SetRoles(userInfo, user.Roles);
 
             return userInfo;
         }
@@ -168,7 +168,7 @@ namespace Infrastructure.Identity.Security
             user.PasswordSalt = passwordSalt;
         }
 
-        private void LoadRoles(UserInfo userInfo, IEnumerable<Role> roles)
+        private void SetRoles(UserInfo userInfo, IEnumerable<Role> roles)
         {
             if (!roles.Any())
             {

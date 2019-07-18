@@ -5572,13 +5572,13 @@
       <Project>{99ec1cfc-276b-4cd4-b144-f8f464d97cac}</Project>
       <Name>Data.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Infrastructure Services\Contracts\Infrastructure.Contracts.csproj">
+    <ProjectReference Include="..\..\Infrastructure Services\Contracts\Infrastructure.Identity.Contracts.csproj">
       <Project>{90967aaf-8d70-4d93-a440-404cd26def13}</Project>
-      <Name>Infrastructure.Contracts</Name>
+      <Name>Infrastructure.Identity.Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Infrastructure Services\Identity\Infrastructure.Identity.csproj">
+    <ProjectReference Include="..\..\Infrastructure Services\Identity\Infrastructure.Identity.Services.csproj">
       <Project>{f45e225f-fd9f-4187-89c3-da59e4367843}</Project>
-      <Name>Infrastructure.Identity</Name>
+      <Name>Infrastructure.Identity.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Shared\DTO\Shared.DTO.csproj">
       <Project>{9c247926-2d2b-446d-8338-9db15331f775}</Project>
@@ -5596,9 +5596,9 @@
       <Project>{48ffd3cb-990a-4c3c-8826-b510445351e4}</Project>
       <Name>Shared.Resources</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Common\Presentation.Common.csproj">
+    <ProjectReference Include="..\Common\Presentation.Common.Old.csproj">
       <Project>{a0372765-88f6-4a19-92cc-28a99f5ba595}</Project>
-      <Name>Presentation.Common</Name>
+      <Name>Presentation.Common.Old</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,9 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
-using Infrastructure.Contracts.Services.Security;
+using Infrastructure.Identity.Contracts.Services;
 using Shared.Framework.Dependency;
 
-namespace Infrastructure.Identity.Security
+namespace Infrastructure.Identity.Services
 {
     public class PasswordHashService : IPasswordHashService, IScopedDependency
     {

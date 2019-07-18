@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Shared.Framework.Collections;
 
-namespace Infrastructure.Contracts.ViewModels.Security
+namespace Infrastructure.Identity.Contracts.ViewModels
 {
     public class CreateAccountViewModel
     {

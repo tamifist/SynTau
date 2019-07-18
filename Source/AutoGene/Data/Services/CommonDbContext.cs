@@ -13,8 +13,25 @@ using Microsoft.Azure.Mobile.Server;
 
 namespace Data.Services
 {
-    public class CommonDbContext : EntityContext
+    public class CommonDbContext : DbContext//EntityContext
     {
+        private const string DefaultConnectionStringName = "DefaultConnection";
+
+        static CommonDbContext()
+        {
+            Database.SetInitializer<CommonDbContext>(null); //new DatabaseInitializer<CommonDbContext>());
+        }
+
+        public CommonDbContext()
+            : base(DefaultConnectionStringName)
+        {
+        }
+
+        public CommonDbContext(string nameOrConnectionString)
+            : base(nameOrConnectionString)
+        {
+        }
+
         public DbSet<User> Users { get; set; }
 
         public DbSet<Role> Roles { get; set; }

@@ -1,20 +1,11 @@
 ﻿using System;
-using System.Linq;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
-using Business.Contracts.ViewModels.Common;
-using Data.Contracts;
-using Data.Contracts.Entities.Identity;
-using Infrastructure.Contracts.Services.Security;
-using Infrastructure.Contracts.ViewModels.Security;
+using Infrastructure.Identity.Contracts.Services;
+using Infrastructure.Identity.Contracts.ViewModels;
 using Presentation.Common.Controllers;
 using Presentation.Common.Models;
 using Presentation.Common.Security;
-using Shared.Enum;
-using Shared.Enum.Attributes;
-using Shared.Framework.Utilities;
 using Shared.Resources;
-using ListItem = Shared.Framework.Collections.ListItem;
 
 namespace AutoGene.Presentation.Host.Controllers
 {

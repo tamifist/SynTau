@@ -21,7 +21,7 @@ namespace Data.Services.Helpers
         /// Get and set the <see cref="DbContext"/> with which to initialize a repository
         /// if one must be created.
         /// </summary>
-        EntityContext DbContext
+        DbContext DbContext
         {
             get;
             set;
@@ -51,7 +51,7 @@ namespace Data.Services.Helpers
         /// If not found, tries to make one with the factory, fallingback to 
         /// a default factory if the factory parameter is null.
         /// </remarks>
-        T GetRepository<T>(Func<EntityContext, object> factory = null)
+        T GetRepository<T>(Func<DbContext, object> factory = null)
             where T : class;
 
 

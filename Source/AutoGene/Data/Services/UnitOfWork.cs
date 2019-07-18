@@ -20,7 +20,7 @@ namespace Data.Services
     /// </summary>
     public class UnitOfWork : IUnitOfWork, IScopedDependency
     {
-        private readonly EntityContext dbContext;
+        private readonly DbContext dbContext;
         private readonly IRepositoryFactory repositoryFactory;
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Data.Services
         /// <summary>
         /// Initializes new instance using given repositoryProvider.
         /// </summary>
-        public UnitOfWork(EntityContext dbContext, IRepositoryFactory repositoryFactory)
+        public UnitOfWork(DbContext dbContext, IRepositoryFactory repositoryFactory)
         {
             this.dbContext = dbContext;
 

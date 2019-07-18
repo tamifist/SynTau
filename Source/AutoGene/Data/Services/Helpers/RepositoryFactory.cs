@@ -30,7 +30,7 @@ namespace Data.Framework.Helpers
         /// Get and set the <see cref="DbContext"/> with which to initialize a repository
         /// if one must be created.
         /// </summary>
-        public EntityContext DbContext
+        public DbContext DbContext
         {
             get;
             set;
@@ -88,7 +88,7 @@ namespace Data.Framework.Helpers
         /// Looks for the requested repository in its cache, returning if found.
         /// If not found, tries to make one using <see cref="MakeRepository{T}"/>.
         /// </remarks>
-        public virtual T GetRepository<T>(Func<EntityContext, object> factory = null)
+        public virtual T GetRepository<T>(Func<DbContext, object> factory = null)
             where T : class
         {
             // Look for T dictionary cache under typeof(T).
@@ -115,7 +115,7 @@ namespace Data.Framework.Helpers
         /// If null, gets factory from <see cref="_repositoryFactoriesBuilder"/>.
         /// </param>
         /// <returns></returns>
-        protected virtual T MakeRepository<T>(Func<EntityContext, object> factory, EntityContext dbContext)
+        protected virtual T MakeRepository<T>(Func<DbContext, object> factory, DbContext dbContext)
         {
             var f = factory ?? _repositoryFactoriesBuilder.GetRepositoryFactory<T>();
             if (f == null)

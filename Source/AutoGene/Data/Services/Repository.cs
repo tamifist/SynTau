@@ -17,7 +17,7 @@ namespace Data.Services
         private const string DbContextParameterName = "dbContext";
         private const string DbContextParameterErrorMessage = "dbContext should not be null";
 
-        public Repository(EntityContext dbContext)
+        public Repository(DbContext dbContext)
         {
             if (dbContext == null)
             {
@@ -27,7 +27,7 @@ namespace Data.Services
             DbSet = DbContext.Set<T>();
         }
 
-        protected EntityContext DbContext
+        protected DbContext DbContext
         {
             get;
             set;

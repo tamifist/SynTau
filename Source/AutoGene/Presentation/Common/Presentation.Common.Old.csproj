@@ -108,9 +108,9 @@
       <Project>{5335fe49-6c25-4fe4-8099-46165f35effe}</Project>
       <Name>Data.Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Infrastructure Services\Contracts\Infrastructure.Contracts.csproj">
+    <ProjectReference Include="..\..\Infrastructure Services\Contracts\Infrastructure.Identity.Contracts.csproj">
       <Project>{90967aaf-8d70-4d93-a440-404cd26def13}</Project>
-      <Name>Infrastructure.Contracts</Name>
+      <Name>Infrastructure.Identity.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Shared\Framework\Shared.Framework.csproj">
       <Project>{b7a55646-bee7-43b5-8690-4e7f5ccb4205}</Project>

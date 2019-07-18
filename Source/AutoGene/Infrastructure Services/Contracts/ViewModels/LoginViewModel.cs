@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.Contracts.ViewModels.Security
+﻿namespace Infrastructure.Identity.Contracts.ViewModels
 {
     public class LoginViewModel
     {

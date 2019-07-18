@@ -20,11 +20,11 @@ namespace Data.Services.Tests.TestData
 {
     public class TestDataCreator
     {
-        private readonly EntityContext dbContext;
+        private readonly DbContext dbContext;
         private readonly Dictionary<Type, object> identityMap = new Dictionary<Type, object>();
         private readonly Dictionary<Type, Action> initializers = new Dictionary<Type, Action>();
 
-        public TestDataCreator(EntityContext dbContext)
+        public TestDataCreator(DbContext dbContext)
         {
             this.dbContext = dbContext;
         }

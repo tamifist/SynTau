@@ -30,10 +30,10 @@ namespace Data.Services.Helpers
         /// <remarks>
         /// A dictionary key is a System.Type, typically a repository type.
         /// A value is a repository factory function
-        /// that takes a <see cref="EntityContext"/> argument and returns
+        /// that takes a <see cref="DbContext"/> argument and returns
         /// a repository object. Caller must know how to cast it.
         /// </remarks>
-        private readonly IDictionary<Type, Func<EntityContext, object>> repositoryFactories;
+        private readonly IDictionary<Type, Func<DbContext, object>> repositoryFactories;
 
         /// <summary>
         /// Constructor that initializes with runtime Code Camper repository factories
@@ -52,7 +52,7 @@ namespace Data.Services.Helpers
         /// <remarks>
         /// This ctor is primarily useful for testing this class
         /// </remarks>
-        public RepositoryFactoriesBuilder(IDictionary<Type, Func<EntityContext, object>> factories)
+        public RepositoryFactoriesBuilder(IDictionary<Type, Func<DbContext, object>> factories)
         {
             repositoryFactories = factories;
         }
@@ -66,10 +66,10 @@ namespace Data.Services.Helpers
         /// The type parameter, T, is typically the repository type 
         /// but could be any type (e.g., an entity type)
         /// </remarks>
-        public Func<EntityContext, object> GetRepositoryFactory<T>()
+        public Func<DbContext, object> GetRepositoryFactory<T>()
         {
 
-            Func<EntityContext, object> factory;
+            Func<DbContext, object> factory;
             repositoryFactories.TryGetValue(typeof(T), out factory);
             return factory;
         }
@@ -87,7 +87,7 @@ namespace Data.Services.Helpers
         /// You can substitute an alternative factory for the default one by adding
         /// a repository factory for type "T" to <see cref="repositoryFactories"/>.
         /// </remarks>
-        public Func<EntityContext, object> GetRepositoryFactoryForEntityType<T>()
+        public Func<DbContext, object> GetRepositoryFactoryForEntityType<T>()
             where T : Entity
         {
             return GetRepositoryFactory<T>() ?? DefaultEntityRepositoryFactory<T>();
@@ -97,7 +97,7 @@ namespace Data.Services.Helpers
         /// Default factory for a <see cref="IRepository{T}"/> where T is an entity.
         /// </summary>
         /// <typeparam name="T">Type of the repository's root entity</typeparam>
-        protected virtual Func<EntityContext, object> DefaultEntityRepositoryFactory<T>()
+        protected virtual Func<DbContext, object> DefaultEntityRepositoryFactory<T>()
             where T : Entity
         {
             return dbContext => new Repository<T>(dbContext);
@@ -110,9 +110,9 @@ namespace Data.Services.Helpers
         /// <remarks>
         /// MODIFY THIS METHOD TO ADD CUSTOM FACTORY FUNCTIONS
         /// </remarks>
-        private IDictionary<Type, Func<EntityContext, object>> GetRepositoryFactories()
+        private IDictionary<Type, Func<DbContext, object>> GetRepositoryFactories()
         {
-            return new Dictionary<Type, Func<EntityContext, object>>
+            return new Dictionary<Type, Func<DbContext, object>>
             {
             };
         }

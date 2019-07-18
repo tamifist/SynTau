@@ -7,8 +7,8 @@
     <ProjectGuid>{90967AAF-8D70-4D93-A440-404CD26DEF13}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Infrastructure.Contracts</RootNamespace>
-    <AssemblyName>Infrastructure.Contracts</AssemblyName>
+    <RootNamespace>Infrastructure.Identity.Contracts</RootNamespace>
+    <AssemblyName>Infrastructure.Identity.Contracts</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -47,10 +47,10 @@
     <Compile Include="Exceptions\Security\UserNotFoundException.cs" />
     <Compile Include="Exceptions\Security\IncorrectPasswordException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Security\IIdentityService.cs" />
-    <Compile Include="Services\Security\IPasswordHashService.cs" />
-    <Compile Include="ViewModels\Security\CreateAccountViewModel.cs" />
-    <Compile Include="ViewModels\Security\LoginViewModel.cs" />
+    <Compile Include="Services\IIdentityService.cs" />
+    <Compile Include="Services\IPasswordHashService.cs" />
+    <Compile Include="ViewModels\CreateAccountViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Enum\Shared.Enum.csproj">

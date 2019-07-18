@@ -1,8 +1,7 @@
-﻿using Infrastructure.Contracts.ViewModels.Security;
-using Shared.Enum;
+﻿using Infrastructure.Identity.Contracts.ViewModels;
 using Shared.Framework.Security;
 
-namespace Infrastructure.Contracts.Services.Security
+namespace Infrastructure.Identity.Contracts.Services
 {
     /// <summary>
     /// Interface for Identity Service authentication.
