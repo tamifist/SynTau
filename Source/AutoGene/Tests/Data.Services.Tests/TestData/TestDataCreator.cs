@@ -22,30 +22,13 @@ namespace Data.Services.Tests.TestData
     {
         private readonly DbContext dbContext;
         private readonly Dictionary<Type, object> identityMap = new Dictionary<Type, object>();
-        private readonly Dictionary<Type, Action> initializers = new Dictionary<Type, Action>();
 
         public TestDataCreator(DbContext dbContext)
         {
             this.dbContext = dbContext;
         }
 
-        public void InitializeGraph()
-        {
-            initializers.Values.ToList().ForEach(i => i());
-        }
-
-        public bool HasObjectOfType<T>()
-        {
-            return identityMap.ContainsKey(typeof(T));
-        }
-
-        public void Attach<T>(T entity)
-        {
-            Console.WriteLine("Attaching instance of {0}", typeof(T).Name);
-            identityMap[typeof(T)] = entity;
-        }
-
-        protected T GetOrCreate<T>(Func<T> entityCreator, Action<T> navigationInitializer = null)
+        protected T GetOrCreate<T>(Func<T> entityCreator)
         {
             if (identityMap.ContainsKey(typeof(T)))
             {
@@ -54,18 +37,7 @@ namespace Data.Services.Tests.TestData
             Console.WriteLine("Creating instance of {0}", typeof(T).Name);
             T entity = entityCreator();
             identityMap.Add(typeof(T), entity);
-            if (navigationInitializer != null)
-            {
-                initializers[typeof(T)] = () => navigationInitializer(entity);
-            }
             return entity;
-        }
-
-        protected T GetAndInitialize<T>(Action<T> initialize) where T : new()
-        {
-            T instance = GetOrCreate(() => new T());
-            initializers[typeof(T)] = () => initialize(instance);
-            return instance;
         }
 
         public void DeleteCreatedEntities()
@@ -93,22 +65,6 @@ namespace Data.Services.Tests.TestData
                 throw new NotImplementedException("Implement " + methodInfo + " method in TestDataCreator");
             }
             return (T)methodInfo.Invoke(this, null);
-        }
-
-        public User CreateUser(string email, string firstName, string lastName, string password, string roleName, string roleDescription)
-        {
-            var user = new User
-            {
-                Email = email,
-                FirstName = firstName,
-                LastName = lastName,
-                Password = password,
-                PasswordSalt = "test"
-            };
-
-            user.Roles.Add(CreateRole(roleName, roleDescription));
-
-            return GetOrCreate(() => user);
         }
 
         public User CreateTestUser()

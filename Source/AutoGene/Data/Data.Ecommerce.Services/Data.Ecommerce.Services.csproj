@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Data.Common.Services\Data.Common.Services.csproj" />
+    <ProjectReference Include="..\Data.Ecommerce.Contracts\Data.Ecommerce.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

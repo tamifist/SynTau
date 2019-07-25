@@ -50,3 +50,15 @@
 /Source/AutoGene/Presentation/Web/Presentation.Host/obj
 /Source/AutoGene/Presentation/Web/Presentation.Host/Presentation.Host.csproj.user
 /Source/AutoGene/Presentation/Web/WebApplication1/bin/Debug/netcoreapp2.2
+/Source/AutoGene/Data/Data.Common.Contracts/bin/Debug/netstandard2.0
+/Source/AutoGene/Data/Data.Common.Contracts/obj
+/Source/AutoGene/Data/Data.Common.Services/bin/Debug/netstandard2.0
+/Source/AutoGene/Data/Data.Common.Services/obj
+/Source/AutoGene/Data/Data.Ecommerce.Contracts/bin/Debug/netstandard2.0
+/Source/AutoGene/Data/Data.Ecommerce.Contracts/obj
+/Source/AutoGene/Data/Data.Ecommerce.Services/bin/Debug/netstandard2.0
+/Source/AutoGene/Data/Data.Ecommerce.Services/obj
+/Source/AutoGene/Tests/Data.Common.Services.Tests/bin/Debug
+/Source/AutoGene/Tests/Data.Common.Services.Tests/Data.Ecommerce.Services.Tests/bin/Debug
+/Source/AutoGene/Tests/Data.Common.Services.Tests/Data.Ecommerce.Services.Tests/obj/Debug
+/Source/AutoGene/Tests/Data.Common.Services.Tests/obj/Debug

@@ -1,25 +1,23 @@
 ﻿using System;
-using System.Data.Entity;
-using System.Data.Entity.Validation;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
-using Data.Contracts;
-using Data.Contracts.Entities;
-using Data.Framework.Helpers;
-using Data.Services.Helpers;
-using Data.Services.Tests.TestData;
-using Microsoft.Azure.Mobile.Server;
+using Data.Common.Contracts;
+using Data.Common.Contracts.Entities;
+using Data.Common.Services.Helpers;
+using Data.Common.Services.Tests.TestData;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shared.Framework.Utilities;
 
-namespace Data.Services.Tests.RepositoryIntegrationTests.Base
+namespace Data.Common.Services.Tests.RepositoryIntegrationTests.Base
 {
-    [TestClass]
-    public abstract class RepositoryIntegrationTestsBase<T, TDataCreator>
-        where T : Entity, new()
-        where TDataCreator : TestDataCreator
+    public abstract class RepositoryIntegrationTestsBase<T, TEntityCreator>
+        where T : BaseEntity, new()
+        where TEntityCreator : CommonEntityCreator
     {
         private IUnitOfWork unitOfWork;
-        private TDataCreator creator;
+        private TEntityCreator entityCreator;
 
         protected DbContext DbContext
         {
@@ -35,11 +33,11 @@ namespace Data.Services.Tests.RepositoryIntegrationTests.Base
             }
         }
 
-        protected TDataCreator EntityCreator
+        protected TEntityCreator EntityCreator
         {
             get
             {
-                return creator;
+                return entityCreator;
             }
         }
 
@@ -60,10 +58,14 @@ namespace Data.Services.Tests.RepositoryIntegrationTests.Base
         [TestInitialize]
         public void SetupEachTest()
         {
-            DbContext = new CommonDbContext();
+            DbContext = CreateDbContext();
             unitOfWork = new UnitOfWork(DbContext, new RepositoryFactory(new RepositoryFactoriesBuilder()));
-            creator = CreateEntityCreator(DbContext);
+            entityCreator = CreateEntityCreator(DbContext);
         }
+
+        protected abstract DbContext CreateDbContext();
+
+        protected abstract TEntityCreator CreateEntityCreator(DbContext context);
 
         [TestCleanup]
         public void TearDownEachTest()
@@ -72,7 +74,7 @@ namespace Data.Services.Tests.RepositoryIntegrationTests.Base
             {
                 if (EnableDelete)
                 {
-                    creator.DeleteCreatedEntities();
+                    entityCreator.DeleteCreatedEntities();
                 }
                 DbContext.SaveChanges();
                 CreatedEntity = null;
@@ -81,15 +83,13 @@ namespace Data.Services.Tests.RepositoryIntegrationTests.Base
             unitOfWork = null;
         }
 
-        // This is tests for CRUD. All we need in our tests class is override 
-        // CreateEntity method to provide specific instance of Entity with own mapping.
         [TestMethod]
         public void InsertOrUpdate_NewObjectProvided_CreatedSuccessfully()
         {
             T entity = CreateEntity();
             InsertOrUpdate(entity);
             Console.WriteLine(CreatedEntity.DumpToString());
-            AssertOnCreatedEntity(CreatedEntity);
+            Assert.IsTrue(CreatedEntity.CreatedAt != null);
         }
 
         [TestMethod]
@@ -99,7 +99,17 @@ namespace Data.Services.Tests.RepositoryIntegrationTests.Base
             InsertOrUpdate(entity);
             Console.WriteLine(CreatedEntity.DumpToString());
             T result = unitOfWork.GetById<T>(CreatedEntity.Id);
-            AssertOnRetrievedEntity(result);
+            Assert.IsNotNull(entity);
+        }
+
+        [TestMethod]
+        public async void GetAll_CreatedEntityIdProvided_RetrievedSuccessfully()
+        {
+            T entity = CreateEntity();
+            InsertOrUpdate(entity);
+            Console.WriteLine(CreatedEntity.DumpToString());
+            IList<T> allEntities = await unitOfWork.GetAll<T>().ToListAsync();
+            Assert.IsNotNull(allEntities.FirstOrDefault(x => x.Id == CreatedEntity.Id));
         }
 
         [TestMethod]
@@ -110,18 +120,8 @@ namespace Data.Services.Tests.RepositoryIntegrationTests.Base
             Console.WriteLine(CreatedEntity.DumpToString());
             unitOfWork.Delete(CreatedEntity);
             SaveChanges();
-            Entity result = unitOfWork.GetById<T>(CreatedEntity.Id);
+            BaseEntity result = unitOfWork.GetById<T>(CreatedEntity.Id);
             Assert.IsNull(result);
-        }
-
-        protected virtual void AssertOnCreatedEntity(T entity)
-        {
-            Assert.IsTrue(!(entity.CreatedAt == null));
-        }
-
-        protected virtual void AssertOnRetrievedEntity(T entity)
-        {
-            Assert.IsNotNull(entity);
         }
 
         protected virtual void InsertOrUpdate(T entity)
@@ -136,15 +136,12 @@ namespace Data.Services.Tests.RepositoryIntegrationTests.Base
             {
                 DbContext.SaveChanges();
             }
-            catch (DbEntityValidationException e)
+            catch (Exception ex)
             {
-                e.EntityValidationErrors.SelectMany(error => error.ValidationErrors).ToList().ForEach(
-                    item => Console.WriteLine("{0} - {1}", item.PropertyName, item.ErrorMessage));
+                Console.WriteLine(ex.Message);
                 throw;
             }
         }
-
-        protected abstract TDataCreator CreateEntityCreator(DbContext context);
 
         protected abstract T CreateEntity();
     }
