@@ -7,17 +7,22 @@ using Data.Common.Contracts.Entities;
 using Data.Common.Services.Helpers;
 using Data.Common.Services.Tests.TestData;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shared.Framework.Utilities;
+using Xunit;
 
 namespace Data.Common.Services.Tests.RepositoryIntegrationTests.Base
 {
-    public abstract class RepositoryIntegrationTestsBase<T, TEntityCreator>
+    public abstract class RepositoryIntegrationTestsBase<T, TEntityCreator>: IDisposable
         where T : BaseEntity, new()
         where TEntityCreator : CommonEntityCreator
     {
         private IUnitOfWork unitOfWork;
         private TEntityCreator entityCreator;
+
+        protected RepositoryIntegrationTestsBase()
+        {
+            TestInitialize();
+        }
 
         protected DbContext DbContext
         {
@@ -55,20 +60,72 @@ namespace Data.Common.Services.Tests.RepositoryIntegrationTests.Base
             }
         }
 
-        [TestInitialize]
-        public void SetupEachTest()
+        [Fact]
+        public void InsertOrUpdate_NewObjectProvided_CreatedSuccessfully()
         {
-            DbContext = CreateDbContext();
-            unitOfWork = new UnitOfWork(DbContext, new RepositoryFactory(new RepositoryFactoriesBuilder()));
-            entityCreator = CreateEntityCreator(DbContext);
+            T entity = CreateEntity();
+            InsertOrUpdate(entity);
+            Console.WriteLine(CreatedEntity.DumpToString());
+            Assert.True(CreatedEntity.CreatedAt != null);
+        }
+
+        [Fact]
+        public void GetById_CreatedEntityIdProvided_RetrievedSuccessfully()
+        {
+            T entity = CreateEntity();
+            InsertOrUpdate(entity);
+            Console.WriteLine(CreatedEntity.DumpToString());
+            T result = unitOfWork.GetById<T>(CreatedEntity.Id);
+            Assert.NotNull(entity);
+        }
+
+        [Fact]
+        public async void GetAll_CreatedEntityIdProvided_RetrievedSuccessfully()
+        {
+            T entity = CreateEntity();
+            InsertOrUpdate(entity);
+            Console.WriteLine(CreatedEntity.DumpToString());
+            IList<T> allEntities = await unitOfWork.GetAll<T>().ToListAsync();
+            Assert.NotNull(allEntities.FirstOrDefault(x => x.Id == CreatedEntity.Id));
+        }
+
+        [Fact]
+        public void Delete_CreatedEntityProvided_DeletedSuccessfully()
+        {
+            T entity = CreateEntity();
+            InsertOrUpdate(entity);
+            Console.WriteLine(CreatedEntity.DumpToString());
+            unitOfWork.Delete(CreatedEntity);
+            SaveChanges();
+            BaseEntity result = unitOfWork.GetById<T>(CreatedEntity.Id);
+            Assert.Null(result);
+        }
+
+        public void Dispose()
+        {
+            TestCleanup();
         }
 
         protected abstract DbContext CreateDbContext();
 
         protected abstract TEntityCreator CreateEntityCreator(DbContext context);
 
-        [TestCleanup]
-        public void TearDownEachTest()
+        protected abstract T CreateEntity();
+
+        protected virtual void InsertOrUpdate(T entity)
+        {
+            CreatedEntity = unitOfWork.InsertOrUpdate(entity);
+            SaveChanges();
+        }
+
+        private void TestInitialize()
+        {
+            DbContext = CreateDbContext();
+            unitOfWork = new UnitOfWork(DbContext, new RepositoryFactory(new RepositoryFactoriesBuilder()));
+            entityCreator = CreateEntityCreator(DbContext);
+        }
+
+        private void TestCleanup()
         {
             if (CreatedEntity != null)
             {
@@ -83,53 +140,6 @@ namespace Data.Common.Services.Tests.RepositoryIntegrationTests.Base
             unitOfWork = null;
         }
 
-        [TestMethod]
-        public void InsertOrUpdate_NewObjectProvided_CreatedSuccessfully()
-        {
-            T entity = CreateEntity();
-            InsertOrUpdate(entity);
-            Console.WriteLine(CreatedEntity.DumpToString());
-            Assert.IsTrue(CreatedEntity.CreatedAt != null);
-        }
-
-        [TestMethod]
-        public void GetById_CreatedEntityIdProvided_RetrievedSuccessfully()
-        {
-            T entity = CreateEntity();
-            InsertOrUpdate(entity);
-            Console.WriteLine(CreatedEntity.DumpToString());
-            T result = unitOfWork.GetById<T>(CreatedEntity.Id);
-            Assert.IsNotNull(entity);
-        }
-
-        [TestMethod]
-        public async void GetAll_CreatedEntityIdProvided_RetrievedSuccessfully()
-        {
-            T entity = CreateEntity();
-            InsertOrUpdate(entity);
-            Console.WriteLine(CreatedEntity.DumpToString());
-            IList<T> allEntities = await unitOfWork.GetAll<T>().ToListAsync();
-            Assert.IsNotNull(allEntities.FirstOrDefault(x => x.Id == CreatedEntity.Id));
-        }
-
-        [TestMethod]
-        public void Delete_CreatedEntityProvided_DeletedSuccessfully()
-        {
-            T entity = CreateEntity();
-            InsertOrUpdate(entity);
-            Console.WriteLine(CreatedEntity.DumpToString());
-            unitOfWork.Delete(CreatedEntity);
-            SaveChanges();
-            BaseEntity result = unitOfWork.GetById<T>(CreatedEntity.Id);
-            Assert.IsNull(result);
-        }
-
-        protected virtual void InsertOrUpdate(T entity)
-        {
-            CreatedEntity = unitOfWork.InsertOrUpdate(entity);
-            SaveChanges();
-        }
-
         private void SaveChanges()
         {
             try
@@ -142,7 +152,5 @@ namespace Data.Common.Services.Tests.RepositoryIntegrationTests.Base
                 throw;
             }
         }
-
-        protected abstract T CreateEntity();
     }
 }

@@ -2,7 +2,6 @@
 using Data.Common.Contracts.Entities;
 using Data.Common.Services.Tests.TestData;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Data.Common.Services.Tests.RepositoryIntegrationTests.Base
 {
@@ -18,7 +17,7 @@ namespace Data.Common.Services.Tests.RepositoryIntegrationTests.Base
         protected override DbContext CreateDbContext()
         {
             var optionsBuilder = new DbContextOptionsBuilder<DbContext>();
-            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+            optionsBuilder.UseSqlServer(Configuration.ConnectionStrings.DbConnection);
             var dbContext = new BaseDbContext(optionsBuilder.Options);
 
             return dbContext;
