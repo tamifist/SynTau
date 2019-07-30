@@ -6,7 +6,7 @@ using Shared.Resources;
 
 namespace AutoGene.Presentation.Host.Hubs
 {
-    [HubName(Identifiers.SignalHubName)]
+    [HubName(Configuration.SignalHubName)]
     public class SignalHub: Hub
     {
         public SignalHub()

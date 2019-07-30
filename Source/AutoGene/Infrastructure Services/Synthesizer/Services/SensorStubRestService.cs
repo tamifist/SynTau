@@ -11,7 +11,7 @@ namespace Infrastructure.API.Synthesizer.Services
     {
         private readonly Random random;
 
-        public SensorStubRestService() : base(Identifiers.Environment.SynthesizerApiUrl)
+        public SensorStubRestService() : base(Configuration.Environment.SynthesizerApiUrl)
 		{
             random = new Random();
         }

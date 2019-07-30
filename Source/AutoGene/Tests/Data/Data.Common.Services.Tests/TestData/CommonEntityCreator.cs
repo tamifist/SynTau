@@ -50,11 +50,11 @@ namespace Data.Common.Services.Tests.TestData
             }
         }
 
-        public User CreateTestUserWithRole(string roleName)
+        public User CreateTestUserWithRole(string roleName = null)
         {
             User user = CreateTestUser();
 
-            user.AddRole(CreateRole(roleName, null));
+            user.AddRole(CreateRole(roleName ?? "TestRole1", null));
 
             return GetOrCreate(user, () => RemoveEntity(user));
         }

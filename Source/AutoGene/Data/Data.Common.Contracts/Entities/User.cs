@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Data.Common.Contracts.Attributes;
 using Shared.Enum;
 
 namespace Data.Common.Contracts.Entities
@@ -13,40 +9,40 @@ namespace Data.Common.Contracts.Entities
         /// <summary>
         /// User login.
         /// </summary>
-        [Required]
-        [Index(IsUnique = true)]
-        [StringLength(255)]
+        //[Required]
+        //[Index(IsUnique = true)]
+        //[StringLength(255)]
         public string Email
         {
             get;
             set;
         }
 
-        [Required]
-        [StringLength(255, MinimumLength = 8)]
+        //[Required]
+        //[StringLength(255, MinimumLength = 8)]
         public string Password
         {
             get;
             set;
         }
 
-        [Required]
+        //[Required]
         public string PasswordSalt
         {
             get;
             set;
         }
 
-        [Required]
-        [StringLength(50)]
+        //[Required]
+        //[StringLength(50)]
         public string FirstName
         {
             get;
             set;
         }
 
-        [Required]
-        [StringLength(50)]
+        //[Required]
+        //[StringLength(50)]
         public string LastName
         {
             get;
@@ -54,7 +50,7 @@ namespace Data.Common.Contracts.Entities
         }
 
         //[Required]
-        [StringLength(255)]
+        //[StringLength(255)]
         public string Organization
         {
             get;
@@ -62,7 +58,7 @@ namespace Data.Common.Contracts.Entities
         }
 
         //[Required]
-        [StringLength(255)]
+        //[StringLength(255)]
         public string LabGroup
         {
             get;

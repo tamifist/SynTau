@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Data\Data.Common.Contracts\Data.Common.Contracts.csproj" />
     <ProjectReference Include="..\..\..\Data\Data.Common.Services\Data.Common.Services.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Resources\Shared.Resources.csproj" />
   </ItemGroup>
 
 </Project>

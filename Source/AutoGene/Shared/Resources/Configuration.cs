@@ -1,27 +1,32 @@
-﻿//#define LOCAL
+﻿//#define PROD
+//#define DEV
+#define LOCAL
+
+using System.Collections.Specialized;
 
 namespace Shared.Resources
 {
-    /// <summary>
-    /// Contains system constants.
-    /// </summary>
-    public class Identifiers
+    public class Configuration
     {
-#if LOCAL
+#if PROD
         public static class Environment
         {
-            public const string AppServiceUrl = "http://192.168.100.2/autogene";
-            public const string MobileServiceUrl = "http://autogenemobile.azurewebsites.net/";
-            public const string SynthesizerApiUrl = "http://93.84.120.9:8888";
         }
-#else
+#elif DEV
         public static class Environment
         {
+        }
+#elif LOCAL
+        public static class Environment
+        {
+            public const string Name = "LOCAL";
             public const string AppServiceUrl = "http://autogene.net/";
             public const string MobileServiceUrl = "http://autogenemobile.azurewebsites.net/";
             public const string SynthesizerApiUrl = "http://192.168.56.1/";
+            public const string DbConnection = "Data Source=DESKTOP-EP5CCT1;Initial Catalog=syntau;User ID=sa;Password=1Q2w3e!";
         }
 #endif
+
         public const string SignalHubName = "SignalHub";
     }
 }

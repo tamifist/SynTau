@@ -11,7 +11,7 @@ namespace Data.Common.Services.Tests.RepositoryIntegrationTests
 
         protected override User CreateEntity()
         {
-            return EntityCreator.CreateTestUser();
+            return EntityCreator.CreateTestUserWithRole();
         }
 
         [Fact]

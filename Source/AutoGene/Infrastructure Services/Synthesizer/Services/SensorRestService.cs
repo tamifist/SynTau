@@ -8,7 +8,7 @@ namespace Infrastructure.API.Synthesizer.Services
 {
     public class SensorRestService : RestService
     {
-        public SensorRestService() : base(Identifiers.Environment.SynthesizerApiUrl)
+        public SensorRestService() : base(Configuration.Environment.SynthesizerApiUrl)
 		{
         }
 

@@ -1,21 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Data.Common.Contracts.Entities;
+﻿using Data.Common.Contracts.Entities;
 
 namespace Data.Ecommerce.Contracts.Entities
 {
     public class GeneOrder: BaseEntity
     {
-        [Required]
+        //[Required]
         public string Name { get; set; }
 
-        [Required]
+        //[Required]
         public string Sequence { get; set; }
 
         public string UserId { get; set; }
 
-        [Required]
-        [ForeignKey("UserId")]
+        //[Required]
+        //[ForeignKey("UserId")]
         public User User { get; set; }
     }
 }

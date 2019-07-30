@@ -2,6 +2,7 @@
 using Data.Common.Contracts.Entities;
 using Data.Common.Services.Tests.TestData;
 using Microsoft.EntityFrameworkCore;
+using Shared.Resources;
 
 namespace Data.Common.Services.Tests.RepositoryIntegrationTests.Base
 {
@@ -16,11 +17,7 @@ namespace Data.Common.Services.Tests.RepositoryIntegrationTests.Base
 
         protected override DbContext CreateDbContext()
         {
-            var optionsBuilder = new DbContextOptionsBuilder<DbContext>();
-            optionsBuilder.UseSqlServer(Configuration.ConnectionStrings.DbConnection);
-            var dbContext = new BaseDbContext(optionsBuilder.Options);
-
-            return dbContext;
+            return BaseDbContextFactory.Create();
         }
     }
 }

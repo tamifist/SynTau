@@ -16,7 +16,8 @@ namespace Data.Ecommerce.Services.Tests.RepositoryIntegrationTests
             GeneOrder geneOrder = EntityCreator.CreateGeneOrder();
             InsertOrUpdate(geneOrder);
             GeneOrder x = UnitOfWork.GetById<GeneOrder>(CreatedEntity.Id);
-            Assert.NotNull(x);
+            Assert.NotNull(x.UserId);
+            Assert.NotNull(x.User);
         }
     }
 }

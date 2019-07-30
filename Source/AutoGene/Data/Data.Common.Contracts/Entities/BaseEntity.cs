@@ -1,7 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Data.Common.Contracts.Attributes;
 
 namespace Data.Common.Contracts.Entities
 {
@@ -12,17 +9,17 @@ namespace Data.Common.Contracts.Entities
             Id = Guid.NewGuid().ToString("N");
         }
 
-        [Key]
+        //[Key]
         public string Id { get; set; }
 
-        [Timestamp]
+        //[Timestamp]
         public byte[] Version { get; set; }
 
-        [Index(IsClustered = true)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //[Index(IsClustered = true)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTimeOffset? CreatedAt { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTimeOffset? UpdatedAt { get; set; }
 
         public bool Deleted { get; set; }

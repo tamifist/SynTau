@@ -22,7 +22,7 @@ namespace Data.Ecommerce.Services.Tests.RepositoryIntegrationTests
             {
                 Name = "Poly T",
                 Sequence = "TTTTTTT",
-                User = CreateTestUser()
+                User = CreateTestUserWithRole()
             };
 
             return GetOrCreate(geneOrder, () => RemoveEntity(geneOrder));
