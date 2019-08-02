@@ -66,3 +66,5 @@
 /Source/AutoGene/Tests/Data/Data.Common.Services.Tests/obj
 /Source/AutoGene/Tests/Data/Data.Ecommerce.Services.Tests/bin/Debug/netcoreapp2.2
 /Source/AutoGene/Tests/Data/Data.Ecommerce.Services.Tests/obj
+/Source/AutoGene/Data/Data.Migrations.All/bin/Debug/netstandard2.0
+/Source/AutoGene/Data/Data.Migrations.All/obj

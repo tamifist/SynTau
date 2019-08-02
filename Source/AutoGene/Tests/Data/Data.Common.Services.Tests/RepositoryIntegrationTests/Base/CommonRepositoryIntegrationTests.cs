@@ -17,7 +17,7 @@ namespace Data.Common.Services.Tests.RepositoryIntegrationTests.Base
 
         protected override DbContext CreateDbContext()
         {
-            return BaseDbContextFactory.Create();
+            return new BaseDbContext(BaseDbContextOptionsFactory.Create());
         }
     }
 }

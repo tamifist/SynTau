@@ -4,7 +4,7 @@ namespace Data.Ecommerce.Services
 {
     public class EcommerceDbContext : BaseDbContext
     {
-        public EcommerceDbContext(CommonDbContextOptions options)
+        public EcommerceDbContext(BaseDbContextOptions options)
             : base(options)
         {
         }

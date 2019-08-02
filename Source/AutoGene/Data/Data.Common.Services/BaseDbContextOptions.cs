@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Data.Common.Services
 {
-    public class CommonDbContextOptions
+    public class BaseDbContextOptions
     {
         public readonly DbContextOptions<DbContext> Options;
         public readonly BaseDbContextSeed DbContextSeed;
         public readonly IEnumerable<IEntityMap> Mappings;
 
-        public CommonDbContextOptions(DbContextOptions<DbContext> options, BaseDbContextSeed dbContextSeed, IEnumerable<IEntityMap> mappings)
+        public BaseDbContextOptions(DbContextOptions<DbContext> options, BaseDbContextSeed dbContextSeed, IEnumerable<IEntityMap> mappings)
         {
             DbContextSeed = dbContextSeed;
             Options = options;

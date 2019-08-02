@@ -1,27 +1,23 @@
 ﻿using System.Collections.Generic;
-using Data.Common.Services;
 using Data.Common.Services.Mappings;
-using Data.Ecommerce.Services.Mappings;
 using Microsoft.EntityFrameworkCore;
 using Shared.Resources;
 
-namespace Data.Ecommerce.Services
+namespace Data.Common.Services
 {
-    public static class EcommerceDbContextFactory
+    public static class BaseDbContextOptionsFactory
     {
-        public static BaseDbContext Create()
+        public static BaseDbContextOptions Create()
         {
             var optionsBuilder = new DbContextOptionsBuilder<DbContext>();
             optionsBuilder.UseSqlServer(Configuration.Environment.DbConnection);
-            var dbContext = new BaseDbContext(new CommonDbContextOptions(optionsBuilder.Options, new BaseDbContextSeed(), new List<IEntityMap>()
+
+            return new BaseDbContextOptions(optionsBuilder.Options, new BaseDbContextSeed(), new List<IEntityMap>()
             {
                 new UserMap(),
                 new RoleMap(),
                 new UserRoleMap(),
-                new GeneOrderMap()
-            }));
-
-            return dbContext;
+            });
         }
     }
 }

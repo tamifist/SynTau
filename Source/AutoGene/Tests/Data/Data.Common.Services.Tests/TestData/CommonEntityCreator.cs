@@ -71,6 +71,7 @@ namespace Data.Common.Services.Tests.TestData
                 Organization = "Test Organization",
                 LabGroup = "Test Lab",
                 Country = CountryEnum.Belarus,
+                //CreatedAt = DateTimeOffset.Now,
             };
 
             return GetOrCreate(user, () => RemoveEntity(user));
@@ -81,7 +82,8 @@ namespace Data.Common.Services.Tests.TestData
             var role = new Role
             {
                 Name = roleName,
-                Description = roleDescription
+                Description = roleDescription,
+                //CreatedAt = DateTimeOffset.Now,
             };
 
             return GetOrCreate(role, () => RemoveEntity(role));

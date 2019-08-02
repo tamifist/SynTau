@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20190802134951_Ecommerce_GeneOrder.cs" />
+    <Compile Remove="Migrations\20190802134951_Ecommerce_GeneOrder.Designer.cs" />
+    <Compile Remove="Migrations\20190802150753_Common_BaseEntity_CreatedAtDefaultValue.cs" />
+    <Compile Remove="Migrations\20190802150753_Common_BaseEntity_CreatedAtDefaultValue.Designer.cs" />
+    <Compile Remove="Migrations\20190802152829_Common_BaseEntity_SetCreatedAtRequired.cs" />
+    <Compile Remove="Migrations\20190802152829_Common_BaseEntity_SetCreatedAtRequired.Designer.cs" />
+    <Compile Remove="Migrations\20190802153201_Common_BaseEntity_SetCreatedAtRequired.cs" />
+    <Compile Remove="Migrations\20190802153201_Common_BaseEntity_SetCreatedAtRequired.Designer.cs" />
+    <Compile Remove="Migrations\20190802153359_Common_BaseEntity_SetCreatedAtRequired.cs" />
+    <Compile Remove="Migrations\20190802153359_Common_BaseEntity_SetCreatedAtRequired.Designer.cs" />
+    <Compile Remove="Migrations\20190802153453_Common_BaseEntity_SetCreatedAtRequired.cs" />
+    <Compile Remove="Migrations\20190802153453_Common_BaseEntity_SetCreatedAtRequired.Designer.cs" />
+    <Compile Remove="Migrations\20190802173812_Common_BaseEntity_SetCreatedAtRequired.cs" />
+    <Compile Remove="Migrations\20190802173812_Common_BaseEntity_SetCreatedAtRequired.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Data.Ecommerce.Services\Data.Ecommerce.Services.csproj" />
+  </ItemGroup>
+
+</Project>

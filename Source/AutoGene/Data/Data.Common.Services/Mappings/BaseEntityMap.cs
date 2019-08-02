@@ -17,15 +17,22 @@ namespace Data.Common.Services.Mappings
 
         protected virtual void InternalMap(EntityTypeBuilder<TEntity> entityBuilder)
         {
-            entityBuilder.HasKey(x => x.Id);
-            entityBuilder.Property(x => x.Version).IsRowVersion();
+            entityBuilder
+                .HasKey(x => x.Id)
+                .ForSqlServerIsClustered(false);
+
+            entityBuilder
+                .Property(x => x.Version)
+                .IsRowVersion();
 
             entityBuilder
                 .HasIndex(x => x.CreatedAt)
-                .ForSqlServerIsClustered();
+                .ForSqlServerIsClustered(true);
+
             entityBuilder
                 .Property(x => x.CreatedAt)
-                .ValueGeneratedOnAdd();
+                .ValueGeneratedOnAdd()
+                .HasDefaultValueSql("getdate()");
 
             entityBuilder
                 .Property(x => x.UpdatedAt)

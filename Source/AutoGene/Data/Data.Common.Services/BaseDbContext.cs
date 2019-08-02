@@ -4,9 +4,9 @@ namespace Data.Common.Services
 {
     public class BaseDbContext : DbContext
     {
-        private readonly CommonDbContextOptions options;
+        private readonly BaseDbContextOptions options;
 
-        public BaseDbContext(CommonDbContextOptions options)
+        public BaseDbContext(BaseDbContextOptions options)
             : base(options.Options)
         {
             this.options = options;

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -10,12 +10,18 @@
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Business\Contracts\Business.Contracts.csproj" />
     <ProjectReference Include="..\..\..\Business\Services\Business.Services.csproj" />
     <ProjectReference Include="..\..\..\Data\Contracts\Data.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\Data\Data.Common.Contracts\Data.Common.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\Data\Data.Common.Services\Data.Common.Services.csproj" />
+    <ProjectReference Include="..\..\..\Data\Data.Ecommerce.Contracts\Data.Ecommerce.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\Data\Data.Ecommerce.Services\Data.Ecommerce.Services.csproj" />
+    <ProjectReference Include="..\..\..\Data\Data.Migrations.All\Data.Migrations.All.csproj" />
     <ProjectReference Include="..\..\..\Data\Services\Data.Services.csproj" />
     <ProjectReference Include="..\..\..\Infrastructure Services\Contracts\Infrastructure.Identity.Contracts.csproj" />
     <ProjectReference Include="..\..\..\Infrastructure Services\Identity\Infrastructure.Identity.Services.csproj" />
