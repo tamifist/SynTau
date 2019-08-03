@@ -1,6 +1,5 @@
 ﻿using Autofac;
-using Data.Services;
-using Data.Services.Helpers;
+using Data.Common.Services.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Shared.Framework.Dependency;
 using Shared.Framework.Modules;
@@ -14,8 +13,6 @@ namespace Presentation.Host.Composition
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<RepositoryFactoriesBuilder>().SingleInstance();
-            builder.RegisterType<CommonDbContext>().As<DbContext>().InstancePerRequest();
             builder.RegisterDefaultDependencies(Assemblies.All.Data());
 
             base.Load(builder);

@@ -50,7 +50,7 @@ namespace Shared.Framework.Dependency
 
                 builder.RegisterAssemblyTypes(assembly)
                        .Where(t => t.IsAssignableTo<ISingletonDependency>())
-                       .As(t => ResolveBaseAbstract(t))
+                       //.As(t => ResolveBaseAbstract(t))
                        .AsSelf()
                        .PropertiesAutowired(PropertyWiringOptions.PreserveSetValues)
                        .SingleInstance();

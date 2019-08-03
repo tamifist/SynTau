@@ -10,14 +10,10 @@ namespace Data.Common.Services.Mappings
         {
             EntityTypeBuilder<UserRole> entityBuilder = modelBuilder.Entity<UserRole>();
 
-            entityBuilder.ToTable("RoleUsers");
+            entityBuilder.ToTable("UserRoles");
 
             entityBuilder
                 .HasKey(x => new { x.UserId, x.RoleId });
-
-            entityBuilder.Property(x => x.UserId).HasColumnName("User_Id");
-
-            entityBuilder.Property(x => x.RoleId).HasColumnName("Role_Id");
         }
     }
 }

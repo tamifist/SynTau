@@ -4,14 +4,16 @@ using Data.Ecommerce.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Data.Migrations.All.Migrations
 {
     [DbContext(typeof(EcommerceDbContext))]
-    partial class EcommerceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190803212750_Ecommerce_GeneOrder_AddSequenceType")]
+    partial class Ecommerce_GeneOrder_AddSequenceType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -115,15 +117,17 @@ namespace Data.Migrations.All.Migrations
 
             modelBuilder.Entity("Data.Common.Contracts.Entities.UserRole", b =>
                 {
-                    b.Property<string>("UserId");
+                    b.Property<string>("UserId")
+                        .HasColumnName("User_Id");
 
-                    b.Property<string>("RoleId");
+                    b.Property<string>("RoleId")
+                        .HasColumnName("Role_Id");
 
                     b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("UserRoles");
+                    b.ToTable("RoleUsers");
                 });
 
             modelBuilder.Entity("Data.Ecommerce.Contracts.Entities.GeneOrder", b =>

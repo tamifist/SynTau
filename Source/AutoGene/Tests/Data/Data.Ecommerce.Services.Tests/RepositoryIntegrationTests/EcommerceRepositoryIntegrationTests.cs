@@ -9,7 +9,7 @@ namespace Data.Ecommerce.Services.Tests.RepositoryIntegrationTests
     {
         protected override DbContext CreateDbContext()
         {
-            return new EcommerceDbContext(EcommerceDbContextOptionsFactory.Create());
+            return new EcommerceDbContext(new EcommerceDbContextOptionsFactory());
         }
 
         protected override EcommerceEntityCreator CreateEntityCreator(DbContext context)

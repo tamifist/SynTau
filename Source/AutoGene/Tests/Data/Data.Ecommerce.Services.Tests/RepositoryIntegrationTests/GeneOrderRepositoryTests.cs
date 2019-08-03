@@ -14,10 +14,13 @@ namespace Data.Ecommerce.Services.Tests.RepositoryIntegrationTests
         public void InsertOrUpdate_AddGeneOrder_AddedSuccessfully()
         {
             GeneOrder geneOrder = EntityCreator.CreateGeneOrder();
+
             InsertOrUpdate(geneOrder);
-            GeneOrder x = UnitOfWork.GetById<GeneOrder>(CreatedEntity.Id);
-            Assert.NotNull(x.UserId);
-            Assert.NotNull(x.User);
+
+            GeneOrder createdGeneOrder = UnitOfWork.GetById<GeneOrder>(CreatedEntity.Id);
+            Assert.NotNull(createdGeneOrder);
+            Assert.NotNull(createdGeneOrder.UserId);
+            Assert.NotNull(createdGeneOrder.User);
         }
     }
 }

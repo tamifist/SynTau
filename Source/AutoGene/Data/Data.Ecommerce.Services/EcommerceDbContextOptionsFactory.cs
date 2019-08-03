@@ -3,20 +3,21 @@ using Data.Common.Services;
 using Data.Common.Services.Mappings;
 using Data.Ecommerce.Services.Mappings;
 using Microsoft.EntityFrameworkCore;
+using Shared.Framework.Dependency;
 using Shared.Resources;
 
 namespace Data.Ecommerce.Services
 {
-    public static class EcommerceDbContextOptionsFactory
+    public class EcommerceDbContextOptionsFactory: IEcommerceDbContextOptionsFactory, ISingletonDependency
     {
-        public static EcommerceDbContextOptions Create()
+        public BaseDbContextOptions Create()
         {
             var optionsBuilder = new DbContextOptionsBuilder<DbContext>();
             optionsBuilder.UseSqlServer(
                 Configuration.Environment.DbConnection, 
                 x => x.MigrationsAssembly(Configuration.MigrationsAssemblyName));
 
-            return new EcommerceDbContextOptions(optionsBuilder.Options, new BaseDbContextSeed(), new List<IEntityMap>()
+            return new BaseDbContextOptions(optionsBuilder.Options, new BaseDbContextSeed(), new List<IEntityMap>()
             {
                 new UserMap(),
                 new RoleMap(),
