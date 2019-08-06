@@ -58,6 +58,8 @@ namespace Presentation.Host
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            env.EnvironmentName = Shared.Resources.Configuration.Environment.Name;
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -67,6 +69,14 @@ namespace Presentation.Host
 
             app.UseMvc(routes =>
             {
+//                routes.MapAreaRoute(
+//                    name: "Identity",
+//                    areaName: "Identity",
+//                    template: "Identity/{controller=Identity}/{action=ChangePassword}/{id?}");
+                routes.MapRoute(
+                    name: "defaultArea",
+                    template: "{area:exists}/{controller=Identity}/{action=ChangePassword}/{id?}");
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

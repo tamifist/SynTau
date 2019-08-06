@@ -1,0 +1,139 @@
+﻿@using Presentation.Common.Localization
+@using Shared.Framework.Collections
+
+@inject Localizer T
+
+@model Business.Identity.Contracts.ViewModels.CreateAccountViewModel
+
+@{
+    ViewBag.Title = T("App_Title");
+    Layout = "~/Views/Shared/_LayoutNonAuth.cshtml";
+}
+
+<div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+            <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+            <div class="col-lg-7">
+                <div class="p-5">
+                    <div class="text-left">
+                        <h1 class="h4 text-gray-900 mb-4">@T("App_Title")</h1>
+                        <h1 class="h4 text-gray-900 mb-4">@T("CreateAccount_FormTitle")</h1>
+                    </div>
+                    <form id="createAccountForm" class="user" method="POST" action="@Url.Action("CreateAccount", "Identity")">
+                        @Html.ValidationSummary()
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                @Html.TextBoxFor(model => model.FirstName,
+                                    new
+                                    {
+                                        placeholder = T("CreateAccount_FirstNamePlaceholder"),
+                                        @class = "form-control",
+                                        required = "required",
+                                        data_required_msg = T("CreateAccount_FirstNameRequiredMessage")
+                                    })
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.TextBoxFor(model => model.LastName,
+                                    new
+                                    {
+                                        placeholder = T("CreateAccount_LastNamePlaceholder"),
+                                        @class = "form-control",
+                                        required = "required",
+                                        data_required_msg = T("CreateAccount_LastNameRequiredMessage")
+                                    })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                @Html.TextBoxFor(model => model.Email,
+                                    new
+                                    {
+                                        placeholder = T("Login_CreateAccount_EmailPlaceholder"),
+                                        @class = "form-control",
+                                        @type = "email",
+                                        required = "required",
+                                        data_required_msg = T("Login_CreateAccount_EmailRequiredMessage"),
+                                        data_email_msg = T("Login_CreateAccount_EmailIsNotValidMessage"),
+                                    })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                @Html.TextBoxFor(model => model.Password,
+                                    new
+                                    {
+                                        id = "Password",
+                                        placeholder = T("Login_CreateAccount_PasswordPlaceholder"),
+                                        @class = "form-control",
+                                        @type = "password",
+                                        required = "required",
+                                        data_required_msg = T("Login_CreateAccount_PasswordRequiredMessage"),
+                                        data_minlength = 8,
+                                        data_minlength_msg = T("CreateAccount_PasswordStrengthErrorMessage")
+                                    })
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.TextBoxFor(model => model.ConfirmPassword,
+                                    new
+                                    {
+                                        placeholder = T("CreateAccount_ConfirmPasswordPlaceholder"),
+                                        @class = "form-control",
+                                        @type = "password",
+                                        data_equalto = "Password",
+                                        data_equalto_msg = T("CreateAccount_ConfirmPasswordErrorMessage"),
+                                    })
+                            </div>
+                        </div>
+                        <div class="form-group progress">
+                            <div id="StrengthProgressBar" class="progress-bar"></div>
+                        </div>
+                        @*<div class="form-group row">
+                                <div class="col-sm-12">
+                                    @Html.TextBoxFor(model => model.Organization, new { placeholder = "Company/Institute/Organization", @class = "form-control", required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    @Html.TextBoxFor(model => model.LabGroup, new { placeholder = "Lab/Group", @class = "form-control", required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    @(Html.Kendo().ComboBoxFor(model => model.Country)
+                                          .Filter("contains")
+                                          .Placeholder("Country")
+                                          .DataTextField("Text")
+                                          .DataValueField("Value")
+                                          .BindTo(Model.AllCountries)
+                                          .Suggest(true)
+                                          .HtmlAttributes(new { style = "width:100%;" })
+
+                                          )
+                                </div>
+                            </div>*@
+                        <button type="submit" class="btn btn-primary btn-user btn-block">@T("Login_CreateAccount_CreateAccountButton")</button>
+                    </form>
+                    <hr>
+                    <div class="text-center">
+                        <a class="small" href="@Url.Action("Login", "Identity")">@T("CreateAccount_LoginButton")</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            var loginFormValidator = new Validator($("#createAccountForm"));
+
+            $("#StrengthProgressBar").zxcvbnProgressBar({
+                passwordInput: "#Password"
+            });
+        });
+    </script>
+}
+
