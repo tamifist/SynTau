@@ -47,11 +47,8 @@ namespace Presentation.Host
             var containerBuilder = new ContainerBuilder();
 
             containerBuilder.RegisterModule<DataModule>();
-            //            containerBuilder
-            //                .RegisterType<EcommerceDbContext>()
-            //                .WithParameter("options", EcommerceDbContextOptionsFactory.Create())
-            //                .InstancePerLifetimeScope();
-            //containerBuilder.RegisterDefaultDependencies(Assemblies.All.Data());
+            containerBuilder.RegisterModule<BusinessModule>();
+            containerBuilder.RegisterModule<PresentationModule>();
 
             containerBuilder.Populate(services);
             var container = containerBuilder.Build();

@@ -30,5 +30,6 @@ namespace Shared.Resources
 
         public const string SignalHubName = "SignalHub"; 
         public const string MigrationsAssemblyName = "Data.Migrations.All";
+        public const int CookieExpirationMins = 30;
     }
 }

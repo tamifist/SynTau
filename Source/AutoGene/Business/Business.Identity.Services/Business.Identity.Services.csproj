@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\Data.Common.Contracts\Data.Common.Contracts.csproj" />
+    <ProjectReference Include="..\..\Shared\Enum\Shared.Enum.csproj" />
+    <ProjectReference Include="..\..\Shared\Framework\Shared.Framework.csproj" />
+    <ProjectReference Include="..\Business.Identity.Contracts\Business.Identity.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

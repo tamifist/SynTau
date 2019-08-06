@@ -68,3 +68,7 @@
 /Source/AutoGene/Tests/Data/Data.Ecommerce.Services.Tests/obj
 /Source/AutoGene/Data/Data.Migrations.All/bin/Debug/netstandard2.0
 /Source/AutoGene/Data/Data.Migrations.All/obj
+/Source/AutoGene/Business/Business.Identity.Contracts/obj
+/Source/AutoGene/Business/Business.Identity.Services/obj
+/Source/AutoGene/Business/Business.Identity.Services/bin/Debug/netstandard2.0
+/Source/AutoGene/Business/Business.Identity.Contracts/bin/Debug/netstandard2.0

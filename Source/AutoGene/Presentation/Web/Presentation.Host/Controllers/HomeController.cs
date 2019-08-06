@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Data.Common.Contracts;
 using Data.Common.Contracts.Entities;
+using Data.Ecommerce.Contracts;
 using Data.Ecommerce.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,16 +13,16 @@ namespace Presentation.Host.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly EcommerceDbContext dbContext;
+        private readonly IEcommerceUnitOfWork dbContext;
 
-        public HomeController(EcommerceDbContext dbContext)
+        public HomeController(IEcommerceUnitOfWork dbContext)
         {
             this.dbContext = dbContext;
         }
         // GET: /<controller>/
         public async Task<IActionResult> Index()
         {
-            var test = await dbContext.Set<User>().ToListAsync();
+            var test = await dbContext.GetAll<User>().ToListAsync();
             return View();
         }
     }

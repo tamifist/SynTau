@@ -1,4 +1,4 @@
-﻿using Infrastructure.Identity.Contracts.Services;
+﻿using Business.Identity.Contracts.Services;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Framework.Dependency;
 using Shared.Framework.Security;

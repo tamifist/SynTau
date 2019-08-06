@@ -16,7 +16,7 @@ namespace Data.Common.Services
     /// <summary>
     /// Represents wrapper above DBContext instance and repositories container.
     /// </summary>
-    public class UnitOfWork : IUnitOfWork, IScopedDependency
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly DbContext dbContext;
         private readonly IRepositoryFactory repositoryFactory;
