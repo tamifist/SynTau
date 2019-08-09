@@ -1,17 +1,26 @@
 [
   {
-    "outputFileName": "wwwroot/css/site.min.css",
+    "outputFileName": "wwwroot/css/site.css",
     "inputFiles": [
-      "wwwroot/css/site.css"
+      "wwwroot/lib/bootstrap/css/bootstrap.css",
+
+      "wwwroot/lib/kendo/css/kendo.common-bootstrap.min.css",
+      "wwwroot/lib/kendo/css/kendo.bootstrap.min.css",
+      "wwwroot/lib/kendo/css/kendo.bootstrap.custom.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/js/site.min.js",
+    "outputFileName": "wwwroot/js/site.js",
     "inputFiles": [
-      "wwwroot/js/site.js"
+      "wwwroot/lib/jquery/jquery.js",
+
+      "wwwroot/lib/bootstrap/js/bootstrap.js",
+
+      "wwwroot/lib/zxcvbn/zxcvbn.js",
+      "wwwroot/lib/zxcvbn/zxcvbn-bootstrap4-strength-meter.js"
     ],
     "minify": {
-      "enabled": true,
+      "enabled": false,
       "renameLocals": true
     },
     "sourceMap": false

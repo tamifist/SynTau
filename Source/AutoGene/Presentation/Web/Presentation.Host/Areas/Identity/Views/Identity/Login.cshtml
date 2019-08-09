@@ -1,12 +1,12 @@
 ﻿@using Presentation.Common.Localization
+@using Business.Identity.Contracts.ViewModels;
 
 @inject Localizer T
 
-@model Business.Identity.Contracts.ViewModels.LoginViewModel
+@model LoginViewModel
 
 @{
-    ViewBag.Title = T("App_Title");
-    Layout = "~/Views/Shared/_LayoutNonAuth.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="row justify-content-center">

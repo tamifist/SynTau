@@ -7,6 +7,7 @@ using Data.Common.Services.Helpers;
 using Data.Ecommerce.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Presentation.Host.Composition;
@@ -67,6 +68,17 @@ namespace Presentation.Host
 
             app.UseStaticFiles();
 
+//            var cachePeriod = env.IsDevelopment() ? "600" : "604800";
+//            app.UseStaticFiles(new StaticFileOptions
+//            {
+//                OnPrepareResponse = ctx =>
+//                {
+//                    // Requires the following import:
+//                    // using Microsoft.AspNetCore.Http;
+//                    ctx.Context.Response.Headers.Append("Cache-Control", $"public, max-age={cachePeriod}");
+//                }
+//            });
+
             app.UseMvc(routes =>
             {
 //                routes.MapAreaRoute(
@@ -81,9 +93,6 @@ namespace Presentation.Host
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-
-//            string userName = Configuration.GetSection("AppConfiguration")["UserName"];
-//            string password = Configuration.GetSection("AppConfiguration")["Password"];
         }
     }
 }
