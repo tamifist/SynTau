@@ -1,4 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 using Shared.Framework.Security;
 using Shared.Framework.Utilities;
 
@@ -13,74 +19,56 @@ namespace Presentation.Common.Security
             this.cookieExpiration = cookieExpiration;
         }
 
-        public void SaveIdentity(UserInfo userInfo)
+        public async Task SaveIdentity(HttpContext httpContext, UserInfo userInfo)
         {
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, userInfo.UserId),
+                new Claim(ClaimTypes.Email, userInfo.Email),
+                new Claim("FirstName", userInfo.FirstName),
+                new Claim("LastName", userInfo.LastName),
+            };
+
+            foreach (RoleInfo roleInfo in userInfo.Roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, roleInfo.Name));
+            }
+
+            ClaimsIdentity claimsIdentity = new ClaimsIdentity(
+                claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
             var cookieExpirationTime = userInfo.StayLoggedInToday
                 ? DateTime.Now.EndOfDay()
                 : DateTime.Now.Add(cookieExpiration);
 
-            //HttpCookie cookie = CreateCookie(userInfo, DateTime.Now, cookieExpirationTime);
-            //HttpContext.Current.Response.Cookies.Add(cookie);
+            var authProperties = new AuthenticationProperties
+            {
+                IsPersistent = true,
+                ExpiresUtc = cookieExpirationTime,
+            };
+
+            await httpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                new ClaimsPrincipal(claimsIdentity),
+                authProperties);
         }
 
-        public void ClearIdentity()
+        public async Task ClearIdentity(HttpContext httpContext)
         {
-            //FormsAuthentication.SignOut();
+            await httpContext.SignOutAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme);
         }
 
-        public IAutoGenePrincipal GetPrincipal()
+        public UserInfo GetPrincipal(HttpContext httpContext)
         {
-//            if (HttpContext.Current == null)
-//            {
-//                return null;
-//            }
-//
-//            HttpCookie cookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
-//            if (cookie == null)
-//            {
-//                return null;
-//            }
-//
-//            FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(cookie.Value);
-//
-//            JavaScriptSerializer serializer = new JavaScriptSerializer();
-//
-//            PrincipalSerializeModel serializeModel = serializer.Deserialize<PrincipalSerializeModel>(authTicket.UserData);
-//
-//            AutoGenePrincipal principal = new AutoGenePrincipal(authTicket.Name);
-//            principal.UserId = serializeModel.UserId;
-//            principal.Email = serializeModel.Email;
-//            principal.FirstName = serializeModel.FirstName;
-//            principal.LastName = serializeModel.LastName;
-//            principal.Roles = serializeModel.Roles;
-//
-//            return principal;
-            return null;
-        }
+            ClaimsPrincipal userClaims = httpContext.User;
+            UserInfo userInfo = new UserInfo();
+            userInfo.UserId = httpContext.User.FindFirst(c => c.Type == ClaimTypes.Name).Value;
+            userInfo.Email = httpContext.User.FindFirst(c => c.Type == ClaimTypes.Email).Value;
+            userInfo.FirstName = httpContext.User.FindFirst(c => c.Type == "FirstName").Value;
+            userInfo.LastName = httpContext.User.FindFirst(c => c.Type == "LastName").Value;
 
-//        private HttpCookie CreateCookie(UserInfo userInfo, DateTime issueDate, DateTime expiration)
-//        {
-//            PrincipalSerializeModel serializeModel = new PrincipalSerializeModel();
-//            serializeModel.UserId = userInfo.UserId;
-//            serializeModel.Email = userInfo.Email;
-//            serializeModel.FirstName = userInfo.FirstName;
-//            serializeModel.LastName = userInfo.LastName;
-//            serializeModel.Roles = userInfo.Roles;
-//
-//            JavaScriptSerializer serializer = new JavaScriptSerializer();
-//
-//            string userData = serializer.Serialize(serializeModel);
-//
-//            var authTicket = new FormsAuthenticationTicket(1, userInfo.Email, issueDate, expiration, true, userData);
-//
-//            string encTicket = FormsAuthentication.Encrypt(authTicket);
-//            HttpCookie authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
-//            if (authTicket.IsPersistent)
-//            {
-//                authCookie.Expires = authTicket.Expiration;
-//            }
-//
-//            return authCookie;
-//        }
+            return userInfo;
+        }
     }
 }

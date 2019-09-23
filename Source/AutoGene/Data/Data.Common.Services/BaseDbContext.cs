@@ -12,16 +12,16 @@ namespace Data.Common.Services
             this.options = options;
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(builder);
+            base.OnModelCreating(modelBuilder);
 
             foreach (var mapping in options.Mappings)
             {
-                mapping.Map(builder);
+                mapping.Map(modelBuilder);
             }
 
-            options.DbContextSeed.Seed(builder);
+            options.DbContextSeed.Seed(modelBuilder);
         }
 
 //        public BaseDbContext(DbContextOptions<DbContext> options)

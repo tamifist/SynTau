@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Common.Security
 {
@@ -8,25 +10,18 @@ namespace Presentation.Common.Security
     public interface IAuthenticationManager
     {
         /// <summary>
-        /// Redirects from login page.
-        /// </summary>
-        /// <param name="userName">Name of the user.</param>
-        /// <returns>Redirect action.</returns>
-        ActionResult RedirectFromLoginPage(string userName);
-
-        /// <summary>
         /// Logs in the user.
         /// </summary>
         /// <param name="userName">Name of the user.</param>
         /// <param name="password">The password.</param>
         /// <param name="stayLoggedInToday">Stay logged-in today.</param>
         /// <returns></returns>
-        AuthenticationResult LogIn(string userName, string password, bool stayLoggedInToday = false);
+        Task<AuthenticationResult> LogIn(HttpContext httpContext, string userName, string password, bool stayLoggedInToday = false);
 
         /// <summary>
         /// Logs out the user.
         /// </summary>
-        void LogOut();
+        Task LogOut(HttpContext httpContext);
 
         /// <summary>
         /// Changes the password.

@@ -20,7 +20,7 @@
                         <h1 class="h4 text-gray-900 mb-4">@T("App_Title")</h1>
                         <h1 class="h4 text-gray-900 mb-4">@T("CreateAccount_FormTitle")</h1>
                     </div>
-                    <form id="createAccountForm" class="user" method="POST" action="@Url.Action("CreateAccount", "Identity")">
+                    <form id="createAccountForm" class="user" method="POST" action="@Url.Action("CreateAccount", "Account")">
                         @Html.ValidationSummary()
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
@@ -116,7 +116,7 @@
                     </form>
                     <hr>
                     <div class="text-center">
-                        <a class="small" href="@Url.Action("Login", "Identity")">@T("CreateAccount_LoginButton")</a>
+                        <a class="small" href="@Url.Action("Login", "Account")">@T("CreateAccount_LoginButton")</a>
                     </div>
                 </div>
             </div>

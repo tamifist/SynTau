@@ -1,17 +1,16 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Data.Common.Contracts;
+﻿using System.Threading.Tasks;
 using Data.Common.Contracts.Entities;
 using Data.Ecommerce.Contracts;
-using Data.Ecommerce.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Presentation.Common.Controllers;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
-namespace Presentation.Host.Controllers
+namespace Presentation.Host.Areas.Ecommerce.Controllers
 {
+    [Area("Ecommerce")]
+    [Authorize(Policy = "Admin")]
+    //[Authorize]
     public class HomeController : BaseController
     {
         private readonly IEcommerceUnitOfWork dbContext;

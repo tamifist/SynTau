@@ -7,6 +7,7 @@ using Business.Identity.Contracts.Services;
 using Business.Identity.Contracts.ViewModels;
 using Data.Common.Contracts;
 using Data.Common.Contracts.Entities;
+using Microsoft.EntityFrameworkCore;
 using Shared.Enum;
 using Shared.Framework.Dependency;
 using Shared.Framework.Security;
@@ -82,7 +83,10 @@ namespace Business.Identity.Services.Services
         /// </returns>
         public UserInfo ValidateUserCredentials(string email, string password)
         {
-            User user = unitOfWork.GetAll<User>().SingleOrDefault(u => u.Email.Equals(email));
+            User user = unitOfWork.GetAll<User>()
+                .Include(x => x.UserRoles)
+                    .ThenInclude(x => x.Role)
+                .SingleOrDefault(u => u.Email.Equals(email));
 
             if (user == null)
             {

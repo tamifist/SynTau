@@ -24,7 +24,7 @@
                                 <h1 class="h4 text-gray-900 mb-4">@T("App_Title")</h1>
                                 <h1 class="h4 text-gray-900 mb-4">@T("Login_FormTitle")</h1>
                             </div>
-                            <form class="user" id="loginForm" method="POST" action="@Url.Action("Login", "Identity")">
+                            <form class="user" id="loginForm" method="POST" action="@Url.Action("Login", "Account")">
                                 @Html.ValidationSummary()
                                 <div class="form-group">
                                     @Html.TextBoxFor(model => model.Email,
@@ -70,7 +70,7 @@
                             <div class="hr-sect">@T("Login_OrDivider")</div>
 
                             <div class="text-center">
-                                <a class="btn btn-secondary btn-block btn-rounded" href="@Url.Action("CreateAccount", "Identity")" role="button">@T("Login_CreateAccount_CreateAccountButton")</a>
+                                <a class="btn btn-secondary btn-block btn-rounded" href="@Url.Action("CreateAccount", "Account", new { returnUrl = ViewData["ReturnUrl"] })" role="button">@T("Login_CreateAccount_CreateAccountButton")</a>
                             </div>
                         </div>
                     </div>

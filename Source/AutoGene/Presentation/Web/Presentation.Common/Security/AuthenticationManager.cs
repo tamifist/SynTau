@@ -1,4 +1,6 @@
-﻿using Business.Identity.Contracts.Services;
+﻿using System.Threading.Tasks;
+using Business.Identity.Contracts.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Framework.Dependency;
 using Shared.Framework.Security;
@@ -21,34 +23,21 @@ namespace Presentation.Common.Security
             this.storage = storage;
         }
 
-        /// <summary>
-        /// Redirects from login page.
-        /// </summary>
-        /// <param name="userName">Name of the user.</param>
-        /// <returns>
-        /// Redirect action.
-        /// </returns>
-        public ActionResult RedirectFromLoginPage(string userName)
-        {
-            //return new RedirectResult(FormsAuthentication.GetRedirectUrl(userName, true));
-            return new RedirectResult("");
-        }
-
-        public AuthenticationResult LogIn(string userName, string password, bool stayLoggedInToday = false)
+        public async Task<AuthenticationResult> LogIn(HttpContext httpContext, string userName, string password, bool stayLoggedInToday = false)
         {
             UserInfo userInfo = identityService.ValidateUserCredentials(userName, password);
             userInfo.StayLoggedInToday = stayLoggedInToday;
 
-            storage.SaveIdentity(userInfo);
+            await storage.SaveIdentity(httpContext, userInfo);
             return AuthenticationResult.Success(userInfo.MustChangePassword);
         }
 
         /// <summary>
         /// Logs out the user.
         /// </summary>
-        public void LogOut()
+        public async Task LogOut(HttpContext httpContext)
         {
-            storage.ClearIdentity();
+            await storage.ClearIdentity(httpContext);
         }
 
         /// <summary>

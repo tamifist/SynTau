@@ -15,7 +15,7 @@ namespace Presentation.Host.Composition
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<IdentityStorage>()
-                   .As<IIdentityStorage>()
+                   .As<Presentation.Common.Security.IIdentityStorage>()
                    .SingleInstance()
                    .WithParameter(TypedParameter.From(TimeSpan.FromMinutes(Configuration.CookieExpirationMins)));
 

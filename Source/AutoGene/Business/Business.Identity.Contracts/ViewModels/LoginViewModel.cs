@@ -14,6 +14,12 @@
             set;
         }
 
+        public string ReturnUrl
+        {
+            get;
+            set;
+        }
+
         public bool StayLoggedInToday
         {
             get;

@@ -1,18 +1,14 @@
 ﻿using System;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using Data.Common.Contracts;
-using Data.Common.Services;
-using Data.Common.Services.Helpers;
 using Data.Ecommerce.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Presentation.Common.Security;
 using Presentation.Host.Composition;
-using Shared.Framework.Dependency;
-using Shared.Framework.Modules;
 
 namespace Presentation.Host
 {
@@ -27,22 +23,19 @@ namespace Presentation.Host
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-
-//        public void ConfigureServices(IServiceCollection services)
-//        {
-//            EcommerceDbContextOptions ecommerceDbContextOptions = EcommerceDbContextOptionsFactory.Create();
-//            services.AddSingleton(ecommerceDbContextOptions);
-//            services.AddDbContext<EcommerceDbContext>();
-//
-//            services.AddTransient<IUnitOfWork, UnitOfWork>();
-//
-//            services.AddMvc();
-//        }
-
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
             services.AddDbContext<EcommerceDbContext>();
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(opt => opt.LoginPath = "/identity/account/login");
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin",
+                    policy => policy.Requirements.Add(new AdminRequirement()));
+            });
 
             // Add Autofac
             var containerBuilder = new ContainerBuilder();
@@ -68,26 +61,24 @@ namespace Presentation.Host
 
             app.UseStaticFiles();
 
-//            var cachePeriod = env.IsDevelopment() ? "600" : "604800";
-//            app.UseStaticFiles(new StaticFileOptions
-//            {
-//                OnPrepareResponse = ctx =>
-//                {
-//                    // Requires the following import:
-//                    // using Microsoft.AspNetCore.Http;
-//                    ctx.Context.Response.Headers.Append("Cache-Control", $"public, max-age={cachePeriod}");
-//                }
-//            });
+            //            var cachePeriod = env.IsDevelopment() ? "600" : "604800";
+            //            app.UseStaticFiles(new StaticFileOptions
+            //            {
+            //                OnPrepareResponse = ctx =>
+            //                {
+            //                    // Requires the following import:
+            //                    // using Microsoft.AspNetCore.Http;
+            //                    ctx.Context.Response.Headers.Append("Cache-Control", $"public, max-age={cachePeriod}");
+            //                }
+            //            });
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
-//                routes.MapAreaRoute(
-//                    name: "Identity",
-//                    areaName: "Identity",
-//                    template: "Identity/{controller=Identity}/{action=ChangePassword}/{id?}");
                 routes.MapRoute(
                     name: "defaultArea",
-                    template: "{area:exists}/{controller=Identity}/{action=ChangePassword}/{id?}");
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
                 routes.MapRoute(
                     name: "default",

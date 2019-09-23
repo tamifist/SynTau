@@ -19,6 +19,20 @@
     <Compile Remove="Migrations\20190802153453_Common_BaseEntity_SetCreatedAtRequired.Designer.cs" />
     <Compile Remove="Migrations\20190802173812_Common_BaseEntity_SetCreatedAtRequired.cs" />
     <Compile Remove="Migrations\20190802173812_Common_BaseEntity_SetCreatedAtRequired.Designer.cs" />
+    <Compile Remove="Migrations\20190911204127_SeedRoles.cs" />
+    <Compile Remove="Migrations\20190911204127_SeedRoles.Designer.cs" />
+    <Compile Remove="Migrations\20190911204424_DeleteAdminRole.cs" />
+    <Compile Remove="Migrations\20190911204424_DeleteAdminRole.Designer.cs" />
+    <Compile Remove="Migrations\20190911204811_AddAdminRole.cs" />
+    <Compile Remove="Migrations\20190911204811_AddAdminRole.Designer.cs" />
+    <Compile Remove="Migrations\20190912105131_AddRoles.cs" />
+    <Compile Remove="Migrations\20190912105131_AddRoles.Designer.cs" />
+    <Compile Remove="Migrations\20190912105534_RemoveAdminRole.cs" />
+    <Compile Remove="Migrations\20190912105534_RemoveAdminRole.Designer.cs" />
+    <Compile Remove="Migrations\20190912110320_SeedRoles.cs" />
+    <Compile Remove="Migrations\20190912110320_SeedRoles.Designer.cs" />
+    <Compile Remove="Migrations\20190912110433_RenameAdminToCanOrderDNARole.cs" />
+    <Compile Remove="Migrations\20190912110433_RenameAdminToCanOrderDNARole.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

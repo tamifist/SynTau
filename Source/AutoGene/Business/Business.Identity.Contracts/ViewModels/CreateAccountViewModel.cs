@@ -58,5 +58,11 @@ namespace Business.Identity.Contracts.ViewModels
             get;
             set;
         }
+
+        public string ReturnUrl
+        {
+            get;
+            set;
+        }
     }
 }
