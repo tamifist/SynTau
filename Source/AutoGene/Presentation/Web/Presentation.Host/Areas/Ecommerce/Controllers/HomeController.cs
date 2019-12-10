@@ -9,7 +9,7 @@ using Presentation.Common.Controllers;
 namespace Presentation.Host.Areas.Ecommerce.Controllers
 {
     [Area("Ecommerce")]
-    [Authorize(Policy = "Admin")]
+    [Authorize(Policy = "Admin")] //AdminRequirement
     //[Authorize]
     public class HomeController : BaseController
     {
